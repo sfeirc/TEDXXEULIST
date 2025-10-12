@@ -1,37 +1,28 @@
 import Link from 'next/link';
 import { ArrowLeft, Users, Target, Lightbulb, Globe } from 'lucide-react';
+import Navigation from '@/components/Navigation';
 
 export default function About() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+    <div className="min-h-screen bg-gradient-to-br from-black via-slate-950 to-black relative overflow-hidden">
+      {/* Animated Background */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-red-600/10 rounded-full blur-3xl animate-float"></div>
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl animate-float delay-200"></div>
+      </div>
+
       {/* Navigation */}
-      <nav className="bg-white/5 backdrop-blur-sm border-b border-white/10 px-6 py-4">
-        <div className="max-w-7xl mx-auto flex justify-between items-center">
-          <Link href="/" className="text-white font-bold text-xl">
-            <span className="text-red-500">TEDx</span>
-            <span className="text-blue-400">EULiST</span>
-            <span>Paris</span>
-          </Link>
-          <div className="hidden md:flex space-x-8">
-            <Link href="/about" className="text-blue-400 font-medium">À Propos</Link>
-            <Link href="/team" className="text-gray-300 hover:text-blue-400 transition-colors">Équipe</Link>
-            <Link href="/speakers" className="text-gray-300 hover:text-blue-400 transition-colors">Conférenciers</Link>
-            <Link href="/practical-info" className="text-gray-300 hover:text-blue-400 transition-colors">Infos</Link>
-            <Link href="/partners" className="text-gray-300 hover:text-blue-400 transition-colors">Partenaires</Link>
-            <Link href="/contact" className="text-gray-300 hover:text-blue-400 transition-colors">Contact</Link>
-          </div>
-        </div>
-      </nav>
+      <Navigation />
 
       {/* Back Button */}
-      <div className="max-w-7xl mx-auto px-6 py-6">
-        <Link href="/" className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6 py-6">
+        <Link href="/" className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors animate-fade-in">
           <ArrowLeft className="w-4 h-4" />
           Retour à l'accueil
         </Link>
       </div>
 
-      <main className="max-w-4xl mx-auto px-6 pb-20">
+      <main className="relative z-10 max-w-4xl mx-auto px-4 md:px-6 pb-20">
         {/* Header */}
         <div className="text-center mb-16">
           <h1 className="text-5xl font-bold text-white mb-6">À Propos du Projet</h1>
