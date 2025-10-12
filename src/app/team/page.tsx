@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Navigation from '@/components/Navigation';
-import { ArrowLeft, Mail, Users, MessageSquare } from 'lucide-react';
+import { ArrowLeft, Mail, MessageSquare } from 'lucide-react';
 
 export default function Team() {
   const teamMembers = [

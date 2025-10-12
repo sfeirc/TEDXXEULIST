@@ -56,7 +56,7 @@ export default function Contact() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-      <Navigation currentPage="contact" />
+      <Navigation />
 
       <div className="max-w-7xl mx-auto px-6 py-6">
         <Link href="/" className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors">
