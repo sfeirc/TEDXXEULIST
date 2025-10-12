@@ -3,9 +3,10 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Calendar, MapPin, Users, Handshake, Star } from 'lucide-react';
+import { Calendar, MapPin, Users, Handshake, Star, Menu, X } from 'lucide-react';
 
 export default function Home() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
@@ -50,10 +51,10 @@ export default function Home() {
 
 
       {/* Navigation */}
-      <nav className="relative z-20 px-6 py-4 glass border-b border-white/10 animate-fade-in delay-100">
+      <nav className="relative z-20 px-4 md:px-6 py-3 md:py-4 glass border-b border-white/10 animate-fade-in delay-100">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
-          <div className="flex items-center gap-4">
-            <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 md:gap-4">
+            <div className="flex items-center gap-2 md:gap-3">
               {/* TEDx Badge */}
               <div className="transition-all hover:scale-105 drop-shadow-lg">
                 <Image 
@@ -61,10 +62,10 @@ export default function Home() {
                   alt="TEDx" 
                   width={80} 
                   height={30}
-                  className="w-auto h-6"
+                  className="w-auto h-5 md:h-6"
                 />
               </div>
-              <span className="text-white font-bold text-xl">×</span>
+              <span className="text-white font-bold text-lg md:text-xl">×</span>
               {/* EULiST Badge */}
               <div className="transition-all hover:scale-105 drop-shadow-lg">
                 <Image 
@@ -72,12 +73,14 @@ export default function Home() {
                   alt="EULiST" 
                   width={200} 
                   height={100}
-                  className="w-auto h-15"
+                  className="w-auto h-10 md:h-12"
                 />
               </div>
             </div>
-            <span className="text-white font-semibold text-lg hidden md:block">Paris 2026</span>
+            <span className="text-white font-semibold text-sm md:text-lg hidden sm:block">Paris 2026</span>
           </div>
+
+          {/* Desktop Menu */}
           <div className="hidden md:flex space-x-8">
             <Link href="/about" className="text-gray-300 hover:text-red-400 transition-all relative group">
               À Propos
@@ -104,16 +107,75 @@ export default function Home() {
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-400 transition-all group-hover:w-full"></span>
             </Link>
           </div>
+
+          {/* Mobile Menu Button */}
+          <button 
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="md:hidden text-white p-2 hover:bg-white/10 rounded-lg transition-all"
+            aria-label="Toggle menu"
+          >
+            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
         </div>
+
+        {/* Mobile Menu */}
+        {mobileMenuOpen && (
+          <div className="md:hidden absolute top-full left-0 right-0 glass border-b border-white/10 animate-fade-in">
+            <div className="flex flex-col space-y-4 p-6">
+              <Link 
+                href="/about" 
+                onClick={() => setMobileMenuOpen(false)}
+                className="text-gray-300 hover:text-red-400 transition-all py-2 border-b border-gray-800"
+              >
+                À Propos
+              </Link>
+              <Link 
+                href="/team" 
+                onClick={() => setMobileMenuOpen(false)}
+                className="text-gray-300 hover:text-blue-400 transition-all py-2 border-b border-gray-800"
+              >
+                Équipe
+              </Link>
+              <Link 
+                href="/speakers" 
+                onClick={() => setMobileMenuOpen(false)}
+                className="text-gray-300 hover:text-red-400 transition-all py-2 border-b border-gray-800"
+              >
+                Conférenciers
+              </Link>
+              <Link 
+                href="/practical-info" 
+                onClick={() => setMobileMenuOpen(false)}
+                className="text-gray-300 hover:text-blue-400 transition-all py-2 border-b border-gray-800"
+              >
+                Infos Pratiques
+              </Link>
+              <Link 
+                href="/partners" 
+                onClick={() => setMobileMenuOpen(false)}
+                className="text-gray-300 hover:text-red-400 transition-all py-2 border-b border-gray-800"
+              >
+                Partenaires
+              </Link>
+              <Link 
+                href="/contact" 
+                onClick={() => setMobileMenuOpen(false)}
+                className="text-gray-300 hover:text-blue-400 transition-all py-2"
+              >
+                Contact
+              </Link>
+            </div>
+          </div>
+        )}
       </nav>
 
       {/* Hero Section */}
-      <main className="relative z-10 px-6 py-20">
+      <main className="relative z-10 px-4 md:px-6 py-12 md:py-20">
         <div className="max-w-7xl mx-auto text-center">
           {/* Dual Brand Logo with Visual Representations */}
-          <div className="mb-8">
+          <div className="mb-6 md:mb-8">
             {/* TEDx x EULiST Combined Logo */}
-            <div className="flex items-center justify-center gap-6 md:gap-12 mb-8 flex-wrap md:flex-nowrap">
+            <div className="flex items-center justify-center gap-4 md:gap-12 mb-6 md:mb-8 flex-wrap">
               {/* TEDx Logo */}
               <div className="text-center animate-slide-in-left delay-200 group">
                 <div className="relative">
@@ -165,27 +227,27 @@ export default function Home() {
             {/* Gradient Underline */}
             <div className="w-64 h-1 mx-auto mb-6 bg-gradient-to-r from-red-600 via-gray-700 to-blue-600 rounded-full"></div>
             
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-2 animate-fade-in-up delay-400">
+            <h1 className="text-3xl md:text-5xl font-bold text-white mb-2 animate-fade-in-up delay-400">
               Paris 2026
             </h1>
             <div className="flex items-center justify-center gap-2 text-gray-400 animate-fade-in delay-500">
               <Star className="w-4 h-4 text-yellow-400 animate-pulse" />
-              <span className="text-sm">Télécom Paris</span>
+              <span className="text-xs md:text-sm">Télécom Paris</span>
             </div>
           </div>
 
           {/* Theme Tagline */}
-          <div className="mb-12">
-            <h2 className="text-3xl md:text-5xl font-light text-white mb-4">
+          <div className="mb-8 md:mb-12">
+            <h2 className="text-2xl md:text-5xl font-light text-white mb-3 md:mb-4 px-2">
               Lorem Ipsum Dolor Sit Amet
             </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto px-4">
               Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
             </p>
           </div>
 
           {/* Date & Venue */}
-          <div className="mb-12 flex flex-col md:flex-row items-center justify-center gap-8">
+          <div className="mb-8 md:mb-12 flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8">
             <div className="flex items-center gap-2 px-4 py-2 bg-blue-500/20 rounded-full border border-blue-400/30">
               <Calendar className="w-5 h-5 text-blue-400" />
               <span className="text-lg text-gray-200">Automne 2026</span>
@@ -197,49 +259,49 @@ export default function Home() {
           </div>
 
           {/* Countdown Timer */}
-          <div className="mb-16 animate-fade-in-up delay-500">
-            <div className="glass rounded-2xl p-8 max-w-4xl mx-auto border border-white/20 shadow-2xl">
-              <h3 className="text-2xl text-white mb-6 font-semibold">Compte à Rebours</h3>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div className="text-center bg-gradient-to-br from-red-500/10 to-blue-500/10 rounded-xl p-6 border border-white/10 card-hover">
-                  <div className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-red-400 to-blue-400 bg-clip-text text-transparent">{timeLeft.days}</div>
-                  <div className="text-gray-400 text-sm mt-2 font-medium">Jours</div>
+          <div className="mb-10 md:mb-16 animate-fade-in-up delay-500">
+            <div className="glass rounded-2xl p-4 md:p-8 max-w-4xl mx-auto border border-white/20 shadow-2xl">
+              <h3 className="text-xl md:text-2xl text-white mb-4 md:mb-6 font-semibold">Compte à Rebours</h3>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+                <div className="text-center bg-gradient-to-br from-red-500/10 to-blue-500/10 rounded-xl p-4 md:p-6 border border-white/10 card-hover">
+                  <div className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-red-400 to-blue-400 bg-clip-text text-transparent">{timeLeft.days}</div>
+                  <div className="text-gray-400 text-xs md:text-sm mt-2 font-medium">Jours</div>
                 </div>
-                <div className="text-center bg-gradient-to-br from-red-500/10 to-blue-500/10 rounded-xl p-6 border border-white/10 card-hover">
-                  <div className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-red-400 to-blue-400 bg-clip-text text-transparent">{timeLeft.hours}</div>
-                  <div className="text-gray-400 text-sm mt-2 font-medium">Heures</div>
+                <div className="text-center bg-gradient-to-br from-red-500/10 to-blue-500/10 rounded-xl p-4 md:p-6 border border-white/10 card-hover">
+                  <div className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-red-400 to-blue-400 bg-clip-text text-transparent">{timeLeft.hours}</div>
+                  <div className="text-gray-400 text-xs md:text-sm mt-2 font-medium">Heures</div>
                 </div>
-                <div className="text-center bg-gradient-to-br from-red-500/10 to-blue-500/10 rounded-xl p-6 border border-white/10 card-hover">
-                  <div className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-red-400 to-blue-400 bg-clip-text text-transparent">{timeLeft.minutes}</div>
-                  <div className="text-gray-400 text-sm mt-2 font-medium">Minutes</div>
+                <div className="text-center bg-gradient-to-br from-red-500/10 to-blue-500/10 rounded-xl p-4 md:p-6 border border-white/10 card-hover">
+                  <div className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-red-400 to-blue-400 bg-clip-text text-transparent">{timeLeft.minutes}</div>
+                  <div className="text-gray-400 text-xs md:text-sm mt-2 font-medium">Minutes</div>
                 </div>
-                <div className="text-center bg-gradient-to-br from-red-500/10 to-blue-500/10 rounded-xl p-6 border border-white/10 card-hover">
-                  <div className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-red-400 to-blue-400 bg-clip-text text-transparent">{timeLeft.seconds}</div>
-                  <div className="text-gray-400 text-sm mt-2 font-medium">Secondes</div>
+                <div className="text-center bg-gradient-to-br from-red-500/10 to-blue-500/10 rounded-xl p-4 md:p-6 border border-white/10 card-hover">
+                  <div className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-red-400 to-blue-400 bg-clip-text text-transparent">{timeLeft.seconds}</div>
+                  <div className="text-gray-400 text-xs md:text-sm mt-2 font-medium">Secondes</div>
                 </div>
               </div>
             </div>
           </div>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col md:flex-row gap-6 justify-center items-center animate-fade-in-up delay-500">
+          <div className="flex flex-col md:flex-row gap-4 md:gap-6 justify-center items-center animate-fade-in-up delay-500 px-4">
             <Link 
               href="/about"
-              className="btn-professional bg-gradient-to-r from-red-600 to-red-500 text-white px-10 py-4 rounded-full font-semibold text-lg hover:from-red-700 hover:to-red-600 transition-all shadow-2xl shadow-red-500/40 hover:shadow-red-500/60 hover:scale-105 flex items-center gap-3"
+              className="btn-professional bg-gradient-to-r from-red-600 to-red-500 text-white w-full md:w-auto px-8 md:px-10 py-3 md:py-4 rounded-full font-semibold text-base md:text-lg hover:from-red-700 hover:to-red-600 transition-all shadow-2xl shadow-red-500/40 hover:shadow-red-500/60 hover:scale-105 flex items-center justify-center gap-3"
             >
               <Users className="w-5 h-5" />
               <span>Découvrir</span>
             </Link>
             <Link 
               href="/contact"
-              className="btn-professional bg-gradient-to-r from-blue-600 to-blue-500 text-white px-10 py-4 rounded-full font-semibold text-lg hover:from-blue-700 hover:to-blue-600 transition-all shadow-2xl shadow-blue-500/40 hover:shadow-blue-500/60 hover:scale-105 flex items-center gap-3"
+              className="btn-professional bg-gradient-to-r from-blue-600 to-blue-500 text-white w-full md:w-auto px-8 md:px-10 py-3 md:py-4 rounded-full font-semibold text-base md:text-lg hover:from-blue-700 hover:to-blue-600 transition-all shadow-2xl shadow-blue-500/40 hover:shadow-blue-500/60 hover:scale-105 flex items-center justify-center gap-3"
             >
               <Calendar className="w-5 h-5" />
               <span>Participer</span>
             </Link>
             <Link 
               href="/partners"
-              className="btn-professional glass border-2 border-white/30 text-white px-10 py-4 rounded-full font-semibold text-lg hover:bg-white/20 hover:border-white/50 transition-all shadow-2xl hover:scale-105 flex items-center gap-3"
+              className="btn-professional glass border-2 border-white/30 text-white w-full md:w-auto px-8 md:px-10 py-3 md:py-4 rounded-full font-semibold text-base md:text-lg hover:bg-white/20 hover:border-white/50 transition-all shadow-2xl hover:scale-105 flex items-center justify-center gap-3"
             >
               <Handshake className="w-5 h-5" />
               <span>Devenir Partenaire</span>
