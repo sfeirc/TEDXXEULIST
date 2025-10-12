@@ -81,7 +81,7 @@ export default function Partners() {
             </p>
             <div className="bg-slate-800/30 rounded-xl p-8 border border-slate-700/50">
               <Building className="w-16 h-16 text-gray-500 mx-auto mb-4" />
-              <p className="text-gray-400">Votre logo pourrait être ici!</p>
+              <p className="text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
             </div>
           </div>
         </section>

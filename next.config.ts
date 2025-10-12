@@ -6,6 +6,16 @@ const nextConfig: NextConfig = {
   output: 'export',
   images: {
     unoptimized: true,
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'landing-pages.ted.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'eulist.university',
+      },
+    ],
   },
   basePath: isProd ? '/TEDXXEULIST' : '',
 };

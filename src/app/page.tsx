@@ -58,7 +58,7 @@ export default function Home() {
               {/* TEDx Badge */}
               <div className="transition-all hover:scale-105 drop-shadow-lg">
                 <Image 
-                  src="/tedx.png" 
+                  src="https://landing-pages.ted.com/tedx-logo-generator/assets/logo.png" 
                   alt="TEDx" 
                   width={80} 
                   height={30}
@@ -69,7 +69,7 @@ export default function Home() {
               {/* EULiST Badge */}
               <div className="transition-all hover:scale-105 drop-shadow-lg">
                 <Image 
-                  src="/eu-list-navbar.png" 
+                  src="https://eulist.university/wp-content/themes/eulist/images/logo-new.png" 
                   alt="EULiST" 
                   width={200} 
                   height={100}
@@ -182,7 +182,7 @@ export default function Home() {
                   {/* TEDx Visual Logo */}
                   <div className="relative transition-all duration-300 group-hover:scale-105">
         <Image
-                      src="/tedx.png" 
+                      src="https://landing-pages.ted.com/tedx-logo-generator/assets/logo.png" 
                       alt="TEDx Logo" 
                       width={250} 
                       height={80}
@@ -209,7 +209,7 @@ export default function Home() {
                   {/* EULiST Visual Logo */}
                   <div className="relative transition-all duration-300 group-hover:scale-105">
             <Image
-                      src="/eu-list.png" 
+                      src="https://eulist.university/wp-content/themes/eulist/images/logo-new.png" 
                       alt="EULiST Logo" 
                       width={400} 
                       height={160}
@@ -319,7 +319,7 @@ export default function Home() {
                 <div className="text-left card-hover p-6 rounded-xl bg-gradient-to-br from-red-500/10 to-transparent border border-red-500/20">
                   <div className="flex items-center gap-3 mb-4">
                     <div className="drop-shadow-lg">
-                      <Image src="/tedx.png" alt="TEDx" width={80} height={32} className="w-auto h-6" />
+                      <Image src="https://landing-pages.ted.com/tedx-logo-generator/assets/logo.png" alt="TEDx" width={80} height={32} className="w-auto h-6" />
                     </div>
                     <h3 className="text-white font-semibold text-lg">Ideas Worth Spreading</h3>
                   </div>
@@ -330,7 +330,7 @@ export default function Home() {
                 <div className="text-left card-hover p-6 rounded-xl bg-gradient-to-bl from-blue-500/10 to-transparent border border-blue-500/20">
                   <div className="flex items-center gap-3 mb-4">
                     <div className="drop-shadow-lg">
-                      <Image src="/eu-list.png" alt="EULiST" width={120} height={64} className="w-auto h-10" />
+                      <Image src="https://eulist.university/wp-content/themes/eulist/images/logo-new.png" alt="EULiST" width={120} height={64} className="w-auto h-10" />
                     </div>
                     <h3 className="text-white font-semibold text-lg">European Universities</h3>
                   </div>
@@ -364,11 +364,11 @@ export default function Home() {
             <div className="flex items-center gap-4">
               <div className="flex items-center gap-2">
                 <div className="transition-transform hover:scale-105 drop-shadow-lg">
-                  <Image src="/tedx.png" alt="TEDx" width={60} height={24} className="w-auto h-5" />
+                  <Image src="https://landing-pages.ted.com/tedx-logo-generator/assets/logo.png" alt="TEDx" width={60} height={24} className="w-auto h-5" />
                 </div>
                 <span className="text-gray-400 font-bold">×</span>
                 <div className="transition-transform hover:scale-105 drop-shadow-lg">
-                  <Image src="/eu-list.png" alt="EULiST" width={100} height={48} className="w-auto h-7" />
+                  <Image src="https://eulist.university/wp-content/themes/eulist/images/logo-new.png" alt="EULiST" width={100} height={48} className="w-auto h-7" />
                 </div>
               </div>
               <span className="text-gray-400 text-sm">Paris 2026</span>
