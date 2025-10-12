@@ -23,17 +23,30 @@ export default function PracticalInfo() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-      <Navigation currentPage="info" />
+    <div className="min-h-screen bg-gradient-to-br from-black via-slate-950 to-black relative overflow-hidden">
+      {/* Animated Background Orbs with Red-Blue Gradient */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-red-600/10 rounded-full blur-3xl animate-float"></div>
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl animate-float delay-200"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-slate-800 rounded-full"></div>
+        
+        {/* Gradient Lines */}
+        <div className="absolute inset-0">
+          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-red-600/20 to-transparent"></div>
+          <div className="absolute top-0 right-0 w-full h-1 bg-gradient-to-l from-transparent via-blue-600/20 to-transparent"></div>
+        </div>
+      </div>
 
-      <div className="max-w-7xl mx-auto px-6 py-6">
+      <Navigation />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-6 py-6">
         <Link href="/" className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors">
           <ArrowLeft className="w-4 h-4" />
           Retour à l'accueil
         </Link>
       </div>
 
-      <main className="max-w-6xl mx-auto px-6 pb-20">
+      <main className="relative z-10 max-w-6xl mx-auto px-6 pb-20">
         <div className="text-center mb-16">
           <h1 className="text-5xl font-bold text-white mb-6">Informations Pratiques</h1>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
