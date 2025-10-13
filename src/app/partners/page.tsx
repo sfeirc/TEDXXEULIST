@@ -1,13 +1,36 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import Navigation from '@/components/Navigation';
+import Footer from '@/components/Footer';
 import { ArrowLeft, Handshake, Building, ExternalLink } from 'lucide-react';
 
 export default function Partners() {
   const institutionalPartners = [
-    { name: "IMT", description: "Institut Mines-Télécom", logo: "IMT" },
-    { name: "EULiST", description: "European Universities", logo: "EULiST" },
-    { name: "Fondation IMT", description: "Lorem ipsum dolor", logo: "F-IMT" },
-    { name: "Union des Élèves", description: "Sit amet consectetur", logo: "UE" }
+    { 
+      name: "IMT Atlantique", 
+      description: "Institut Mines-Télécom", 
+      logo: "https://www.imt-atlantique.fr/sites/default/files/ecole/logos/imtatlantique/imtatlantique-rvb-reserve.png"
+    },
+    { 
+      name: "EULiST", 
+      description: "European Universities", 
+      logo: "https://eulist.university/wp-content/themes/eulist/images/logo-new.png"
+    },
+    { 
+      name: "Fondation IMT", 
+      description: "Lorem ipsum dolor", 
+      logo: "https://upload.wikimedia.org/wikipedia/commons/b/b0/IMT_logo_2017.png"
+    },
+    { 
+      name: "Union des Élèves de l'IMT", 
+      description: "Sit amet consectetur", 
+      logo: "https://www.union-eleves-imt.org/web/image/2638-d3f4ead9/IMT_UnionDesEleves_Logo_couleurs.webp"
+    },
+    { 
+      name: "TEDx", 
+      description: "Sit amet consectetur", 
+      logo: "https://landing-pages.ted.com/tedx-logo-generator/assets/logo.png"
+    }
   ];
 
   const partnershipTiers = [
@@ -43,7 +66,6 @@ export default function Partners() {
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-red-600/10 rounded-full blur-3xl animate-float"></div>
         <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl animate-float delay-200"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-slate-800 rounded-full"></div>
         
         {/* Gradient Lines */}
         <div className="absolute inset-0">
@@ -74,9 +96,15 @@ export default function Partners() {
             <h2 className="text-3xl font-bold text-white mb-8 text-center">Partenaires Institutionnels</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {institutionalPartners.map((partner, index) => (
-                <div key={index} className="bg-slate-800/30 rounded-xl p-6 text-center border border-slate-700/50 hover:border-blue-400/40 transition-all">
-                  <div className="w-16 h-16 bg-gradient-to-br from-red-500/20 to-blue-500/20 rounded-full flex items-center justify-center mx-auto mb-4 border border-blue-400/30">
-                    <span className="text-blue-400 font-bold text-sm">{partner.logo}</span>
+                <div key={index} className="bg-slate-800/30 rounded-xl p-6 text-center border border-slate-700/50 hover:border-blue-400/40 transition-all group">
+                  <div className="w-full h-32 rounded-lg flex items-center justify-center mx-auto mb-4 p-4 overflow-hidden transition-all">
+                    <Image
+                      src={partner.logo}
+                      alt={partner.name}
+                      width={200}
+                      height={100}
+                      className="w-full h-full object-contain drop-shadow-lg"
+                    />
                   </div>
                   <h3 className="font-semibold text-white mb-2">{partner.name}</h3>
                   <p className="text-gray-400 text-sm">{partner.description}</p>
@@ -171,6 +199,8 @@ export default function Partners() {
           </div>
         </div>
       </main>
+
+      <Footer />
     </div>
   );
 }

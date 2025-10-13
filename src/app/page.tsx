@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import Footer from '@/components/Footer';
 import { Calendar, MapPin, Users, Handshake, Star, Menu, X } from 'lucide-react';
 
 export default function Home() {
@@ -57,7 +58,7 @@ export default function Home() {
             <div className="flex items-center gap-2 md:gap-3">
               {/* TEDx Badge */}
               <div className="transition-all hover:scale-105 drop-shadow-lg">
-                <Image 
+        <Image
                   src="https://landing-pages.ted.com/tedx-logo-generator/assets/logo.png" 
                   alt="TEDx" 
                   width={80} 
@@ -68,7 +69,7 @@ export default function Home() {
               <span className="text-white font-bold text-lg md:text-xl">×</span>
               {/* EULiST Badge */}
               <div className="transition-all hover:scale-105 drop-shadow-lg">
-                <Image 
+            <Image
                   src="https://eulist.university/wp-content/themes/eulist/images/logo-new.png" 
                   alt="EULiST" 
                   width={200} 
@@ -177,24 +178,29 @@ export default function Home() {
             {/* TEDx x EULiST Combined Logo */}
             <div className="flex items-center justify-center gap-4 md:gap-12 mb-6 md:mb-8 flex-wrap">
               {/* TEDx Logo */}
-              <div className="text-center animate-slide-in-left delay-200 group">
+              <a 
+                href="https://www.ted.com/about/programs-initiatives/tedx-program" 
+          target="_blank"
+          rel="noopener noreferrer"
+                className="text-center animate-slide-in-left delay-200 group"
+        >
                 <div className="relative">
                   {/* TEDx Visual Logo */}
                   <div className="relative transition-all duration-300 group-hover:scale-105">
-        <Image
+          <Image
                       src="https://landing-pages.ted.com/tedx-logo-generator/assets/logo.png" 
                       alt="TEDx Logo" 
                       width={250} 
                       height={80}
                       className="w-auto h-16 md:h-20 drop-shadow-2xl"
-          priority
-        />
+                      priority
+                    />
                   </div>
                   {/* Red Glow Effect */}
                   <div className="absolute inset-0 bg-red-600/30 blur-3xl -z-10 group-hover:bg-red-600/40"></div>
                 </div>
                 <div className="text-red-400 text-xs mt-4 font-semibold tracking-wider">Ideas Worth Spreading</div>
-              </div>
+              </a>
               
               {/* Collaboration Symbol */}
               <div className="relative animate-scale-in delay-300">
@@ -204,11 +210,16 @@ export default function Home() {
               </div>
               
               {/* EULiST Logo */}
-              <div className="text-center animate-slide-in-right delay-200 group">
+              <a 
+                href="https://eulist.university/" 
+          target="_blank"
+          rel="noopener noreferrer"
+                className="text-center animate-slide-in-right delay-200 group"
+        >
                 <div className="relative">
                   {/* EULiST Visual Logo */}
                   <div className="relative transition-all duration-300 group-hover:scale-105">
-            <Image
+          <Image
                       src="https://eulist.university/wp-content/themes/eulist/images/logo-new.png" 
                       alt="EULiST Logo" 
                       width={400} 
@@ -221,7 +232,7 @@ export default function Home() {
                   <div className="absolute inset-0 bg-blue-600/30 blur-3xl -z-10 group-hover:bg-blue-600/40"></div>
                 </div>
                 <div className="text-blue-400 text-xs mt-4 font-semibold tracking-wider">European Universities</div>
-              </div>
+              </a>
             </div>
             
             {/* Gradient Underline */}
@@ -340,12 +351,48 @@ export default function Home() {
                 </div>
               </div>
               <div className="relative mt-8 pt-6 border-t border-gradient-to-r from-red-500/20 via-purple-500/40 to-blue-500/20 text-center">
-                <div className="inline-block px-6 py-3 rounded-full glass border border-purple-400/30 mb-4">
-                  <p className="text-white font-semibold bg-gradient-to-r from-red-400 via-purple-400 to-blue-400 bg-clip-text text-transparent">
-                    Ensemble pour l'innovation européenne
-                  </p>
+                {/* EU Flag Circle of Stars Background */}
+                <div className="absolute inset-0 flex items-center justify-center opacity-10 pointer-events-none">
+                  <div className="relative w-64 h-64">
+                    {[
+                      { x: 50, y: 10 },
+                      { x: 70, y: 15.36 },
+                      { x: 84.64, y: 30 },
+                      { x: 90, y: 50 },
+                      { x: 84.64, y: 70 },
+                      { x: 70, y: 84.64 },
+                      { x: 50, y: 90 },
+                      { x: 30, y: 84.64 },
+                      { x: 15.36, y: 70 },
+                      { x: 10, y: 50 },
+                      { x: 15.36, y: 30 },
+                      { x: 30, y: 15.36 },
+                    ].map((pos, i) => (
+                      <div
+                        key={i}
+                        className="absolute w-4 h-4 bg-yellow-400"
+                        style={{
+                          left: `${pos.x}%`,
+                          top: `${pos.y}%`,
+                          transform: 'translate(-50%, -50%)',
+                          clipPath: 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)',
+                        }}
+                      />
+                    ))}
+                  </div>
                 </div>
-                <p className="text-gray-400 text-sm max-w-2xl mx-auto">
+
+                {/* Clean EU-Inspired Design */}
+                <div className="relative inline-block">
+                  <div className="px-8 py-4 rounded-full border border-yellow-400/40 bg-gradient-to-r from-blue-600/20 via-blue-700/20 to-blue-600/20 backdrop-blur-sm shadow-lg shadow-yellow-400/10 hover:shadow-yellow-400/30 transition-all duration-500">
+                    {/* Text */}
+                    <p className="text-lg font-semibold bg-gradient-to-r from-yellow-200 via-white to-yellow-200 bg-clip-text text-transparent whitespace-nowrap">
+                      Ensemble pour l'innovation européenne
+                    </p>
+                  </div>
+                </div>
+
+                <p className="text-gray-300 text-sm max-w-2xl mx-auto leading-relaxed">
                   Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
                 </p>
               </div>
@@ -354,48 +401,7 @@ export default function Home() {
         </div>
       </main>
 
-      {/* Footer with Both Brands and Gradient */}
-      <footer className="relative z-10 mt-20 border-t border-white/10 bg-black/80 backdrop-blur-sm overflow-hidden">
-        {/* Gradient Top Border */}
-        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-red-600 via-gray-800 to-blue-600"></div>
-        
-        <div className="max-w-7xl mx-auto px-6 py-8">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-            <div className="flex items-center gap-4">
-              <div className="flex items-center gap-2">
-                <div className="transition-transform hover:scale-105 drop-shadow-lg">
-                  <Image src="https://landing-pages.ted.com/tedx-logo-generator/assets/logo.png" alt="TEDx" width={60} height={24} className="w-auto h-5" />
-                </div>
-                <span className="text-gray-400 font-bold">×</span>
-                <div className="transition-transform hover:scale-105 drop-shadow-lg">
-                  <Image src="https://eulist.university/wp-content/themes/eulist/images/logo-new.png" alt="EULiST" width={100} height={48} className="w-auto h-7" />
-                </div>
-              </div>
-              <span className="text-gray-400 text-sm">Paris 2026</span>
-            </div>
-            <div className="text-gray-400 text-sm text-center">
-              <p className="text-white font-semibold">
-                Une collaboration entre TEDx et le réseau EULiST
-              </p>
-              <p className="text-xs mt-1">© 2026 TEDxEULiSTParis - Tous droits réservés</p>
-            </div>
-            <div className="flex gap-4 text-gray-400 text-sm">
-              <a href="#" className="hover:text-red-500 transition-colors relative group">
-                TEDx
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-500 transition-all group-hover:w-full"></span>
-              </a>
-              <a href="#" className="hover:text-blue-500 transition-colors relative group">
-                EULiST
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-500 transition-all group-hover:w-full"></span>
-              </a>
-              <a href="#" className="hover:text-gray-300 transition-colors relative group">
-                IMT
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gray-300 transition-all group-hover:w-full"></span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
 
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">

@@ -15,6 +15,14 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'eulist.university',
       },
+      {
+        protocol: 'https',
+        hostname: 'www.imt-atlantique.fr',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.fondation-mines-telecom.org',
+      },
     ],
   },
   basePath: isProd ? '/TEDXXEULIST' : '',

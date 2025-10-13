@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Navigation from '@/components/Navigation';
-import { ArrowLeft, Mail, MessageSquare } from 'lucide-react';
+import Footer from '@/components/Footer';
+import { ArrowLeft } from 'lucide-react';
 
 export default function Team() {
   const teamMembers = [
@@ -48,7 +49,6 @@ export default function Team() {
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-red-600/10 rounded-full blur-3xl animate-float"></div>
         <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl animate-float delay-200"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-slate-800 rounded-full"></div>
         
         {/* Gradient Lines */}
         <div className="absolute inset-0">
@@ -95,31 +95,9 @@ export default function Team() {
             ))}
           </div>
         </section>
-
-        <section className="bg-gradient-to-r from-red-500/10 to-blue-500/10 rounded-2xl p-8 text-center border border-white/10">
-          <h2 className="text-3xl font-bold text-white mb-6">Rejoignez Notre Équipe</h2>
-          <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </p>
-          
-          <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
-            <Link 
-              href="/contact"
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-red-600 to-red-500 text-white px-8 py-4 rounded-full font-semibold text-lg hover:from-red-700 hover:to-red-600 transition-all shadow-lg shadow-red-500/30"
-            >
-              <Mail className="w-5 h-5" />
-              Nous Contacter
-            </Link>
-            <a 
-              href="mailto:team@tedxeulistparis.com"
-              className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white/20 transition-all"
-            >
-              <MessageSquare className="w-5 h-5" />
-              Envoyer Email
-            </a>
-          </div>
-        </section>
       </main>
+
+      <Footer />
     </div>
   );
 }
