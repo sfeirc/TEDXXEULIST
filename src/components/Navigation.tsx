@@ -9,7 +9,7 @@ export default function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <nav className="relative z-20 px-4 md:px-6 py-3 md:py-4 glass border-b border-white/10">
+    <nav className="relative z-20 px-4 md:px-6 py-3 md:py-4 bg-black/90 backdrop-blur-sm border-b border-white/10">
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         <Link href="/" className="flex items-center gap-2 md:gap-4">
           <div className="flex items-center gap-2 md:gap-3">
@@ -78,7 +78,7 @@ export default function Navigation() {
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 glass border-b border-white/10 animate-fade-in">
+        <div className="md:hidden absolute top-full left-0 right-0 bg-black/95 backdrop-blur-sm border-b border-white/10 animate-fade-in shadow-2xl">
           <div className="flex flex-col space-y-4 p-6">
             <Link 
               href="/about" 

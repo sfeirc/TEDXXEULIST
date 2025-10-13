@@ -31,23 +31,31 @@ export default function Footer() {
                 <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-gradient-to-r from-blue-600/30 to-blue-700/30 border border-yellow-400/30 backdrop-blur-sm transition-all duration-300 group-hover:border-yellow-400/50 group-hover:shadow-lg group-hover:shadow-yellow-400/20">
                   {/* EU Flag Circle of Stars */}
                   <div className="relative w-5 h-5">
-                    {[...Array(12)].map((_, i) => {
-                      const angle = (i * 30 - 90) * (Math.PI / 180);
-                      const x = 50 + 35 * Math.cos(angle);
-                      const y = 50 + 35 * Math.sin(angle);
-                      return (
-                        <div
-                          key={i}
-                          className="absolute w-1 h-1 bg-yellow-400"
-                          style={{
-                            left: `${x}%`,
-                            top: `${y}%`,
-                            transform: 'translate(-50%, -50%)',
-                            clipPath: 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)',
-                          }}
-                        />
-                      );
-                    })}
+                    {[
+                      { x: 50, y: 15 },
+                      { x: 67.5, y: 19.69 },
+                      { x: 80.31, y: 32.5 },
+                      { x: 85, y: 50 },
+                      { x: 80.31, y: 67.5 },
+                      { x: 67.5, y: 80.31 },
+                      { x: 50, y: 85 },
+                      { x: 32.5, y: 80.31 },
+                      { x: 19.69, y: 67.5 },
+                      { x: 15, y: 50 },
+                      { x: 19.69, y: 32.5 },
+                      { x: 32.5, y: 19.69 },
+                    ].map((pos, i) => (
+                      <div
+                        key={i}
+                        className="absolute w-1 h-1 bg-yellow-400"
+                        style={{
+                          left: `${pos.x}%`,
+                          top: `${pos.y}%`,
+                          transform: 'translate(-50%, -50%)',
+                          clipPath: 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)',
+                        }}
+                      />
+                    ))}
                   </div>
                   <span className="text-xs font-medium text-yellow-200/90">European Union</span>
                 </div>
@@ -56,7 +64,7 @@ export default function Footer() {
             <p className="text-xs mt-2">© 2026 TEDxEULiSTParis - Tous droits réservés</p>
           </div>
           
-          <div className="flex gap-4 text-gray-400 text-sm">
+          <div className="flex flex-wrap gap-3 md:gap-4 text-gray-400 text-xs md:text-sm justify-center md:justify-end">
             <a href="https://www.ted.com/about/programs-initiatives/tedx-program" target="_blank" rel="noopener noreferrer" className="hover:text-red-500 transition-colors relative group">
               TEDx
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-500 transition-all group-hover:w-full"></span>
@@ -73,8 +81,8 @@ export default function Footer() {
               IMT
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gray-300 transition-all group-hover:w-full"></span>
             </a>
-            <a href="https://www.union-eleves-imt.org/" target="_blank" rel="noopener noreferrer" className="hover:text-gray-300 transition-colors relative group">
-              Union des Élèves de l'IMT
+            <a href="https://www.union-eleves-imt.org/" target="_blank" rel="noopener noreferrer" className="hover:text-gray-300 transition-colors relative group whitespace-nowrap">
+              Union IMT
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gray-300 transition-all group-hover:w-full"></span>
             </a>
           </div>

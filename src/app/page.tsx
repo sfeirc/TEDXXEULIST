@@ -383,10 +383,10 @@ export default function Home() {
                 </div>
 
                 {/* Clean EU-Inspired Design */}
-                <div className="relative inline-block">
-                  <div className="px-8 py-4 rounded-full border border-yellow-400/40 bg-gradient-to-r from-blue-600/20 via-blue-700/20 to-blue-600/20 backdrop-blur-sm shadow-lg shadow-yellow-400/10 hover:shadow-yellow-400/30 transition-all duration-500">
+                <div className="relative inline-block px-4">
+                  <div className="px-4 md:px-8 py-3 md:py-4 rounded-full border border-yellow-400/40 bg-gradient-to-r from-blue-600/20 via-blue-700/20 to-blue-600/20 backdrop-blur-sm shadow-lg shadow-yellow-400/10 hover:shadow-yellow-400/30 transition-all duration-500">
                     {/* Text */}
-                    <p className="text-lg font-semibold bg-gradient-to-r from-yellow-200 via-white to-yellow-200 bg-clip-text text-transparent whitespace-nowrap">
+                    <p className="text-sm md:text-lg font-semibold bg-gradient-to-r from-yellow-200 via-white to-yellow-200 bg-clip-text text-transparent text-center">
                       Ensemble pour l'innovation européenne
                     </p>
                   </div>
