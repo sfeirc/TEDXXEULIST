@@ -94,9 +94,9 @@ export default function Partners() {
         <section className="mb-16">
           <div className="bg-gradient-to-br from-blue-500/10 to-slate-800/50 rounded-2xl border border-blue-400/20 p-8">
             <h2 className="text-3xl font-bold text-white mb-8 text-center">Partenaires Institutionnels</h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="flex flex-wrap justify-center gap-6">
               {institutionalPartners.map((partner, index) => (
-                <div key={index} className="bg-slate-800/30 rounded-xl p-6 text-center border border-slate-700/50 hover:border-blue-400/40 transition-all group">
+                <div key={index} className="bg-slate-800/30 rounded-xl p-6 text-center border border-slate-700/50 hover:border-blue-400/40 transition-all group w-80 flex-shrink-0">
                   <div className="w-full h-32 rounded-lg flex items-center justify-center mx-auto mb-4 p-4 overflow-hidden transition-all">
                     <Image
                       src={partner.logo}
