@@ -53,7 +53,7 @@ export default function Team() {
       role: "Relations Médias",
       team: "Communication",
       description: "Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.",
-      photo: "https://imgur.com/eD5RNEI.jpg"
+      photo: "https://imgur.com/LeD6M4C.jpg"
     },
     {
       name: "Valentin",
