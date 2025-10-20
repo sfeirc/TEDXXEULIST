@@ -61,6 +61,13 @@ export default function Team() {
       team: "Logistique",
       description: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.",
       photo: "https://i.imgur.com/2UmbeYh.jpg"
+    },
+    {
+      name: "Raphael",
+      role: "Responsable Communication",
+      team: "Communication",
+      description: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.",
+      photo: "https://imgur.com/8GwceGM.jpg"
     }
   ];
 
