@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { ArrowLeft } from 'lucide-react';
@@ -6,40 +7,60 @@ import { ArrowLeft } from 'lucide-react';
 export default function Team() {
   const teamMembers = [
     {
-      name: "Lorem Ipsum",
+      name: "Antoine",
       role: "Coordinateur Général",
       team: "Coordination",
-      description: "Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor."
+      description: "Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor.",
+      photo: "https://i.imgur.com/4HCB0To.jpg"
     },
     {
-      name: "Dolor Sit",
+      name: "Clovis",
       role: "Directeur Communication",
       team: "Communication",
-      description: "Consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore."
+      description: "Consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore.",
+      photo: "https://i.imgur.com/LlBFi0N.jpg"
     },
     {
-      name: "Amet Consectetur",
+      name: "Daner",
       role: "Manager Logistique",
       team: "Logistique",
-      description: "Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi."
+      description: "Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi.",
+      photo: "https://i.imgur.com/a2E8lRY.jpg"
     },
     {
-      name: "Adipiscing Elit",
+      name: "Etienne",
       role: "Relations Conférenciers",
       team: "Coordination",
-      description: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum."
+      description: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.",
+      photo: "https://i.imgur.com/QoB5jl6.jpg"
     },
     {
-      name: "Sed Eiusmod",
+      name: "Leo",
       role: "Coordinateur Partenariats",
       team: "Partenariats",
-      description: "Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia."
+      description: "Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia.",
+      photo: "https://i.imgur.com/bk1Zigv.jpg"
     },
     {
-      name: "Tempor Incididunt",
+      name: "Maxime",
       role: "Créateur de Contenu",
       team: "Communication",
-      description: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium."
+      description: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium.",
+      photo: "https://i.imgur.com/E7wFzI4.jpg"
+    },
+    {
+      name: "Theo",
+      role: "Relations Médias",
+      team: "Communication",
+      description: "Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.",
+      photo: "https://i.imgur.com/lzryQy2.jpg"
+    },
+    {
+      name: "Valentin",
+      role: "Responsable Technique",
+      team: "Logistique",
+      description: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.",
+      photo: "https://i.imgur.com/2UmbeYh.jpg"
     }
   ];
 
@@ -75,22 +96,26 @@ export default function Team() {
         </div>
 
         <section className="mb-16">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
             {teamMembers.map((member, index) => (
-              <div key={index} className="bg-gradient-to-br from-blue-500/10 to-slate-800/50 rounded-xl p-6 border border-blue-400/20 hover:border-blue-400/40 transition-all">
-                <div className="text-center mb-4">
-                  <div className="w-20 h-20 bg-gradient-to-br from-red-500 to-blue-500 rounded-full mx-auto mb-4 flex items-center justify-center">
-                    <span className="text-white font-bold text-xl">
-                      {member.name.split(' ').map(n => n[0]).join('')}
-                    </span>
+              <div key={index} className="bg-gradient-to-br from-blue-500/10 to-slate-800/50 rounded-2xl p-8 border border-blue-400/20 hover:border-blue-400/40 transition-all card-hover group">
+                <div className="text-center mb-5">
+                  <div className="w-40 h-40 mx-auto mb-5 relative overflow-hidden rounded-full border-4 border-gradient-to-br from-red-500 to-blue-500 group-hover:scale-105 transition-transform shadow-xl">
+                    <Image
+                      src={member.photo}
+                      alt={member.name}
+                      width={160}
+                      height={160}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
-                  <h3 className="text-lg font-semibold text-white">{member.name}</h3>
-                  <p className="text-blue-400 font-medium">{member.role}</p>
-                  <span className="inline-block bg-slate-700/50 text-gray-300 text-xs px-3 py-1 rounded-full mt-2 border border-slate-600">
+                  <h3 className="text-xl font-bold text-white mb-2">{member.name}</h3>
+                  <p className="text-blue-400 font-medium text-base mb-3">{member.role}</p>
+                  <span className="inline-block bg-slate-700/50 text-gray-300 text-sm px-4 py-1.5 rounded-full border border-slate-600">
                     {member.team}
                   </span>
                 </div>
-                <p className="text-gray-400 text-sm text-center">{member.description}</p>
+                <p className="text-gray-400 text-sm text-center leading-relaxed">{member.description}</p>
               </div>
             ))}
           </div>
