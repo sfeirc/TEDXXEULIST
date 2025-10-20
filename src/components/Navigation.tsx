@@ -24,18 +24,31 @@ export default function Navigation() {
               />
             </div>
             <span className="text-white font-bold text-lg md:text-xl">×</span>
-            {/* EULiST Badge */}
+            {/* IMT Badge */}
             <div className="transition-all hover:scale-105 drop-shadow-lg">
               <Image 
-                src="https://eulist.university/wp-content/themes/eulist/images/logo-new.png" 
-                alt="EULiST" 
-                width={200} 
-                height={100}
-                className="w-auto h-10 md:h-12"
+                src="https://upload.wikimedia.org/wikipedia/commons/b/b0/IMT_logo_2017.png" 
+                alt="IMT" 
+                width={100} 
+                height={40}
+                className="w-auto h-7 md:h-9"
               />
             </div>
+            {/* Partnership indicator with EULIST */}
+            <div className="hidden lg:flex items-center gap-2 ml-2 px-3 py-1.5 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-full border border-blue-400/20">
+              <span className="text-blue-300 text-xs font-medium">in partnership with</span>
+              <div className="transition-all hover:scale-105">
+                <Image 
+                  src="https://eulist.university/wp-content/themes/eulist/images/logo-new.png" 
+                  alt="EULiST" 
+                  width={80} 
+                  height={40}
+                  className="w-auto h-5"
+                />
+              </div>
+            </div>
           </div>
-          <span className="text-white font-semibold text-sm md:text-lg hidden sm:block">Paris 2026</span>
+          <span className="text-white font-semibold text-sm md:text-lg hidden sm:block ml-2">Paris 2026</span>
         </Link>
 
         {/* Desktop Menu */}

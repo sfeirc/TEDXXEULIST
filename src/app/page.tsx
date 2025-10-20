@@ -67,18 +67,31 @@ export default function Home() {
                 />
               </div>
               <span className="text-white font-bold text-lg md:text-xl">×</span>
-              {/* EULiST Badge */}
+              {/* IMT Badge */}
               <div className="transition-all hover:scale-105 drop-shadow-lg">
             <Image
-                  src="https://eulist.university/wp-content/themes/eulist/images/logo-new.png" 
-                  alt="EULiST" 
-                  width={200} 
-                  height={100}
-                  className="w-auto h-10 md:h-12"
+                  src="https://upload.wikimedia.org/wikipedia/commons/b/b0/IMT_logo_2017.png" 
+                  alt="IMT" 
+                  width={100} 
+                  height={40}
+                  className="w-auto h-7 md:h-9"
                 />
               </div>
+              {/* Partnership indicator with EULIST */}
+              <div className="hidden lg:flex items-center gap-2 ml-2 px-3 py-1.5 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-full border border-blue-400/20">
+                <span className="text-blue-300 text-xs font-medium">in partnership with</span>
+                <div className="transition-all hover:scale-105">
+                  <Image 
+                    src="https://eulist.university/wp-content/themes/eulist/images/logo-new.png" 
+                    alt="EULiST" 
+                    width={80} 
+                    height={40}
+                    className="w-auto h-5"
+                  />
+                </div>
+              </div>
             </div>
-            <span className="text-white font-semibold text-sm md:text-lg hidden sm:block">Paris 2026</span>
+            <span className="text-white font-semibold text-sm md:text-lg hidden sm:block ml-2">Paris 2026</span>
           </div>
 
           {/* Desktop Menu */}
@@ -175,7 +188,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto text-center">
           {/* Dual Brand Logo with Visual Representations */}
           <div className="mb-6 md:mb-8">
-            {/* TEDx x EULiST Combined Logo */}
+            {/* TEDx x IMT Combined Logo */}
             <div className="flex items-center justify-center gap-4 md:gap-12 mb-6 md:mb-8 flex-wrap">
               {/* TEDx Logo */}
               <a 
@@ -209,30 +222,49 @@ export default function Home() {
                 </div>
               </div>
               
-              {/* EULiST Logo */}
+              {/* IMT Logo */}
               <a 
-                href="https://eulist.university/" 
+                href="https://www.imt.fr/" 
           target="_blank"
           rel="noopener noreferrer"
                 className="text-center animate-slide-in-right delay-200 group"
         >
                 <div className="relative">
-                  {/* EULiST Visual Logo */}
+                  {/* IMT Visual Logo */}
                   <div className="relative transition-all duration-300 group-hover:scale-105">
           <Image
-                      src="https://eulist.university/wp-content/themes/eulist/images/logo-new.png" 
-                      alt="EULiST Logo" 
-                      width={400} 
-                      height={160}
-                      className="w-auto h-24 md:h-32 drop-shadow-2xl"
+                      src="https://upload.wikimedia.org/wikipedia/commons/b/b0/IMT_logo_2017.png" 
+                      alt="IMT Logo" 
+                      width={350} 
+                      height={100}
+                      className="w-auto h-20 md:h-28 drop-shadow-2xl"
                       priority
                     />
                   </div>
-                  {/* Blue Glow Effect */}
-                  <div className="absolute inset-0 bg-blue-600/30 blur-3xl -z-10 group-hover:bg-blue-600/40"></div>
+                  {/* Blue/Cyan Glow Effect */}
+                  <div className="absolute inset-0 bg-cyan-500/30 blur-3xl -z-10 group-hover:bg-cyan-500/40"></div>
                 </div>
-                <div className="text-blue-400 text-xs mt-4 font-semibold tracking-wider">European Universities</div>
+                <div className="text-cyan-300 text-xs mt-4 font-semibold tracking-wider">Institut Mines-Télécom</div>
               </a>
+            </div>
+            
+            {/* EULIST Partnership Badge */}
+            <div className="flex justify-center mb-6 animate-fade-in delay-400">
+              <div className="relative group">
+                <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 rounded-full blur opacity-30 group-hover:opacity-50 transition-opacity"></div>
+                <div className="relative px-6 py-3 bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 rounded-full border border-blue-400/30 flex items-center gap-3">
+                  <span className="text-blue-300 text-sm md:text-base font-medium">in partnership with</span>
+                  <a href="https://eulist.university/" target="_blank" rel="noopener noreferrer" className="transition-all hover:scale-105">
+                    <Image
+                      src="https://eulist.university/wp-content/themes/eulist/images/logo-new.png" 
+                      alt="EULiST" 
+                      width={150} 
+                      height={60}
+                      className="w-auto h-8 md:h-10 drop-shadow-lg"
+                    />
+                  </a>
+                </div>
+              </div>
             </div>
             
             {/* Gradient Underline */}
@@ -326,16 +358,27 @@ export default function Home() {
               <div className="absolute inset-0 bg-gradient-to-r from-red-600/5 via-purple-600/10 to-blue-600/5"></div>
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-red-500 via-purple-500 to-blue-500"></div>
               
-              <div className="relative grid md:grid-cols-2 gap-8">
+              <div className="relative grid md:grid-cols-3 gap-6">
                 <div className="text-left card-hover p-6 rounded-xl bg-gradient-to-br from-red-500/10 to-transparent border border-red-500/20">
                   <div className="flex items-center gap-3 mb-4">
                     <div className="drop-shadow-lg">
                       <Image src="https://landing-pages.ted.com/tedx-logo-generator/assets/logo.png" alt="TEDx" width={80} height={32} className="w-auto h-6" />
                     </div>
-                    <h3 className="text-white font-semibold text-lg">Ideas Worth Spreading</h3>
+                    <h3 className="text-white font-semibold text-lg">TEDx</h3>
                   </div>
                   <p className="text-gray-300 text-sm leading-relaxed">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus suspendisse lectus tortor dignissim sit amet adipiscing nec.
+                  </p>
+                </div>
+                <div className="text-left card-hover p-6 rounded-xl bg-gradient-to-br from-cyan-500/10 to-transparent border border-cyan-500/20">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="drop-shadow-lg">
+                      <Image src="https://upload.wikimedia.org/wikipedia/commons/b/b0/IMT_logo_2017.png" alt="IMT" width={100} height={36} className="w-auto h-7" />
+                    </div>
+                    <h3 className="text-white font-semibold text-lg">IMT</h3>
+                  </div>
+                  <p className="text-gray-300 text-sm leading-relaxed">
+                    Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure.
                   </p>
                 </div>
                 <div className="text-left card-hover p-6 rounded-xl bg-gradient-to-bl from-blue-500/10 to-transparent border border-blue-500/20">
@@ -343,10 +386,10 @@ export default function Home() {
                     <div className="drop-shadow-lg">
                       <Image src="https://eulist.university/wp-content/themes/eulist/images/logo-new.png" alt="EULiST" width={120} height={64} className="w-auto h-10" />
                     </div>
-                    <h3 className="text-white font-semibold text-lg">European Universities</h3>
+                    <h3 className="text-white font-semibold text-lg">EULiST</h3>
                   </div>
                   <p className="text-gray-300 text-sm leading-relaxed">
-                    Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure.
+                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
                   </p>
                 </div>
               </div>

@@ -7,9 +7,9 @@ import { ArrowLeft, Handshake, Building, ExternalLink } from 'lucide-react';
 export default function Partners() {
   const institutionalPartners = [
     { 
-      name: "IMT Atlantique", 
+      name: "Fondation IMT", 
       description: "Institut Mines-Télécom", 
-      logo: "https://www.imt-atlantique.fr/sites/default/files/ecole/logos/imtatlantique/imtatlantique-rvb-reserve.png"
+      logo: "https://upload.wikimedia.org/wikipedia/commons/b/b0/IMT_logo_2017.png"
     },
     { 
       name: "EULiST", 
@@ -17,9 +17,9 @@ export default function Partners() {
       logo: "https://eulist.university/wp-content/themes/eulist/images/logo-new.png"
     },
     { 
-      name: "Fondation IMT", 
-      description: "Lorem ipsum dolor", 
-      logo: "https://upload.wikimedia.org/wikipedia/commons/b/b0/IMT_logo_2017.png"
+      name: "IMT Atlantique", 
+      description: "Grande école d'ingénieurs", 
+      logo: "https://www.imt-atlantique.fr/sites/default/files/ecole/logos/imtatlantique/imtatlantique-rvb-reserve.png"
     },
     { 
       name: "Union des Élèves de l'IMT", 
@@ -28,7 +28,7 @@ export default function Partners() {
     },
     { 
       name: "TEDx", 
-      description: "Sit amet consectetur", 
+      description: "Ideas Worth Spreading", 
       logo: "https://landing-pages.ted.com/tedx-logo-generator/assets/logo.png"
     }
   ];
@@ -86,9 +86,64 @@ export default function Partners() {
       <main className="relative z-10 max-w-7xl mx-auto px-6 pb-20">
         <div className="text-center mb-16">
           <h1 className="text-5xl font-bold text-white mb-6">Partenaires</h1>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
-          </p>
+          
+          {/* Main Partnership Banner */}
+          <div className="max-w-5xl mx-auto mb-12">
+            <div className="relative group">
+              <div className="absolute -inset-1 bg-gradient-to-r from-red-500 via-cyan-500 to-blue-500 rounded-2xl blur-xl opacity-40 group-hover:opacity-60 transition-opacity"></div>
+              <div className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-2xl p-8 border border-white/20">
+                <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12 mb-6">
+                  {/* TEDx Logo */}
+                  <div className="text-center">
+                    <div className="relative">
+                      <Image
+                        src="https://landing-pages.ted.com/tedx-logo-generator/assets/logo.png" 
+                        alt="TEDx Logo" 
+                        width={180} 
+                        height={60}
+                        className="w-auto h-14 md:h-16 drop-shadow-2xl"
+                      />
+                      <div className="absolute inset-0 bg-red-600/30 blur-2xl -z-10"></div>
+                    </div>
+                  </div>
+                  
+                  <div className="text-4xl md:text-5xl font-bold text-gray-400">×</div>
+                  
+                  {/* IMT Logo */}
+                  <div className="text-center">
+                    <div className="relative">
+                      <Image
+                        src="https://upload.wikimedia.org/wikipedia/commons/b/b0/IMT_logo_2017.png" 
+                        alt="IMT Logo" 
+                        width={240} 
+                        height={70}
+                        className="w-auto h-16 md:h-20 drop-shadow-2xl"
+                      />
+                      <div className="absolute inset-0 bg-cyan-500/30 blur-2xl -z-10"></div>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Partnership with EULIST */}
+                <div className="flex items-center justify-center gap-3 pt-6 border-t border-white/10">
+                  <span className="text-blue-300 text-base font-medium">in partnership with</span>
+                  <div className="relative">
+                    <Image
+                      src="https://eulist.university/wp-content/themes/eulist/images/logo-new.png" 
+                      alt="EULiST" 
+                      width={140} 
+                      height={60}
+                      className="w-auto h-12 drop-shadow-lg"
+                    />
+                  </div>
+                </div>
+                
+                <p className="text-gray-300 text-center mt-6 max-w-2xl mx-auto">
+                  Une collaboration exceptionnelle entre TEDx et la Fondation IMT, soutenue par le réseau européen EULiST
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
 
         <section className="mb-16">

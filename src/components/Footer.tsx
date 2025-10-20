@@ -8,22 +8,31 @@ export default function Footer() {
       
       <div className="max-w-7xl mx-auto px-6 py-8">
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="flex items-center gap-4">
+          <div className="flex flex-col items-center gap-3">
             <div className="flex items-center gap-2">
               <div className="transition-transform hover:scale-105 drop-shadow-lg">
                 <Image src="https://landing-pages.ted.com/tedx-logo-generator/assets/logo.png" alt="TEDx" width={60} height={24} className="w-auto h-5" />
               </div>
               <span className="text-gray-400 font-bold">×</span>
               <div className="transition-transform hover:scale-105 drop-shadow-lg">
-                <Image src="https://eulist.university/wp-content/themes/eulist/images/logo-new.png" alt="EULiST" width={100} height={48} className="w-auto h-7" />
+                <Image src="https://upload.wikimedia.org/wikipedia/commons/b/b0/IMT_logo_2017.png" alt="IMT" width={70} height={28} className="w-auto h-5" />
               </div>
             </div>
-            <span className="text-gray-400 text-sm">Paris 2026</span>
+            <div className="flex items-center gap-2">
+              <span className="text-blue-300 text-xs">in partnership with</span>
+              <div className="transition-transform hover:scale-105 drop-shadow-lg">
+                <Image src="https://eulist.university/wp-content/themes/eulist/images/logo-new.png" alt="EULiST" width={80} height={40} className="w-auto h-6" />
+              </div>
+            </div>
+            <span className="text-gray-400 text-xs">Paris 2026</span>
           </div>
           
           <div className="text-gray-400 text-sm text-center">
-            <p className="text-white font-semibold flex items-center justify-center gap-2">
-              <span>Une collaboration entre TEDx et le réseau EULiST</span>
+            <p className="text-white font-semibold flex items-center justify-center gap-2 flex-wrap">
+              <span>Une collaboration TEDx × IMT</span>
+            </p>
+            <p className="text-blue-300 text-xs mt-1">
+              avec le soutien d'EULiST
             </p>
             {/* EU Flag Badge */}
             <div className="flex items-center justify-center gap-2 mt-2">
@@ -61,13 +70,17 @@ export default function Footer() {
                 </div>
               </div>
             </div>
-            <p className="text-xs mt-2">© 2026 TEDxEULiSTParis - Tous droits réservés</p>
+            <p className="text-xs mt-2">© 2026 TEDx × IMT - Tous droits réservés</p>
           </div>
           
           <div className="flex flex-wrap gap-3 md:gap-4 text-gray-400 text-xs md:text-sm justify-center md:justify-end">
             <a href="https://www.ted.com/about/programs-initiatives/tedx-program" target="_blank" rel="noopener noreferrer" className="hover:text-red-500 transition-colors relative group">
               TEDx
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-500 transition-all group-hover:w-full"></span>
+            </a>
+            <a href="https://www.imt.fr/" target="_blank" rel="noopener noreferrer" className="hover:text-cyan-400 transition-colors relative group">
+              IMT
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-cyan-400 transition-all group-hover:w-full"></span>
             </a>
             <a href="https://eulist.university/" target="_blank" rel="noopener noreferrer" className="hover:text-blue-500 transition-colors relative group">
               EULiST
@@ -76,10 +89,6 @@ export default function Footer() {
             <a href="https://europa.eu/" target="_blank" rel="noopener noreferrer" className="hover:text-yellow-400 transition-colors relative group">
               EU
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-yellow-400 transition-all group-hover:w-full"></span>
-            </a>
-            <a href="https://www.imt.fr/" target="_blank" rel="noopener noreferrer" className="hover:text-gray-300 transition-colors relative group">
-              IMT
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gray-300 transition-all group-hover:w-full"></span>
             </a>
             <a href="https://www.union-eleves-imt.org/" target="_blank" rel="noopener noreferrer" className="hover:text-gray-300 transition-colors relative group whitespace-nowrap">
               Union IMT
