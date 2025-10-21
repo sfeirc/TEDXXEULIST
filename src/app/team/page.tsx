@@ -18,7 +18,7 @@ export default function Team() {
       role: "Directeur Communication",
       team: "Communication",
       description: "Consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore.",
-      photo: "https://i.imgur.com/LlBFi0N.jpg"
+      photo: "https://imgur.com/nAAULb5.jpg"
     },
     {
       name: "Daner",
@@ -32,7 +32,7 @@ export default function Team() {
       role: "Relations Conférenciers",
       team: "Coordination",
       description: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.",
-      photo: "https://i.imgur.com/QoB5jl6.jpg"
+      photo: "https://imgur.com/0rTLU7d.jpg"
     },
     {
       name: "Leo",
@@ -46,7 +46,7 @@ export default function Team() {
       role: "Créateur de Contenu",
       team: "Communication",
       description: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium.",
-      photo: "https://i.imgur.com/E7wFzI4.jpg"
+      photo: "https://imgur.com/vZd25do.jpg"
     },
     {
       name: "Theo",
@@ -60,7 +60,7 @@ export default function Team() {
       role: "Responsable Technique",
       team: "Logistique",
       description: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.",
-      photo: "https://i.imgur.com/2UmbeYh.jpg"
+      photo: "https://imgur.com/HS6y4mW.jpg"
     },
     {
       name: "Raphael",
