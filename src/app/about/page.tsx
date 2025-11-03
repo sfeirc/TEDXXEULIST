@@ -34,7 +34,7 @@ export default function About() {
         <div className="text-center mb-16">
           <h1 className="text-5xl font-bold text-white mb-6">À Propos du Projet</h1>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.
+            Vous pourrez retrouver ici des informations générales concernant le projet TEDX IMT et son groupe d'organisation, ainsi que les objectifs de ce projet.
           </p>
         </div>
 
@@ -46,15 +46,8 @@ export default function About() {
               Notre Origine
             </h2>
             <div className="prose prose-invert text-gray-300">
-              <p className="mb-4">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus suspendisse lectus tortor, 
-                dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas 
-                ligula massa, varius a, semper congue, euismod non, mi.
-              </p>
               <p>
-                Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet 
-                erat. Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim. Pellentesque 
-                congue ut massa tempor quis, eros pede lorem nulla.
+                Nous sommes un groupe d'étudiants de l'IMT Atlantique, une école d'ingénieurs tournée vers l'innovation, la recherche et les grands défis de demain. Animés par la curiosité et l'envie de partager des idées qui inspirent, nous avons décidé d'organiser un événement TEDx pour donner la parole à celles et ceux qui font bouger les lignes.
               </p>
             </div>
           </div>
@@ -69,12 +62,13 @@ export default function About() {
             </h2>
             <div className="prose prose-invert text-gray-300">
               <p className="mb-4">
-                Ut convallis libero in urna ultrices accumsan. Donec sed odio dui. Sed posuere consectetur est at 
-                lobortis. Aenean lacinia bibendum nulla sed consectetur curabitur blandit tempus porttitor.
+                Notre mission est de faire rayonner les idées au sein de la communauté de l'IMT Atlantique, du groupe IMT et au-delà. À travers l'organisation d'un événement TEDx, nous souhaitons offrir une plateforme à celles et ceux qui osent penser différemment, repousser les limites et imaginer un futur plus durable, solidaire et créatif.
+              </p>
+              <p className="mb-4">
+                Ancrés dans une dynamique nationale grâce au réseau du groupe IMT, et internationale par notre partenariat avec EuList, nous voulons encourager le dialogue entre cultures, disciplines et visions du monde.
               </p>
               <p>
-                Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Integer posuere erat a ante 
-                venenatis dapibus posuere velit aliquet. Cras mattis consectetur purus sit amet fermentum.
+                Nous aspirons à créer un espace d'échange où étudiants, chercheurs, entrepreneurs et citoyens peuvent partager leurs idées, s'inspirer mutuellement et agir ensemble pour relever les défis de demain.
               </p>
             </div>
           </div>
@@ -94,7 +88,7 @@ export default function About() {
                 </div>
                 <h3 className="text-xl font-semibold text-white mb-3">Inspirer</h3>
                 <p className="text-gray-400">
-                  Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor.
+                  Partager des idées fortes et innovantes qui éveillent la curiosité, suscitent la réflexion et donnent envie d'agir.
                 </p>
               </div>
               <div className="text-center">
@@ -103,7 +97,7 @@ export default function About() {
                 </div>
                 <h3 className="text-xl font-semibold text-white mb-3">Connecter</h3>
                 <p className="text-gray-400">
-                  Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip.
+                  Faire naître un véritable réseau d'échanges et d'opportunités, reliant étudiants, chercheurs et professionnels, au sein du groupe IMT et du partenariat EuList.
                 </p>
               </div>
               <div className="text-center">
@@ -112,7 +106,7 @@ export default function About() {
                 </div>
                 <h3 className="text-xl font-semibold text-white mb-3">Collaborer</h3>
                 <p className="text-gray-400">
-                  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.
+                  Favoriser l'échange et la co-création au sein de la communauté IMT et du réseau EuList pour imaginer un futur commun.
                 </p>
               </div>
             </div>
@@ -125,16 +119,10 @@ export default function About() {
             <h2 className="text-3xl font-bold text-white mb-6">Notre Histoire</h2>
             <div className="prose prose-invert text-gray-300">
               <p className="mb-4">
-                Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. 
-                Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.
-              </p>
-              <p className="mb-4">
-                Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat 
-                eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra.
+                Les conférences TED (Technology, Entertainment, Design) sont nées en 1984 en Californie, avec pour ambition de partager des idées innovantes et inspirantes à travers le monde. De simples rencontres entre experts, elles sont rapidement devenues un mouvement mondial, réunissant penseurs, chercheurs et créateurs autour du célèbre slogan "Ideas worth spreading."
               </p>
               <p>
-                Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, 
-                elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui.
+                Face à cet engouement, le programme TEDx a été lancé en 2009 pour permettre à des communautés locales d'organiser leurs propres événements indépendants tout en respectant l'esprit TED. Aujourd'hui, des milliers de TEDx ont lieu chaque année dans plus de 150 pays, offrant une scène à celles et ceux qui veulent partager leur vision du monde et inspirer le changement à leur échelle.
               </p>
             </div>
           </div>
@@ -145,8 +133,7 @@ export default function About() {
           <div className="bg-gradient-to-r from-red-500/10 to-blue-500/10 rounded-2xl p-8 text-center border border-white/10">
             <h2 className="text-2xl font-bold text-white mb-4">Licence TEDx</h2>
             <p className="text-gray-300">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus suspendisse lectus tortor, 
-              dignissim sit amet, adipiscing nec, ultricies sed, dolor magna aliqua.
+              Pour organiser un événement TEDx, il est indispensable d'obtenir une licence officielle délivrée par TED. Celle-ci garantit le respect des valeurs, règles et standards du format, assurant une expérience fidèle à l'esprit "Ideas worth spreading."
             </p>
           </div>
         </section>

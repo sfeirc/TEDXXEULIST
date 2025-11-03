@@ -30,8 +30,8 @@ export default function Speakers() {
       <main className="relative z-10 max-w-6xl mx-auto px-6 pb-20">
         <div className="text-center mb-16">
           <h1 className="text-5xl font-bold text-white mb-6">Conférenciers</h1>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-4">
+            Pour donner vie à l'événement TEDx IMT, nous avons réuni des intervenants d'exception !
           </p>
         </div>
 
@@ -42,8 +42,7 @@ export default function Speakers() {
             </div>
             <h2 className="text-4xl font-bold text-white mb-4">Bientôt Annoncés</h2>
             <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-8">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus suspendisse lectus tortor, 
-              dignissim sit amet adipiscing nec ultricies sed dolor.
+            Vous retrouverez ici très prochainement les conférenciers qui prendront la parole lors de l'événement TEDX IMT
             </p>
             <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
               <div className="flex items-center gap-2 bg-blue-500/20 px-4 py-2 rounded-full border border-blue-400/30">
@@ -58,8 +57,8 @@ export default function Speakers() {
           <div className="bg-gradient-to-br from-blue-500/10 to-slate-800/50 rounded-2xl border border-blue-400/20 p-8">
             <div className="text-center mb-8">
               <h2 className="text-3xl font-bold text-white mb-4">Candidature Conférencier</h2>
-              <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-                Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore.
+              <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-6">
+                Vous êtes intéressé pour devenir conférencier de l'événement TEDX IMT ? Vous trouverez ci-dessous les points que nous recherchons ainsi que les différents avantages dont vous pourrez jouir en tant que conférencier.
               </p>
             </div>
 
@@ -113,6 +112,12 @@ export default function Speakers() {
             </div>
           </div>
         </section>
+
+        <div className="text-center mb-16">
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            Vous retrouverez ici très prochainement les conférenciers qui prendront la parole lors de l'événement TEDX IMT.
+          </p>
+        </div>
 
         <div className="text-center">
           <Link 

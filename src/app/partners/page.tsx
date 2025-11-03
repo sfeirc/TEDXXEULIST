@@ -24,7 +24,7 @@ export default function Partners() {
     { 
       name: "Union des Élèves de l'IMT", 
       description: "Sit amet consectetur", 
-      logo: "https://www.union-eleves-imt.org/web/image/2638-d3f4ead9/IMT_UnionDesEleves_Logo_couleurs.webp"
+      logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSq4jUMcAyO5Ttl_f0mlqs-0UuLgrEQ4PPjOA&s"
     },
     { 
       name: "TEDx", 
@@ -173,7 +173,7 @@ export default function Partners() {
           <div className="bg-gradient-to-r from-red-500/10 via-blue-500/10 to-slate-800/50 rounded-2xl p-8 text-center border border-white/10">
             <h2 className="text-3xl font-bold text-white mb-4">Logos Sponsors</h2>
             <p className="text-xl text-gray-300 mb-8">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Derrière chaque idée, des partenaires engagés : découvrez ceux qui font briller TEDx IMT
             </p>
             <div className="bg-slate-800/30 rounded-xl p-8 border border-slate-700/50">
               <Building className="w-16 h-16 text-gray-500 mx-auto mb-4" />
@@ -210,8 +210,8 @@ export default function Partners() {
           <div className="bg-gradient-to-br from-red-500/10 to-slate-800/50 rounded-2xl border border-red-400/20 p-8">
             <div className="text-center mb-8">
               <h2 className="text-3xl font-bold text-white mb-4">Devenez Partenaire</h2>
-              <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.
+              <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-6">
+                Rejoignez-nous dans cette aventure pour diffuser des idées qui transforment et inspirent.
               </p>
             </div>
 
@@ -226,6 +226,10 @@ export default function Partners() {
                 Devenir Partenaire
               </a>
             </div>
+            
+            <p className="text-gray-400 text-center mt-6 text-lg">
+              Intéressé par un partenariat ? Rejoignez-nous pour faire partie de cette aventure.
+            </p>
           </div>
         </section>
 
@@ -233,7 +237,7 @@ export default function Partners() {
           <div className="bg-gradient-to-r from-blue-500/10 to-slate-800/50 rounded-2xl p-8 border border-blue-400/20">
             <h2 className="text-2xl font-bold text-white mb-4">Prêt à Collaborer?</h2>
             <p className="text-gray-300 mb-6">
-              Lorem ipsum dolor sit amet consectetur adipiscing elit.
+              Ensemble, créons un impact positif et partageons des idées qui changent le monde.
             </p>
             <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
               <Link 
@@ -244,13 +248,17 @@ export default function Partners() {
                 Nous Contacter
               </Link>
               <a 
-                href="mailto:partnerships@tedxeulistparis.com"
+                href="mailto:contact@tedxeulistparis.com"
                 className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white/20 transition-all"
               >
                 <ExternalLink className="w-5 h-5" />
                 Envoyer Email
               </a>
             </div>
+            
+            <p className="text-gray-400 text-center mt-6 text-lg">
+              Vous souhaitez collaborer avec l'équipe d'organisation du projet TEDX IMT ? Contactez-nous pour en savoir plus.
+            </p>
           </div>
         </div>
       </main>

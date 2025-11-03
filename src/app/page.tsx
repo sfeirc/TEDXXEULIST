@@ -282,10 +282,10 @@ export default function Home() {
           {/* Theme Tagline */}
           <div className="mb-8 md:mb-12">
             <h2 className="text-2xl md:text-5xl font-light text-white mb-3 md:mb-4 px-2">
-              Lorem Ipsum Dolor Sit Amet
+              Ce qui nous relie
             </h2>
             <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto px-4">
-              Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
+              Explorer comment recréer du lien humain face à la fragmentation
             </p>
           </div>
 
@@ -351,6 +351,57 @@ export default function Home() {
             </Link>
           </div>
 
+          {/* Theme Explanation Section */}
+          <div className="mt-20 max-w-5xl mx-auto animate-fade-in-up">
+            <div className="relative glass rounded-2xl p-6 md:p-10 border border-white/20 overflow-hidden">
+              {/* Gradient Background */}
+              <div className="absolute inset-0 bg-gradient-to-br from-red-600/5 via-purple-600/10 to-blue-600/5"></div>
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-red-500 via-purple-500 to-blue-500"></div>
+              
+              <div className="relative space-y-8">
+                {/* Theme Title */}
+                <div className="text-center">
+                  <h3 className="text-3xl md:text-4xl font-bold text-white mb-4 bg-gradient-to-r from-red-400 via-purple-400 to-blue-400 bg-clip-text text-transparent">
+                    Ce qui nous relie
+                  </h3>
+                  <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+                    Permet d'explorer comment recréer du lien humain face à la fragmentation : un architecte peut parler d'espaces publics, un entrepreneur social de communautés locales, un scientifique de coopération, un artiste de récits collectifs...
+                  </p>
+                </div>
+
+                {/* Context and Challenges */}
+                <div className="bg-gradient-to-br from-red-500/10 to-transparent rounded-xl p-6 md:p-8 border border-red-500/20 card-hover">
+                  <h4 className="text-xl md:text-2xl font-semibold text-white mb-4">Contexte et enjeu</h4>
+                  <p className="text-gray-300 leading-relaxed mb-4">
+                    Face à l'accumulation des crises géopolitiques, écologiques et économiques, nous sommes épuisés par le flot incessant de mauvaises nouvelles. Cette fatigue informationnelle nous pousse parfois au désengagement : nous préférons éteindre les écrans plutôt que d'affronter un monde qui semble se dégrader jour après jour.
+                  </p>
+                  <p className="text-gray-300 leading-relaxed">
+                    Le monde devient de plus en plus complexe, absurde et déshumanisant à mesure que les crises se succèdent. Nous ne comprenons plus vraiment pourquoi elles apparaissent ni comment elles s'accumulent. Pire encore, nous avons l'impression que chacune de nos actions, aussi bien intentionnée soit-elle, empire les choses.
+                  </p>
+                </div>
+
+                {/* Need for Change */}
+                <div className="bg-gradient-to-br from-purple-500/10 to-transparent rounded-xl p-6 md:p-8 border border-purple-500/20 card-hover">
+                  <h4 className="text-xl md:text-2xl font-semibold text-white mb-4">Le besoin de changement de perspective</h4>
+                  <p className="text-gray-300 leading-relaxed mb-4">
+                    Comment, à notre échelle, pouvons-nous réellement changer les choses ? Comment modifier notre regard pour ne plus voir uniquement une dégradation constante, mais aussi les opportunités qui s'offrent à nous pour faire évoluer le monde vers le mieux ?
+                  </p>
+                  <p className="text-gray-300 leading-relaxed">
+                    Comment faire ressortir l'espoir, la simplicité et l'humanité dans ce contexte oppressant ?
+                  </p>
+                </div>
+
+                {/* Fragmentation of Links */}
+                <div className="bg-gradient-to-br from-blue-500/10 to-transparent rounded-xl p-6 md:p-8 border border-blue-500/20 card-hover">
+                  <h4 className="text-xl md:text-2xl font-semibold text-white mb-4">La fragmentation des liens</h4>
+                  <p className="text-gray-300 leading-relaxed">
+                    Au-delà des grandes crises, ce sont les événements du quotidien qui, progressivement, fragmentent les liens entre nous. Cette déshumanisation n'est pas seulement le fait des catastrophes globales, mais aussi de la manière dont notre quotidien nous éloigne les uns des autres.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
           {/* Collaboration Explanation with Gradient */}
           <div className="mt-20 max-w-4xl mx-auto animate-fade-in-up">
             <div className="relative glass rounded-2xl p-8 border border-purple-500/20 overflow-hidden">
@@ -367,7 +418,7 @@ export default function Home() {
                     <h3 className="text-white font-semibold text-lg">TEDx</h3>
                   </div>
                   <p className="text-gray-300 text-sm leading-relaxed">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus suspendisse lectus tortor dignissim sit amet adipiscing nec.
+                    TEDx est un programme d'événements indépendants créés dans l'esprit de TED. Ils rassemblent des esprits curieux autour d'idées qui inspirent, questionnent et donnent envie d'agir pour un avenir meilleur.
                   </p>
                 </div>
                 <div className="text-left card-hover p-6 rounded-xl bg-gradient-to-br from-cyan-500/10 to-transparent border border-cyan-500/20">
@@ -378,7 +429,7 @@ export default function Home() {
                     <h3 className="text-white font-semibold text-lg">IMT</h3>
                   </div>
                   <p className="text-gray-300 text-sm leading-relaxed">
-                    Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure.
+                    IMT est une institution de prestige regroupant de nombreuses écoles sur le territoire français, elles forment de futurs ingénieurs aux problématiques et enjeux de demain. Le groupe IMT est une réelle source d'idées innovantes pour faire évoluer notre société.
                   </p>
                 </div>
                 <div className="text-left card-hover p-6 rounded-xl bg-gradient-to-bl from-blue-500/10 to-transparent border border-blue-500/20">
@@ -389,7 +440,7 @@ export default function Home() {
                     <h3 className="text-white font-semibold text-lg">EULiST</h3>
                   </div>
                   <p className="text-gray-300 text-sm leading-relaxed">
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                    EULiST rassemble des universités européennes qui unissent leurs forces pour renforcer la coopération internationale dans l'enseignement et la recherche.
                   </p>
                 </div>
               </div>
@@ -436,7 +487,7 @@ export default function Home() {
                 </div>
 
                 <p className="text-gray-300 text-sm max-w-2xl mx-auto leading-relaxed">
-                  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                Ensemble, redéfinissons et préparons le monde de demain
                 </p>
               </div>
             </div>

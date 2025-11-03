@@ -10,7 +10,7 @@ export default function Team() {
       name: "Antoine",
       role: "Coordinateur Général",
       team: "Coordination",
-      description: "Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor.",
+      description: "Assure la bonne coordination entre les différents pôles d’action, vérification de l’avancement du projet, du respect des délais et contrôle qualité sur les étapes clés de l’organisation.",
       photo: "https://i.imgur.com/4HCB0To.jpg"
     },
     {
@@ -24,49 +24,49 @@ export default function Team() {
       name: "Daner",
       role: "Manager Logistique",
       team: "Logistique",
-      description: "Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi.",
+      description: "Gère l’accès aux ressources et aux matériels nécessaires pour l’organisation du projet. Assure le respect des différentes exigences associées aux projets (Sécurité, accessibilité…)",
       photo: "https://i.imgur.com/a2E8lRY.jpg"
     },
     {
       name: "Etienne",
       role: "Relations Conférenciers",
       team: "Coordination",
-      description: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.",
+      description: "Mise en relation avec les différents intervenants de la conférence TEDX IMT, encadre et soutient les différentes prises de parole sur le thème de la conférence.",
       photo: "https://imgur.com/0rTLU7d.jpg"
     },
     {
       name: "Leo",
       role: "Coordinateur Partenariats",
       team: "Partenariats",
-      description: "Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia.",
+      description: "Recherche et créer des partenariats soutenant la mise en place du projet TEDX IMT, mise en relation entre l’équipe d’organisation et les entreprises partenaires.",
       photo: "https://i.imgur.com/bk1Zigv.jpg"
     },
     {
       name: "Maxime",
       role: "Créateur de Contenu",
       team: "Communication",
-      description: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium.",
+      description: "Elaboration de contenu relatif au projet TEDX IMT,  participe à la promotion de la conférence sur les différents médias",
       photo: "https://imgur.com/vZd25do.jpg"
     },
     {
       name: "Theo",
       role: "Relations Médias",
       team: "Communication",
-      description: "Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.",
+      description: "Gère la communication entre l’équipe d’organisation et les diffèrent média pour amener une visibilité positive, diffuse les message clé du projet",
       photo: "https://imgur.com/LeD6M4C.jpg"
     },
     {
       name: "Valentin",
       role: "Responsable Technique",
       team: "Logistique",
-      description: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.",
+      description: "Assure la bonne mise en place et exécution du projet. Travaille au bon déroulement de la conférence (éclairage, sons, visuel…)",
       photo: "https://imgur.com/HS6y4mW.jpg"
     },
     {
       name: "Raphael",
       role: "Responsable Communication",
       team: "Communication",
-      description: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.",
+      description: "Promouvoir le projet : Mettre en avant la conférence et assurer la bonne image du projet.",
       photo: "https://imgur.com/8GwceGM.jpg"
     }
   ];
@@ -98,7 +98,7 @@ export default function Team() {
         <div className="text-center mb-16">
           <h1 className="text-5xl font-bold text-white mb-6">L'Équipe Organisatrice</h1>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.
+            L'organisation et la mise en œuvre du projet TEDX IMT ont été réalisées par une équipe d'étudiants issue du groupe IMT. L'organisation s'est vue être divisée en différents pôles d'action répartis entre tous les étudiants.
           </p>
         </div>
 

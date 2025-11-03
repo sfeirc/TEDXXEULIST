@@ -39,19 +39,13 @@ export default function Contact() {
       icon: Mail,
       title: "Email Général",
       details: "contact@tedxeulistparis.com",
-      description: "Lorem ipsum dolor sit"
+      description: "Pour toute question générale ou demande d'information"
     },
     {
       icon: Mail,
       title: "Équipe",
       details: "team@tedxeulistparis.com",
-      description: "Consectetur adipiscing"
-    },
-    {
-      icon: Mail,
-      title: "Partenariats",
-      details: "partnerships@tedxeulistparis.com",
-      description: "Sed do eiusmod tempor"
+      description: "Contacter ici le groupe d'organisation du projet TEDX IMT"
     }
   ];
 
@@ -82,7 +76,7 @@ export default function Contact() {
         <div className="text-center mb-16">
           <h1 className="text-5xl font-bold text-white mb-6">Contactez-Nous</h1>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
+            Si vous rencontrez un problème ou souhaitez obtenir plus d'informations, n'hésitez pas à nous contacter.
           </p>
         </div>
 
@@ -256,13 +250,10 @@ export default function Contact() {
                   <MapPin className="w-6 h-6 text-red-400" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-white">Télécom Paris</h3>
+                  <h3 className="font-semibold text-white">Cité des sciences et de l'industrie</h3>
                   <p className="text-gray-300">
-                    19 Place Marguerite Perey<br />
-                    91120 Palaiseau, France
-                  </p>
-                  <p className="text-gray-400 text-sm mt-2">
-                    Lorem ipsum dolor sit amet
+                    30, avenue Corentin-Cariou<br />
+                    75019 Paris
                   </p>
                 </div>
               </div>
@@ -272,7 +263,7 @@ export default function Contact() {
             <div className="bg-gradient-to-r from-red-500/10 to-blue-500/10 rounded-2xl p-6 border border-white/10">
               <h3 className="text-lg font-semibold text-white mb-2">Temps de Réponse</h3>
               <p className="text-gray-300 text-sm">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus suspendisse lectus tortor.
+                Nous nous engageons à vous répondre dans les plus brefs délais (sous 24h).
               </p>
             </div>
           </div>
@@ -282,7 +273,7 @@ export default function Contact() {
         <div className="mt-16 bg-gradient-to-r from-red-500/10 via-blue-500/10 to-slate-800/50 rounded-2xl p-8 text-center border border-white/10">
           <h2 className="text-2xl font-bold text-white mb-4">Restez Informé</h2>
           <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
+            Rejoignez l'aventure TEDx IMT en vous inscrivant ci-dessous !
           </p>
           <div className="max-w-md mx-auto flex flex-col sm:flex-row gap-4">
             <input

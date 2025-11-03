@@ -6,20 +6,20 @@ import { ArrowLeft, MapPin, Clock, Calendar, MessageCircle } from 'lucide-react'
 export default function PracticalInfo() {
   const faqs = [
     {
-      question: "Lorem ipsum dolor sit amet?",
-      answer: "Consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+      question: "À qui s'adresse l'événement ?",
+      answer: "L'événement s'adresse à tous ceux qui souhaitent découvrir des idées innovantes et inspirantes. Que vous soyez étudiant, professionnel ou curieux, TEDx IMT est ouvert à tous."
     },
     {
-      question: "Ut enim ad minim veniam?",
-      answer: "Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+      question: "Comment puis-je assister à la conférence TEDx IMT ?",
+      answer: "Pour assister à la conférence TEDx IMT, il vous suffit de vous inscrire en ligne via notre formulaire d'inscription. Les places sont limitées, alors ne tardez pas !"
     },
     {
-      question: "Duis aute irure dolor?",
-      answer: "In reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+      question: "Quels critères sont pris en compte pour sélectionner les intervenants ?",
+      answer: "Les intervenants sont sélectionnés selon plusieurs critères : la pertinence et l'originalité de leur sujet, leur capacité à inspirer et captiver le public, ainsi que la clarté et l'impact de leur présentation. L'objectif est de garantir des talks mémorables et enrichissants pour tous les participants."
     },
     {
-      question: "Excepteur sint occaecat?",
-      answer: "Cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum."
+      question: "Y aura-t-il des pauses ou un moment de networking ?",
+      answer: "Oui ! Un moment de networking est prévu de 18h15 à 22h, idéal pour échanger et rencontrer les intervenants ainsi que les autres participants. Pour plus de détails sur les horaires, consultez le programme disponible sur cette page."
     }
   ];
 
@@ -49,8 +49,8 @@ export default function PracticalInfo() {
       <main className="relative z-10 max-w-6xl mx-auto px-6 pb-20">
         <div className="text-center mb-16">
           <h1 className="text-5xl font-bold text-white mb-6">Informations Pratiques</h1>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-4">
+            Retrouvez ici toutes les informations dont vous avez besoin pour vivre pleinement l'expérience TEDx IMT.
           </p>
         </div>
 
@@ -60,26 +60,13 @@ export default function PracticalInfo() {
               <Calendar className="w-8 h-8 text-red-500" />
               Programme
             </h2>
-            <div className="grid md:grid-cols-2 gap-8">
+            <div className="space-y-6">
               <div className="bg-slate-800/30 rounded-xl p-6 border border-slate-700/50">
                 <h3 className="text-xl font-semibold text-white mb-4 flex items-center gap-2">
                   <Clock className="w-5 h-5 text-blue-400" />
                   Matin
                 </h3>
-                <div className="space-y-3 text-gray-300">
-                  <div className="flex justify-between">
-                    <span>08:30 - 09:00</span>
-                    <span>Lorem ipsum</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>09:00 - 10:30</span>
-                    <span>Dolor sit amet</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>10:45 - 12:30</span>
-                    <span>Consectetur adipiscing</span>
-                  </div>
-                </div>
+                <p className="text-gray-300 italic">A priori, rien le matin</p>
               </div>
               <div className="bg-slate-800/30 rounded-xl p-6 border border-slate-700/50">
                 <h3 className="text-xl font-semibold text-white mb-4 flex items-center gap-2">
@@ -88,16 +75,24 @@ export default function PracticalInfo() {
                 </h3>
                 <div className="space-y-3 text-gray-300">
                   <div className="flex justify-between">
-                    <span>12:30 - 14:00</span>
-                    <span>Elit sed do</span>
+                    <span>13h00 – 14h00</span>
+                    <span>Accueil du public et ouverture des portes</span>
                   </div>
                   <div className="flex justify-between">
-                    <span>14:00 - 16:00</span>
-                    <span>Eiusmod tempor</span>
+                    <span>14h00 – 16h00</span>
+                    <span>Première session de conférences</span>
                   </div>
                   <div className="flex justify-between">
-                    <span>16:00 - 18:00</span>
-                    <span>Incididunt ut</span>
+                    <span>16h00 – 16h30</span>
+                    <span>Pause et échanges informels</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>16h30 – 18h00</span>
+                    <span>Deuxième session de conférences</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>18h15 – 22h00</span>
+                    <span>Buffet & session de networking</span>
                   </div>
                 </div>
               </div>
@@ -113,21 +108,18 @@ export default function PracticalInfo() {
             </h2>
             <div className="grid md:grid-cols-2 gap-8">
               <div>
-                <h3 className="text-xl font-semibold text-white mb-4">Télécom Paris</h3>
+                <h3 className="text-xl font-semibold text-white mb-4">Cité des sciences et de l'industrie</h3>
                 <div className="space-y-3 text-gray-300">
-                  <p>19 Place Marguerite Perey</p>
-                  <p>91120 Palaiseau, France</p>
-                  <p className="text-sm text-gray-400 mt-4">
-                    Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor.
-                  </p>
+                  <p>30, avenue Corentin-Cariou</p>
+                  <p>75019 Paris</p>
                 </div>
               </div>
               <div className="bg-slate-800/30 rounded-xl p-6 border border-slate-700/50">
                 <h4 className="font-semibold text-white mb-4">Comment S'y Rendre</h4>
                 <div className="space-y-3 text-gray-300 text-sm">
-                  <p>🚊 RER B jusqu'à Massy-Palaiseau</p>
-                  <p>🚗 Parking gratuit disponible</p>
-                  <p>✈️ 45 min depuis CDG</p>
+                  <p><strong>Métro :</strong> ligne 7, station Porte de la Villette</p>
+                  <p><strong>Bus :</strong> lignes 71, 139, 150, 152, station Porte de la Villette</p>
+                  <p><strong>Tramway :</strong> T3b (Porte de Vincennes - Porte Dauphine), station Porte de la Villette</p>
                 </div>
               </div>
             </div>
@@ -155,7 +147,7 @@ export default function PracticalInfo() {
           <div className="bg-gradient-to-r from-red-500/10 to-blue-500/10 rounded-2xl p-8 border border-white/10">
             <h2 className="text-2xl font-bold text-white mb-4">Encore Des Questions?</h2>
             <p className="text-gray-300 mb-6">
-              Lorem ipsum dolor sit amet consectetur adipiscing elit.
+            Pour toute question supplémentaire, veuillez nous contacter directement via la page dédiée.
             </p>
             <Link 
               href="/contact"
