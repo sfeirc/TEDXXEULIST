@@ -4,7 +4,7 @@ Lorem Ipsum Dolor Sit Amet
 
 ## 🎯 Overview
 
-This is the official website for TEDxEULiSTParis 2026, combining the bold aesthetic of TEDx with the academic, European feel of EULiST. The event will be held at Télécom Paris in Fall 2026.
+This is the official website for TEDxEULiSTParis 2026, combining the bold aesthetic of TEDx with the academic, European feel of EULiST. The event will be held at Théâtre Mogador in February 2027.
 
 ### Design Philosophy
 - **TEDx Red** + **EULiST Blue**: Blended color scheme combining both brands

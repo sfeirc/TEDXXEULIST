@@ -12,7 +12,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "TEDxEULiSTParis 2026 - Lorem Ipsum Dolor Sit Amet",
-  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Automne 2026 à Télécom Paris.",
+  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Février 2027 au Théâtre Mogador.",
   keywords: "TEDx, EULiST, Paris, 2026, technology, innovation, Europe, universities européennes",
   authors: [{ name: "TEDxEULiSTParis Team" }],
   creator: "TEDxEULiSTParis",

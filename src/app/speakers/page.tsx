@@ -39,7 +39,7 @@ export default function Speakers() {
             <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
               <div className="flex items-center gap-2 px-4 py-2 rounded-full border border-white/20">
                 <Calendar className="w-5 h-5 text-[#e62b1e]" />
-                <span className="text-white">Automne 2026</span>
+                <span className="text-white">Février 2027</span>
               </div>
             </div>
           </div>

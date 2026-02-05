@@ -5,7 +5,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
-import { Calendar, MapPin, Users, Handshake } from 'lucide-react';
+import Starfield from '@/components/Starfield';
+import { Calendar, Users, Handshake } from 'lucide-react';
 
 export default function Home() {
   const [timeLeft, setTimeLeft] = useState({
@@ -38,6 +39,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-black relative overflow-hidden">
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <Starfield />
         <div className="absolute top-0 left-1/4 w-[32rem] h-[32rem] bg-[#e62b1e]/[0.07] rounded-full blur-3xl"></div>
         <div className="absolute bottom-0 right-1/4 w-[32rem] h-[32rem] bg-[#e62b1e]/[0.05] rounded-full blur-3xl"></div>
       </div>
@@ -85,7 +87,7 @@ export default function Home() {
 
             {/* Date & venue – single line like Montmartre */}
             <p className="text-white/80 text-sm md:text-base tracking-wide mb-10 md:mb-14 animate-fade-in delay-500">
-              Automne 2026 · Télécom Paris
+              Février 2027 · Théâtre Mogador
             </p>
 
             {/* Primary CTAs – Montmartre: "Découvrez l'édition 2025" / "Achetez un billet" */}
