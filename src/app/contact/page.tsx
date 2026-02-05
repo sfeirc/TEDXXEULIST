@@ -50,23 +50,15 @@ export default function Contact() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-slate-950 to-black relative overflow-hidden">
-      {/* Animated Background Orbs with Red-Blue Gradient */}
+    <div className="min-h-screen bg-black relative overflow-hidden">
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-red-600/10 rounded-full blur-3xl animate-float"></div>
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl animate-float delay-200"></div>
-        
-        {/* Gradient Lines */}
-        <div className="absolute inset-0">
-          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-red-600/20 to-transparent"></div>
-          <div className="absolute top-0 right-0 w-full h-1 bg-gradient-to-l from-transparent via-blue-600/20 to-transparent"></div>
-        </div>
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#e62b1e]/5 rounded-full blur-3xl"></div>
       </div>
 
       <Navigation />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 py-6">
-        <Link href="/" className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors">
+        <Link href="/" className="inline-flex items-center gap-2 text-white/80 hover:text-white transition-colors">
           <ArrowLeft className="w-4 h-4" />
           Retour à l'accueil
         </Link>
@@ -75,14 +67,14 @@ export default function Contact() {
       <main className="relative z-10 max-w-6xl mx-auto px-6 pb-20">
         <div className="text-center mb-16">
           <h1 className="text-5xl font-bold text-white mb-6">Contactez-Nous</h1>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-xl text-white/80 max-w-3xl mx-auto">
             Si vous rencontrez un problème ou souhaitez obtenir plus d'informations, n'hésitez pas à nous contacter.
           </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Contact Form */}
-          <div className="bg-gradient-to-br from-blue-500/10 to-slate-800/50 rounded-2xl border border-blue-400/20 p-8">
+          <div className="glass rounded-2xl border border-white/10 p-8">
             <h2 className="text-2xl font-bold text-white mb-6">Envoyez-nous un Message</h2>
             
             {isSubmitted ? (
@@ -118,7 +110,7 @@ export default function Contact() {
                       required
                       value={formData.name}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 bg-slate-800/50 border border-slate-600 rounded-lg text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg text-white focus:ring-2 focus:ring-[#e62b1e] focus:border-transparent"
                       placeholder="Votre nom"
                     />
                   </div>
@@ -133,7 +125,7 @@ export default function Contact() {
                       required
                       value={formData.email}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 bg-slate-800/50 border border-slate-600 rounded-lg text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg text-white focus:ring-2 focus:ring-[#e62b1e] focus:border-transparent"
                       placeholder="votre@email.com"
                     />
                   </div>
@@ -148,7 +140,7 @@ export default function Contact() {
                     name="interest"
                     value={formData.interest}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 bg-slate-800/50 border border-slate-600 rounded-lg text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg text-white focus:ring-2 focus:ring-[#e62b1e] focus:border-transparent"
                   >
                     <option value="">Sélectionner</option>
                     <option value="general">Information Générale</option>
@@ -171,7 +163,7 @@ export default function Contact() {
                     required
                     value={formData.subject}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 bg-slate-800/50 border border-slate-600 rounded-lg text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg text-white focus:ring-2 focus:ring-[#e62b1e] focus:border-transparent"
                     placeholder="Sujet du message"
                   />
                 </div>
@@ -187,7 +179,7 @@ export default function Contact() {
                     rows={6}
                     value={formData.message}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 bg-slate-800/50 border border-slate-600 rounded-lg text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
+                    className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg text-white focus:ring-2 focus:ring-[#e62b1e] focus:border-transparent resize-none"
                     placeholder="Votre message..."
                   />
                 </div>
@@ -195,7 +187,7 @@ export default function Contact() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-gradient-to-r from-red-600 to-red-500 text-white py-3 px-6 rounded-lg font-semibold hover:from-red-700 hover:to-red-600 focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:ring-offset-slate-800 disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-lg shadow-red-500/30 flex items-center justify-center gap-2"
+                  className="w-full bg-[#e62b1e] text-white py-3 px-6 rounded-lg font-semibold hover:bg-[#c92419] focus:ring-2 focus:ring-[#e62b1e] focus:ring-offset-2 focus:ring-offset-black disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-2"
                 >
                   {isSubmitting ? (
                     <>
@@ -216,25 +208,22 @@ export default function Contact() {
           {/* Contact Information */}
           <div className="space-y-8">
             {/* Contact Details */}
-            <div className="bg-gradient-to-br from-red-500/10 to-slate-800/50 rounded-2xl border border-red-400/20 p-8">
+            <div className="glass rounded-2xl border border-white/10 p-8">
               <h2 className="text-2xl font-bold text-white mb-6">Coordonnées</h2>
               <div className="space-y-6">
                 {contactInfo.map((info, index) => {
                   const IconComponent = info.icon;
                   return (
                     <div key={index} className="flex items-start gap-4">
-                      <div className="w-12 h-12 bg-blue-500/20 rounded-full flex items-center justify-center flex-shrink-0 border border-blue-400/30">
-                        <IconComponent className="w-6 h-6 text-blue-400" />
+                      <div className="w-12 h-12 bg-[#e62b1e]/20 rounded-full flex items-center justify-center flex-shrink-0 border border-[#e62b1e]/30">
+                        <IconComponent className="w-6 h-6 text-[#e62b1e]" />
                       </div>
                       <div>
                         <h3 className="font-semibold text-white">{info.title}</h3>
-                        <a 
-                          href={`mailto:${info.details}`}
-                          className="text-blue-400 hover:text-blue-300 font-medium"
-                        >
+                        <a href={`mailto:${info.details}`} className="text-[#e62b1e] hover:text-white font-medium">
                           {info.details}
                         </a>
-                        <p className="text-gray-400 text-sm mt-1">{info.description}</p>
+                        <p className="text-white/70 text-sm mt-1">{info.description}</p>
                       </div>
                     </div>
                   );
@@ -242,16 +231,15 @@ export default function Contact() {
               </div>
             </div>
 
-            {/* Location */}
-            <div className="bg-gradient-to-br from-blue-500/10 to-slate-800/50 rounded-2xl border border-blue-400/20 p-8">
+            <div className="glass rounded-2xl border border-white/10 p-8">
               <h2 className="text-2xl font-bold text-white mb-6">Localisation</h2>
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-red-500/20 rounded-full flex items-center justify-center flex-shrink-0 border border-red-400/30">
-                  <MapPin className="w-6 h-6 text-red-400" />
+                <div className="w-12 h-12 bg-[#e62b1e]/20 rounded-full flex items-center justify-center flex-shrink-0 border border-[#e62b1e]/30">
+                  <MapPin className="w-6 h-6 text-[#e62b1e]" />
                 </div>
                 <div>
                   <h3 className="font-semibold text-white">Cité des sciences et de l'industrie</h3>
-                  <p className="text-gray-300">
+                  <p className="text-white/80">
                     30, avenue Corentin-Cariou<br />
                     75019 Paris
                   </p>
@@ -259,10 +247,9 @@ export default function Contact() {
               </div>
             </div>
 
-            {/* Response Time */}
-            <div className="bg-gradient-to-r from-red-500/10 to-blue-500/10 rounded-2xl p-6 border border-white/10">
+            <div className="glass rounded-2xl p-6 border border-white/10">
               <h3 className="text-lg font-semibold text-white mb-2">Temps de Réponse</h3>
-              <p className="text-gray-300 text-sm">
+              <p className="text-white/80 text-sm">
                 Nous nous engageons à vous répondre dans les plus brefs délais (sous 24h).
               </p>
             </div>
@@ -270,18 +257,18 @@ export default function Contact() {
         </div>
 
         {/* Newsletter Signup */}
-        <div className="mt-16 bg-gradient-to-r from-red-500/10 via-blue-500/10 to-slate-800/50 rounded-2xl p-8 text-center border border-white/10">
+        <div className="mt-16 glass rounded-2xl p-8 text-center border border-white/10">
           <h2 className="text-2xl font-bold text-white mb-4">Restez Informé</h2>
-          <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
+          <p className="text-white/80 mb-6 max-w-2xl mx-auto">
             Rejoignez l'aventure TEDx IMT en vous inscrivant ci-dessous !
           </p>
           <div className="max-w-md mx-auto flex flex-col sm:flex-row gap-4">
             <input
               type="email"
               placeholder="Votre email"
-              className="flex-1 px-4 py-3 bg-slate-800/50 border border-slate-600 rounded-lg text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="flex-1 px-4 py-3 bg-white/5 border border-white/20 rounded-lg text-white focus:ring-2 focus:ring-[#e62b1e] focus:border-transparent"
             />
-            <button className="bg-gradient-to-r from-blue-600 to-blue-500 text-white px-6 py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-blue-600 transition-all shadow-lg shadow-blue-500/30 whitespace-nowrap">
+            <button className="bg-[#e62b1e] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#c92419] transition-all whitespace-nowrap">
               S'inscrire
             </button>
           </div>

@@ -72,23 +72,15 @@ export default function Team() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-slate-950 to-black relative overflow-hidden">
-      {/* Animated Background Orbs with Red-Blue Gradient */}
+    <div className="min-h-screen bg-black relative overflow-hidden">
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-red-600/10 rounded-full blur-3xl animate-float"></div>
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl animate-float delay-200"></div>
-        
-        {/* Gradient Lines */}
-        <div className="absolute inset-0">
-          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-red-600/20 to-transparent"></div>
-          <div className="absolute top-0 right-0 w-full h-1 bg-gradient-to-l from-transparent via-blue-600/20 to-transparent"></div>
-        </div>
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#e62b1e]/5 rounded-full blur-3xl"></div>
       </div>
 
       <Navigation />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 py-6">
-        <Link href="/" className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors">
+        <Link href="/" className="inline-flex items-center gap-2 text-white/80 hover:text-white transition-colors">
           <ArrowLeft className="w-4 h-4" />
           Retour à l'accueil
         </Link>
@@ -97,7 +89,7 @@ export default function Team() {
       <main className="relative z-10 max-w-7xl mx-auto px-6 pb-20">
         <div className="text-center mb-16">
           <h1 className="text-5xl font-bold text-white mb-6">L'Équipe Organisatrice</h1>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-xl text-white/80 max-w-3xl mx-auto">
             L'organisation et la mise en œuvre du projet TEDX IMT ont été réalisées par une équipe d'étudiants issue du groupe IMT. L'organisation s'est vue être divisée en différents pôles d'action répartis entre tous les étudiants.
           </p>
         </div>
@@ -105,9 +97,9 @@ export default function Team() {
         <section className="mb-16">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
             {teamMembers.map((member, index) => (
-              <div key={index} className="bg-gradient-to-br from-blue-500/10 to-slate-800/50 rounded-2xl p-8 border border-blue-400/20 hover:border-blue-400/40 transition-all card-hover group">
+              <div key={index} className="glass rounded-2xl p-8 border border-white/10 hover:border-white/20 transition-all card-hover group">
                 <div className="text-center mb-5">
-                  <div className="w-40 h-40 mx-auto mb-5 relative overflow-hidden rounded-full border-4 border-gradient-to-br from-red-500 to-blue-500 group-hover:scale-105 transition-transform shadow-xl">
+                  <div className="w-40 h-40 mx-auto mb-5 relative overflow-hidden rounded-full border-2 border-[#e62b1e]/50 group-hover:scale-105 transition-transform shadow-xl">
                     <Image
                       src={member.photo}
                       alt={member.name}
@@ -117,12 +109,12 @@ export default function Team() {
                     />
                   </div>
                   <h3 className="text-xl font-bold text-white mb-2">{member.name}</h3>
-                  <p className="text-blue-400 font-medium text-base mb-3">{member.role}</p>
-                  <span className="inline-block bg-slate-700/50 text-gray-300 text-sm px-4 py-1.5 rounded-full border border-slate-600">
+                  <p className="text-[#e62b1e] font-medium text-base mb-3">{member.role}</p>
+                  <span className="inline-block bg-white/10 text-white/80 text-sm px-4 py-1.5 rounded-full border border-white/20">
                     {member.team}
                   </span>
                 </div>
-                <p className="text-gray-400 text-sm text-center leading-relaxed">{member.description}</p>
+                <p className="text-white/70 text-sm text-center leading-relaxed">{member.description}</p>
               </div>
             ))}
           </div>

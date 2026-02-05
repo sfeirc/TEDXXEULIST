@@ -3,11 +3,11 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
-import { Calendar, MapPin, Users, Handshake, Star, Menu, X } from 'lucide-react';
+import { Calendar, MapPin, Users, Handshake } from 'lucide-react';
 
 export default function Home() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
@@ -36,483 +36,196 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-slate-950 to-black relative overflow-hidden">
-      {/* Animated Background Orbs with Red-Blue Gradient */}
+    <div className="min-h-screen bg-black relative overflow-hidden">
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-red-600/10 rounded-full blur-3xl animate-float"></div>
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl animate-float delay-200"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-slate-800 rounded-full"></div>
-        
-        {/* Gradient Lines */}
-        <div className="absolute inset-0">
-          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-red-600/20 to-transparent"></div>
-          <div className="absolute top-0 right-0 w-full h-1 bg-gradient-to-l from-transparent via-blue-600/20 to-transparent"></div>
-        </div>
+        <div className="absolute top-0 left-1/4 w-[32rem] h-[32rem] bg-[#e62b1e]/[0.07] rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 right-1/4 w-[32rem] h-[32rem] bg-[#e62b1e]/[0.05] rounded-full blur-3xl"></div>
       </div>
 
+      <Navigation />
 
-      {/* Navigation */}
-      <nav className="relative z-20 px-4 md:px-6 py-3 md:py-4 glass border-b border-white/10 animate-fade-in delay-100">
-        <div className="max-w-7xl mx-auto flex justify-between items-center">
-          <div className="flex items-center gap-2 md:gap-4">
-            <div className="flex items-center gap-2 md:gap-3">
-              {/* TEDx Badge */}
-              <div className="transition-all hover:scale-105 drop-shadow-lg">
-        <Image
-                  src="https://landing-pages.ted.com/tedx-logo-generator/assets/logo.png" 
-                  alt="TEDx" 
-                  width={80} 
-                  height={30}
-                  className="w-auto h-5 md:h-6"
+      {/* Hero – Outstanding Montmartre-style: big logo block + two-line statement + date/venue + CTAs */}
+      <main className="relative z-10">
+        <section className="min-h-[85vh] flex flex-col justify-center px-4 md:px-8 py-20 md:py-28">
+          <div className="max-w-6xl mx-auto w-full text-center">
+            {/* Logo block: TEDx × IMT – IMT larger for strong presence */}
+            <div className="flex items-center justify-center gap-6 md:gap-12 mb-12 md:mb-16 flex-wrap">
+              <a href="https://www.ted.com/about/programs-initiatives/tedx-program" target="_blank" rel="noopener noreferrer" className="animate-slide-in-left delay-200 flex items-center">
+                <Image
+                  src="https://landing-pages.ted.com/tedx-logo-generator/assets/logo.png"
+                  alt="TEDx"
+                  width={260}
+                  height={84}
+                  className="w-auto h-16 md:h-24 ted-logo-red"
+                  priority
                 />
-              </div>
-              <span className="text-white font-bold text-lg md:text-xl">×</span>
-              {/* IMT Badge */}
-              <div className="transition-all hover:scale-105 drop-shadow-lg">
-            <Image
-                  src="https://upload.wikimedia.org/wikipedia/commons/b/b0/IMT_logo_2017.png" 
-                  alt="IMT" 
-                  width={100} 
-                  height={40}
-                  className="w-auto h-7 md:h-9"
-                />
-              </div>
-              {/* Partnership indicator with EULIST */}
-              <div className="hidden lg:flex items-center gap-2 ml-2 px-3 py-1.5 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-full border border-blue-400/20">
-                <span className="text-blue-300 text-xs font-medium">in partnership with</span>
-                <div className="transition-all hover:scale-105">
-                  <Image 
-                    src="https://eulist.university/wp-content/themes/eulist/images/logo-new.png" 
-                    alt="EULiST" 
-                    width={80} 
-                    height={40}
-                    className="w-auto h-5"
-                  />
-                </div>
-              </div>
-            </div>
-            <span className="text-white font-semibold text-sm md:text-lg hidden sm:block ml-2">Paris 2026</span>
-          </div>
-
-          {/* Desktop Menu */}
-          <div className="hidden md:flex space-x-8">
-            <Link href="/about" className="text-gray-300 hover:text-red-400 transition-all relative group">
-              À Propos
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-400 transition-all group-hover:w-full"></span>
-            </Link>
-            <Link href="/team" className="text-gray-300 hover:text-blue-400 transition-all relative group">
-              Équipe
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-400 transition-all group-hover:w-full"></span>
-            </Link>
-            <Link href="/speakers" className="text-gray-300 hover:text-red-400 transition-all relative group">
-              Conférenciers
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-400 transition-all group-hover:w-full"></span>
-            </Link>
-            <Link href="/practical-info" className="text-gray-300 hover:text-blue-400 transition-all relative group">
-              Infos
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-400 transition-all group-hover:w-full"></span>
-            </Link>
-            <Link href="/partners" className="text-gray-300 hover:text-red-400 transition-all relative group">
-              Partenaires
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-400 transition-all group-hover:w-full"></span>
-            </Link>
-            <Link href="/contact" className="text-gray-300 hover:text-blue-400 transition-all relative group">
-              Contact
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-400 transition-all group-hover:w-full"></span>
-            </Link>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <button 
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden text-white p-2 hover:bg-white/10 rounded-lg transition-all"
-            aria-label="Toggle menu"
-          >
-            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </div>
-
-        {/* Mobile Menu */}
-        {mobileMenuOpen && (
-          <div className="md:hidden absolute top-full left-0 right-0 glass border-b border-white/10 animate-fade-in">
-            <div className="flex flex-col space-y-4 p-6">
-              <Link 
-                href="/about" 
-                onClick={() => setMobileMenuOpen(false)}
-                className="text-gray-300 hover:text-red-400 transition-all py-2 border-b border-gray-800"
-              >
-                À Propos
-              </Link>
-              <Link 
-                href="/team" 
-                onClick={() => setMobileMenuOpen(false)}
-                className="text-gray-300 hover:text-blue-400 transition-all py-2 border-b border-gray-800"
-              >
-                Équipe
-              </Link>
-              <Link 
-                href="/speakers" 
-                onClick={() => setMobileMenuOpen(false)}
-                className="text-gray-300 hover:text-red-400 transition-all py-2 border-b border-gray-800"
-              >
-                Conférenciers
-              </Link>
-              <Link 
-                href="/practical-info" 
-                onClick={() => setMobileMenuOpen(false)}
-                className="text-gray-300 hover:text-blue-400 transition-all py-2 border-b border-gray-800"
-              >
-                Infos Pratiques
-              </Link>
-              <Link 
-                href="/partners" 
-                onClick={() => setMobileMenuOpen(false)}
-                className="text-gray-300 hover:text-red-400 transition-all py-2 border-b border-gray-800"
-              >
-                Partenaires
-              </Link>
-              <Link 
-                href="/contact" 
-                onClick={() => setMobileMenuOpen(false)}
-                className="text-gray-300 hover:text-blue-400 transition-all py-2"
-              >
-                Contact
-              </Link>
-            </div>
-          </div>
-        )}
-      </nav>
-
-      {/* Hero Section */}
-      <main className="relative z-10 px-4 md:px-6 py-12 md:py-20">
-        <div className="max-w-7xl mx-auto text-center">
-          {/* Dual Brand Logo with Visual Representations */}
-          <div className="mb-6 md:mb-8">
-            {/* TEDx x IMT Combined Logo */}
-            <div className="flex items-center justify-center gap-4 md:gap-12 mb-6 md:mb-8 flex-wrap">
-              {/* TEDx Logo */}
-              <a 
-                href="https://www.ted.com/about/programs-initiatives/tedx-program" 
-          target="_blank"
-          rel="noopener noreferrer"
-                className="text-center animate-slide-in-left delay-200 group"
-        >
-                <div className="relative">
-                  {/* TEDx Visual Logo */}
-                  <div className="relative transition-all duration-300 group-hover:scale-105">
-          <Image
-                      src="https://landing-pages.ted.com/tedx-logo-generator/assets/logo.png" 
-                      alt="TEDx Logo" 
-                      width={250} 
-                      height={80}
-                      className="w-auto h-16 md:h-20 drop-shadow-2xl"
-                      priority
-                    />
-                  </div>
-                  {/* Red Glow Effect */}
-                  <div className="absolute inset-0 bg-red-600/30 blur-3xl -z-10 group-hover:bg-red-600/40"></div>
-                </div>
-                <div className="text-red-400 text-xs mt-4 font-semibold tracking-wider">Ideas Worth Spreading</div>
               </a>
-              
-              {/* Collaboration Symbol */}
-              <div className="relative animate-scale-in delay-300">
-                <div className="text-4xl md:text-6xl font-bold text-gray-500">
-                  ×
-                </div>
-              </div>
-              
-              {/* IMT Logo */}
-              <a 
-                href="https://www.imt.fr/" 
-          target="_blank"
-          rel="noopener noreferrer"
-                className="text-center animate-slide-in-right delay-200 group"
-        >
-                <div className="relative">
-                  {/* IMT Visual Logo */}
-                  <div className="relative transition-all duration-300 group-hover:scale-105">
-          <Image
-                      src="https://upload.wikimedia.org/wikipedia/commons/b/b0/IMT_logo_2017.png" 
-                      alt="IMT Logo" 
-                      width={350} 
-                      height={100}
-                      className="w-auto h-20 md:h-28 drop-shadow-2xl"
-                      priority
-                    />
-                  </div>
-                  {/* Blue/Cyan Glow Effect */}
-                  <div className="absolute inset-0 bg-cyan-500/30 blur-3xl -z-10 group-hover:bg-cyan-500/40"></div>
-                </div>
-                <div className="text-cyan-300 text-xs mt-4 font-semibold tracking-wider">Institut Mines-Télécom</div>
+              <span className="text-5xl md:text-7xl font-bold text-white leading-none tracking-tight select-none">×</span>
+              <a href="https://www.imt.fr/" target="_blank" rel="noopener noreferrer" className="animate-slide-in-right delay-200 flex items-center">
+                <span className="font-bold text-white tracking-tight leading-none text-[4rem] md:text-[7rem]" style={{ letterSpacing: '-0.04em' }}>IMT</span>
               </a>
             </div>
-            
-            {/* EULIST Partnership Badge */}
-            <div className="flex justify-center mb-6 animate-fade-in delay-400">
-              <div className="relative group">
-                <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 rounded-full blur opacity-30 group-hover:opacity-50 transition-opacity"></div>
-                <div className="relative px-6 py-3 bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 rounded-full border border-blue-400/30 flex items-center gap-3">
-                  <span className="text-blue-300 text-sm md:text-base font-medium">in partnership with</span>
-                  <a href="https://eulist.university/" target="_blank" rel="noopener noreferrer" className="transition-all hover:scale-105">
-                    <Image
-                      src="https://eulist.university/wp-content/themes/eulist/images/logo-new.png" 
-                      alt="EULiST" 
-                      width={150} 
-                      height={60}
-                      className="w-auto h-8 md:h-10 drop-shadow-lg"
-                    />
-                  </a>
-                </div>
+            <div className="flex justify-center mb-10 animate-fade-in delay-400">
+              <div className="px-5 py-2.5 rounded-full border border-white/15 flex items-center gap-3 bg-white/[0.02]">
+                <span className="text-white/70 text-xs md:text-sm tracking-[0.12em] uppercase">in partnership with</span>
+                <a href="https://eulist.university/" target="_blank" rel="noopener noreferrer">
+                  <Image src="https://eulist.university/wp-content/themes/eulist/images/logo-new.png" alt="EULiST" width={120} height={48} className="w-auto h-6 md:h-8 opacity-90" />
+                </a>
               </div>
             </div>
-            
-            {/* Gradient Underline */}
-            <div className="w-64 h-1 mx-auto mb-6 bg-gradient-to-r from-red-600 via-gray-700 to-blue-600 rounded-full"></div>
-            
-            <h1 className="text-3xl md:text-5xl font-bold text-white mb-2 animate-fade-in-up delay-400">
-              Paris 2026
+
+            {/* Two-line statement – Montmartre "ET SI ON CHANGEAIT NOTRE / FAÇON DE VOIR LE MONDE ?" style */}
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-white tracking-tight leading-[1.1] mb-6 md:mb-8 animate-fade-in-up delay-400" style={{ letterSpacing: '-0.02em' }}>
+              <span className="block">Ce qui nous relie</span>
+              <span className="block mt-1 md:mt-2 text-white/95">Explorer le lien humain</span>
             </h1>
-            <div className="flex items-center justify-center gap-2 text-gray-400 animate-fade-in delay-500">
-              <Star className="w-4 h-4 text-yellow-400 animate-pulse" />
-              <span className="text-xs md:text-sm">Télécom Paris</span>
-            </div>
-          </div>
-
-          {/* Theme Tagline */}
-          <div className="mb-8 md:mb-12">
-            <h2 className="text-2xl md:text-5xl font-light text-white mb-3 md:mb-4 px-2">
-              Ce qui nous relie
-            </h2>
-            <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto px-4">
-              Explorer comment recréer du lien humain face à la fragmentation
+            <p className="text-lg md:text-xl text-white/70 max-w-2xl mx-auto mb-10 md:mb-12 animate-fade-in delay-500 leading-relaxed">
+              Face à la fragmentation, recréer du lien.
             </p>
-          </div>
 
-          {/* Date & Venue */}
-          <div className="mb-8 md:mb-12 flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8">
-            <div className="flex items-center gap-2 px-4 py-2 bg-blue-500/20 rounded-full border border-blue-400/30">
-              <Calendar className="w-5 h-5 text-blue-400" />
-              <span className="text-lg text-gray-200">Automne 2026</span>
-            </div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-blue-500/20 rounded-full border border-blue-400/30">
-              <MapPin className="w-5 h-5 text-blue-400" />
-              <span className="text-lg text-gray-200">Télécom Paris</span>
+            {/* Date & venue – single line like Montmartre */}
+            <p className="text-white/80 text-sm md:text-base tracking-wide mb-10 md:mb-14 animate-fade-in delay-500">
+              Automne 2026 · Télécom Paris
+            </p>
+
+            {/* Primary CTAs – Montmartre: "Découvrez l'édition 2025" / "Achetez un billet" */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in-up delay-500">
+              <Link
+                href="/about"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#e62b1e] text-white px-8 py-4 rounded-full font-semibold text-base hover:bg-[#c92419] transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
+              >
+                <Users className="w-5 h-5" />
+                Découvrir l&apos;édition 2026
+              </Link>
+              <Link
+                href="/contact"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white text-black px-8 py-4 rounded-full font-semibold text-base hover:bg-white/95 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
+              >
+                <Calendar className="w-5 h-5" />
+                Participer
+              </Link>
             </div>
           </div>
+        </section>
 
-          {/* Countdown Timer */}
-          <div className="mb-10 md:mb-16 animate-fade-in-up delay-500">
-            <div className="glass rounded-2xl p-4 md:p-8 max-w-4xl mx-auto border border-white/20 shadow-2xl">
-              <h3 className="text-xl md:text-2xl text-white mb-4 md:mb-6 font-semibold">Compte à Rebours</h3>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
-                <div className="text-center bg-gradient-to-br from-red-500/10 to-blue-500/10 rounded-xl p-4 md:p-6 border border-white/10 card-hover">
-                  <div className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-red-400 to-blue-400 bg-clip-text text-transparent">{timeLeft.days}</div>
-                  <div className="text-gray-400 text-xs md:text-sm mt-2 font-medium">Jours</div>
-                </div>
-                <div className="text-center bg-gradient-to-br from-red-500/10 to-blue-500/10 rounded-xl p-4 md:p-6 border border-white/10 card-hover">
-                  <div className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-red-400 to-blue-400 bg-clip-text text-transparent">{timeLeft.hours}</div>
-                  <div className="text-gray-400 text-xs md:text-sm mt-2 font-medium">Heures</div>
-                </div>
-                <div className="text-center bg-gradient-to-br from-red-500/10 to-blue-500/10 rounded-xl p-4 md:p-6 border border-white/10 card-hover">
-                  <div className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-red-400 to-blue-400 bg-clip-text text-transparent">{timeLeft.minutes}</div>
-                  <div className="text-gray-400 text-xs md:text-sm mt-2 font-medium">Minutes</div>
-                </div>
-                <div className="text-center bg-gradient-to-br from-red-500/10 to-blue-500/10 rounded-xl p-4 md:p-6 border border-white/10 card-hover">
-                  <div className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-red-400 to-blue-400 bg-clip-text text-transparent">{timeLeft.seconds}</div>
-                  <div className="text-gray-400 text-xs md:text-sm mt-2 font-medium">Secondes</div>
-                </div>
+        {/* Section: Vivez une soirée... – Montmartre-style */}
+        <section className="max-w-6xl mx-auto px-4 md:px-8 py-16 md:py-24 text-center">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-white mb-6 md:mb-8 tracking-tight">
+            Vivez une soirée de conférences inspirantes
+          </h2>
+          <p className="text-white/80 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed mb-14 md:mb-20">
+            Cette année, TEDx IMT Paris s&apos;articule autour du thème <strong className="text-white">Ce qui nous relie</strong> — explorer comment recréer du lien humain face à la fragmentation.
+          </p>
+
+          {/* Countdown */}
+          <div className="mb-12 md:mb-16">
+            <div className="glass rounded-2xl p-6 md:p-10 max-w-4xl mx-auto border border-white/10">
+              <h3 className="text-lg md:text-xl text-white/90 mb-6 font-medium tracking-wide">Compte à rebours</h3>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+                {[
+                  { value: timeLeft.days, label: 'Jours' },
+                  { value: timeLeft.hours, label: 'Heures' },
+                  { value: timeLeft.minutes, label: 'Minutes' },
+                  { value: timeLeft.seconds, label: 'Secondes' },
+                ].map((item, i) => (
+                  <div key={i} className="text-center rounded-xl p-5 md:p-6 border border-white/10 card-hover bg-white/[0.04]">
+                    <div className="text-3xl md:text-5xl font-bold text-[#e62b1e] tabular-nums">{item.value}</div>
+                    <div className="text-white/50 text-xs md:text-sm mt-2 uppercase tracking-wider">{item.label}</div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col md:flex-row gap-4 md:gap-6 justify-center items-center animate-fade-in-up delay-500 px-4">
-            <Link 
-              href="/about"
-              className="btn-professional bg-gradient-to-r from-red-600 to-red-500 text-white w-full md:w-auto px-8 md:px-10 py-3 md:py-4 rounded-full font-semibold text-base md:text-lg hover:from-red-700 hover:to-red-600 transition-all shadow-2xl shadow-red-500/40 hover:shadow-red-500/60 hover:scale-105 flex items-center justify-center gap-3"
-            >
-              <Users className="w-5 h-5" />
-              <span>Découvrir</span>
-            </Link>
-            <Link 
-              href="/contact"
-              className="btn-professional bg-gradient-to-r from-blue-600 to-blue-500 text-white w-full md:w-auto px-8 md:px-10 py-3 md:py-4 rounded-full font-semibold text-base md:text-lg hover:from-blue-700 hover:to-blue-600 transition-all shadow-2xl shadow-blue-500/40 hover:shadow-blue-500/60 hover:scale-105 flex items-center justify-center gap-3"
-            >
-              <Calendar className="w-5 h-5" />
-              <span>Participer</span>
-            </Link>
-            <Link 
-              href="/partners"
-              className="btn-professional glass border-2 border-white/30 text-white w-full md:w-auto px-8 md:px-10 py-3 md:py-4 rounded-full font-semibold text-base md:text-lg hover:bg-white/20 hover:border-white/50 transition-all shadow-2xl hover:scale-105 flex items-center justify-center gap-3"
-            >
-              <Handshake className="w-5 h-5" />
-              <span>Devenir Partenaire</span>
-            </Link>
-          </div>
+          <Link
+            href="/partners"
+            className="inline-flex items-center justify-center gap-2 border-2 border-white/40 text-white px-8 py-4 rounded-full font-semibold text-base hover:bg-white hover:text-black transition-all duration-200"
+          >
+            <Handshake className="w-5 h-5" />
+            Devenir partenaire
+          </Link>
+        </section>
 
-          {/* Theme Explanation Section */}
-          <div className="mt-20 max-w-5xl mx-auto animate-fade-in-up">
-            <div className="relative glass rounded-2xl p-6 md:p-10 border border-white/20 overflow-hidden">
-              {/* Gradient Background */}
-              <div className="absolute inset-0 bg-gradient-to-br from-red-600/5 via-purple-600/10 to-blue-600/5"></div>
-              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-red-500 via-purple-500 to-blue-500"></div>
-              
-              <div className="relative space-y-8">
-                {/* Theme Title */}
-                <div className="text-center">
-                  <h3 className="text-3xl md:text-4xl font-bold text-white mb-4 bg-gradient-to-r from-red-400 via-purple-400 to-blue-400 bg-clip-text text-transparent">
-                    Ce qui nous relie
-                  </h3>
-                  <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+        {/* Theme Explanation – Montmartre editorial style */}
+        <section className="max-w-5xl mx-auto px-4 md:px-8 py-16 md:py-24">
+          <div className="relative glass rounded-2xl p-6 md:p-12 border border-white/10 overflow-hidden">
+            <div className="absolute top-0 left-0 right-0 h-0.5 bg-[#e62b1e] rounded-t-2xl" aria-hidden></div>
+            <div className="relative space-y-10">
+              <div className="text-center">
+                <h2 className="text-2xl md:text-3xl font-semibold text-white mb-4 tracking-tight">Ce qui nous relie</h2>
+                  <p className="text-lg md:text-xl text-white/80 max-w-3xl mx-auto leading-relaxed">
                     Permet d'explorer comment recréer du lien humain face à la fragmentation : un architecte peut parler d'espaces publics, un entrepreneur social de communautés locales, un scientifique de coopération, un artiste de récits collectifs...
                   </p>
                 </div>
-
-                {/* Context and Challenges */}
-                <div className="bg-gradient-to-br from-red-500/10 to-transparent rounded-xl p-6 md:p-8 border border-red-500/20 card-hover">
+                <div className="rounded-xl p-6 md:p-8 border border-white/10 card-hover bg-white/5">
                   <h4 className="text-xl md:text-2xl font-semibold text-white mb-4">Contexte et enjeu</h4>
-                  <p className="text-gray-300 leading-relaxed mb-4">
-                    Face à l'accumulation des crises géopolitiques, écologiques et économiques, nous sommes épuisés par le flot incessant de mauvaises nouvelles. Cette fatigue informationnelle nous pousse parfois au désengagement : nous préférons éteindre les écrans plutôt que d'affronter un monde qui semble se dégrader jour après jour.
+                  <p className="text-white/80 leading-relaxed mb-4">
+                    Face à l'accumulation des crises géopolitiques, écologiques et économiques, nous sommes épuisés par le flot incessant de mauvaises nouvelles. Cette fatigue informationnelle nous pousse parfois au désengagement.
                   </p>
-                  <p className="text-gray-300 leading-relaxed">
-                    Le monde devient de plus en plus complexe, absurde et déshumanisant à mesure que les crises se succèdent. Nous ne comprenons plus vraiment pourquoi elles apparaissent ni comment elles s'accumulent. Pire encore, nous avons l'impression que chacune de nos actions, aussi bien intentionnée soit-elle, empire les choses.
+                  <p className="text-white/80 leading-relaxed">
+                    Le monde devient de plus en plus complexe, absurde et déshumanisant à mesure que les crises se succèdent. Nous ne comprenons plus vraiment pourquoi elles apparaissent ni comment elles s'accumulent.
                   </p>
                 </div>
-
-                {/* Need for Change */}
-                <div className="bg-gradient-to-br from-purple-500/10 to-transparent rounded-xl p-6 md:p-8 border border-purple-500/20 card-hover">
+                <div className="rounded-xl p-6 md:p-8 border border-white/10 card-hover bg-white/5">
                   <h4 className="text-xl md:text-2xl font-semibold text-white mb-4">Le besoin de changement de perspective</h4>
-                  <p className="text-gray-300 leading-relaxed mb-4">
-                    Comment, à notre échelle, pouvons-nous réellement changer les choses ? Comment modifier notre regard pour ne plus voir uniquement une dégradation constante, mais aussi les opportunités qui s'offrent à nous pour faire évoluer le monde vers le mieux ?
+                  <p className="text-white/80 leading-relaxed mb-4">
+                    Comment, à notre échelle, pouvons-nous réellement changer les choses ? Comment modifier notre regard pour ne plus voir uniquement une dégradation constante, mais aussi les opportunités qui s'offrent à nous ?
                   </p>
-                  <p className="text-gray-300 leading-relaxed">
+                  <p className="text-white/80 leading-relaxed">
                     Comment faire ressortir l'espoir, la simplicité et l'humanité dans ce contexte oppressant ?
                   </p>
                 </div>
-
-                {/* Fragmentation of Links */}
-                <div className="bg-gradient-to-br from-blue-500/10 to-transparent rounded-xl p-6 md:p-8 border border-blue-500/20 card-hover">
+                <div className="rounded-xl p-6 md:p-8 border border-white/10 card-hover bg-white/5">
                   <h4 className="text-xl md:text-2xl font-semibold text-white mb-4">La fragmentation des liens</h4>
-                  <p className="text-gray-300 leading-relaxed">
-                    Au-delà des grandes crises, ce sont les événements du quotidien qui, progressivement, fragmentent les liens entre nous. Cette déshumanisation n'est pas seulement le fait des catastrophes globales, mais aussi de la manière dont notre quotidien nous éloigne les uns des autres.
+                  <p className="text-white/80 leading-relaxed">
+                    Au-delà des grandes crises, ce sont les événements du quotidien qui, progressivement, fragmentent les liens entre nous.
                   </p>
                 </div>
               </div>
             </div>
-          </div>
+        </section>
 
-          {/* Collaboration Explanation with Gradient */}
-          <div className="mt-20 max-w-4xl mx-auto animate-fade-in-up">
-            <div className="relative glass rounded-2xl p-8 border border-purple-500/20 overflow-hidden">
-              {/* Gradient Background */}
-              <div className="absolute inset-0 bg-gradient-to-r from-red-600/5 via-purple-600/10 to-blue-600/5"></div>
-              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-red-500 via-purple-500 to-blue-500"></div>
-              
+        {/* Collaboration – TEDx × IMT × EULiST */}
+        <section className="max-w-4xl mx-auto px-4 md:px-8 py-16 md:py-24">
+            <div className="relative glass rounded-2xl p-8 border border-white/10">
+              <div className="absolute top-0 left-0 right-0 h-0.5 bg-[#e62b1e] rounded-t-2xl"></div>
               <div className="relative grid md:grid-cols-3 gap-6">
-                <div className="text-left card-hover p-6 rounded-xl bg-gradient-to-br from-red-500/10 to-transparent border border-red-500/20">
+                <div className="text-left card-hover p-6 rounded-xl border border-white/10 bg-white/5">
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="drop-shadow-lg">
-                      <Image src="https://landing-pages.ted.com/tedx-logo-generator/assets/logo.png" alt="TEDx" width={80} height={32} className="w-auto h-6" />
-                    </div>
+                    <Image src="https://landing-pages.ted.com/tedx-logo-generator/assets/logo.png" alt="TEDx" width={64} height={26} className="w-auto h-5 ted-logo-red" />
                     <h3 className="text-white font-semibold text-lg">TEDx</h3>
                   </div>
-                  <p className="text-gray-300 text-sm leading-relaxed">
+                  <p className="text-white/80 text-sm leading-relaxed">
                     TEDx est un programme d'événements indépendants créés dans l'esprit de TED. Ils rassemblent des esprits curieux autour d'idées qui inspirent, questionnent et donnent envie d'agir pour un avenir meilleur.
                   </p>
                 </div>
-                <div className="text-left card-hover p-6 rounded-xl bg-gradient-to-br from-cyan-500/10 to-transparent border border-cyan-500/20">
+                <div className="text-left card-hover p-6 rounded-xl border border-white/10 bg-white/5">
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="drop-shadow-lg">
-                      <Image src="https://upload.wikimedia.org/wikipedia/commons/b/b0/IMT_logo_2017.png" alt="IMT" width={100} height={36} className="w-auto h-7" />
-                    </div>
-                    <h3 className="text-white font-semibold text-lg">IMT</h3>
+                    <span className="text-white font-bold text-2xl md:text-3xl tracking-tight" style={{ letterSpacing: '-0.03em' }}>IMT</span>
                   </div>
-                  <p className="text-gray-300 text-sm leading-relaxed">
+                  <p className="text-white/80 text-sm leading-relaxed">
                     IMT est une institution de prestige regroupant de nombreuses écoles sur le territoire français, elles forment de futurs ingénieurs aux problématiques et enjeux de demain. Le groupe IMT est une réelle source d'idées innovantes pour faire évoluer notre société.
                   </p>
                 </div>
-                <div className="text-left card-hover p-6 rounded-xl bg-gradient-to-bl from-blue-500/10 to-transparent border border-blue-500/20">
+                <div className="text-left card-hover p-6 rounded-xl border border-white/10 bg-white/5">
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="drop-shadow-lg">
-                      <Image src="https://eulist.university/wp-content/themes/eulist/images/logo-new.png" alt="EULiST" width={120} height={64} className="w-auto h-10" />
-                    </div>
+                    <Image src="https://eulist.university/wp-content/themes/eulist/images/logo-new.png" alt="EULiST" width={96} height={48} className="w-auto h-8" />
                     <h3 className="text-white font-semibold text-lg">EULiST</h3>
                   </div>
-                  <p className="text-gray-300 text-sm leading-relaxed">
+                  <p className="text-white/80 text-sm leading-relaxed">
                     EULiST rassemble des universités européennes qui unissent leurs forces pour renforcer la coopération internationale dans l'enseignement et la recherche.
                   </p>
                 </div>
               </div>
-              <div className="relative mt-8 pt-6 border-t border-gradient-to-r from-red-500/20 via-purple-500/40 to-blue-500/20 text-center">
-                {/* EU Flag Circle of Stars Background */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-10 pointer-events-none">
-                  <div className="relative w-64 h-64">
-                    {[
-                      { x: 50, y: 10 },
-                      { x: 70, y: 15.36 },
-                      { x: 84.64, y: 30 },
-                      { x: 90, y: 50 },
-                      { x: 84.64, y: 70 },
-                      { x: 70, y: 84.64 },
-                      { x: 50, y: 90 },
-                      { x: 30, y: 84.64 },
-                      { x: 15.36, y: 70 },
-                      { x: 10, y: 50 },
-                      { x: 15.36, y: 30 },
-                      { x: 30, y: 15.36 },
-                    ].map((pos, i) => (
-                      <div
-                        key={i}
-                        className="absolute w-4 h-4 bg-yellow-400"
-                        style={{
-                          left: `${pos.x}%`,
-                          top: `${pos.y}%`,
-                          transform: 'translate(-50%, -50%)',
-                          clipPath: 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)',
-                        }}
-                      />
-                    ))}
-                  </div>
-                </div>
-
-                {/* Clean EU-Inspired Design */}
-                <div className="relative inline-block px-4">
-                  <div className="px-4 md:px-8 py-3 md:py-4 rounded-full border border-yellow-400/40 bg-gradient-to-r from-blue-600/20 via-blue-700/20 to-blue-600/20 backdrop-blur-sm shadow-lg shadow-yellow-400/10 hover:shadow-yellow-400/30 transition-all duration-500">
-                    {/* Text */}
-                    <p className="text-sm md:text-lg font-semibold bg-gradient-to-r from-yellow-200 via-white to-yellow-200 bg-clip-text text-transparent text-center">
-                      Ensemble pour l'innovation européenne
-                    </p>
-                  </div>
-                </div>
-
-                <p className="text-gray-300 text-sm max-w-2xl mx-auto leading-relaxed">
-                Ensemble, redéfinissons et préparons le monde de demain
-                </p>
+              <div className="relative mt-8 pt-6 border-t border-white/10 text-center">
+                <p className="text-white font-semibold">Ensemble pour l&apos;innovation européenne</p>
+                <p className="text-white/70 text-sm mt-2">Ensemble, redéfinissons et préparons le monde de demain</p>
               </div>
             </div>
-          </div>
-        </div>
+        </section>
       </main>
 
       <Footer />
-
-      {/* Background Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Geometric Patterns */}
-        <div className="absolute top-20 left-10 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-red-500/5 rounded-full blur-3xl"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-blue-400/10 rounded-full"></div>
-        
-        {/* Grid Pattern */}
-        <div 
-          className="absolute inset-0 opacity-10" 
-          style={{
-            backgroundImage: `linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px)`,
-            backgroundSize: '50px 50px'
-          }}
-        />
-      </div>
     </div>
   );
 }

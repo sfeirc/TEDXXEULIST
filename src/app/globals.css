@@ -1,42 +1,80 @@
 @import "tailwindcss";
 
+/* TEDx graphic charter: black, white, red */
 :root {
-  --background: #0f172a;
-  --foreground: #f1f5f9;
+  --background: #000000;
+  --foreground: #ffffff;
+  --ted-red: #e62b1e;
+  --ted-red-hover: #c92419;
+}
+
+/* TEDx logo in official red (filter for PNG logo) */
+.ted-logo-red {
+  filter: brightness(0) saturate(100%) invert(27%) sepia(98%) saturate(5000%) hue-rotate(350deg);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Typography scale – Montmartre-style / world-class hierarchy */
+:root {
+  --text-hero: clamp(2.5rem, 5vw + 1rem, 4rem);
+  --text-display: clamp(2rem, 4vw + 0.5rem, 3.5rem);
+  --text-h1: clamp(1.75rem, 3vw + 0.5rem, 2.5rem);
+  --text-h2: clamp(1.375rem, 2vw + 0.25rem, 1.75rem);
+  --text-h3: clamp(1.125rem, 1.5vw + 0.25rem, 1.375rem);
+  --text-body: 1rem;
+  --text-body-lg: 1.125rem;
+  --text-caption: 0.875rem;
+  --text-xs: 0.75rem;
+  --leading-tight: 1.15;
+  --leading-snug: 1.35;
+  --leading-normal: 1.6;
+  --leading-relaxed: 1.7;
+  --tracking-tighter: -0.02em;
+  --tracking-tight: -0.01em;
+  --tracking-wide: 0.02em;
+  --tracking-wider: 0.05em;
+  --tracking-widest: 0.12em;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  line-height: var(--leading-normal);
 }
 
-/* Custom scrollbar */
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Custom scrollbar - TEDx style */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #1e293b;
+  background: #0a0a0a;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #dc2626, #2563eb);
-  border-radius: 5px;
-  border: 2px solid #1e293b;
+  background: var(--ted-red);
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #b91c1c, #1d4ed8);
+  background: var(--ted-red-hover);
 }
 
 /* Smooth scrolling */
@@ -44,9 +82,9 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Focus styles */
+/* Focus styles - TEDx red */
 *:focus-visible {
-  outline: 2px solid #dc2626;
+  outline: 2px solid var(--ted-red);
   outline-offset: 2px;
   border-radius: 4px;
 }
@@ -107,10 +145,10 @@ html {
 
 @keyframes glow {
   0%, 100% {
-    box-shadow: 0 0 20px rgba(220, 38, 38, 0.3), 0 0 40px rgba(37, 99, 235, 0.2);
+    box-shadow: 0 0 20px rgba(230, 43, 30, 0.25);
   }
   50% {
-    box-shadow: 0 0 30px rgba(220, 38, 38, 0.5), 0 0 60px rgba(37, 99, 235, 0.4);
+    box-shadow: 0 0 30px rgba(230, 43, 30, 0.4);
   }
 }
 
@@ -182,20 +220,17 @@ html {
   animation-delay: 0.5s;
 }
 
-/* Glassmorphism effect */
+/* Glassmorphism - TEDx style (subtle) */
 .glass {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-/* Gradient text */
+/* TEDx accent text */
 .gradient-text {
-  background: linear-gradient(135deg, #dc2626, #2563eb);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--ted-red);
 }
 
 /* Shimmer effect */
@@ -210,14 +245,14 @@ html {
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* Card hover effects */
+/* Card hover – premium, Montmartre-style */
 .card-hover {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s ease;
 }
 
 .card-hover:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.25);
 }
 
 /* Button effects */
