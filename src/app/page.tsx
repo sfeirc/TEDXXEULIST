@@ -1,12 +1,15 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import Image from 'next/image';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import Starfield from '@/components/Starfield';
 import { Calendar, Users, Handshake } from 'lucide-react';
+
+const EuropeanStarsWebGL = dynamic(() => import('@/components/EuropeanStarsWebGL'), { ssr: false });
 
 export default function Home() {
   const [timeLeft, setTimeLeft] = useState({
@@ -40,6 +43,7 @@ export default function Home() {
     <div className="min-h-screen bg-black relative overflow-hidden">
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <Starfield />
+        <EuropeanStarsWebGL />
         <div className="absolute top-0 left-1/4 w-[32rem] h-[32rem] bg-[#e62b1e]/[0.07] rounded-full blur-3xl"></div>
         <div className="absolute bottom-0 right-1/4 w-[32rem] h-[32rem] bg-[#e62b1e]/[0.05] rounded-full blur-3xl"></div>
       </div>
