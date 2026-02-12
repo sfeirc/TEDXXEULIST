@@ -42,11 +42,11 @@ export default function Team() {
       photo: "https://i.imgur.com/bk1Zigv.jpg"
     },
     {
-      name: "Maxime",
+      name: "Clarissa",
       role: "Créateur de Contenu",
       team: "Communication",
       description: "Elaboration de contenu relatif au projet TEDX IMT,  participe à la promotion de la conférence sur les différents médias",
-      photo: "https://imgur.com/vZd25do.jpg"
+      photo: "https://i.imgur.com/sMOeQnw.jpeg"
     },
     {
       name: "Theo",
