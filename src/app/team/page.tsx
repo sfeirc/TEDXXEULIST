@@ -7,13 +7,6 @@ import { ArrowLeft } from 'lucide-react';
 export default function Team() {
   const teamMembers = [
     {
-      name: "Antoine",
-      role: "Coordinateur Général",
-      team: "Coordination",
-      description: "Assure la bonne coordination entre les différents pôles d’action, vérification de l’avancement du projet, du respect des délais et contrôle qualité sur les étapes clés de l’organisation.",
-      photo: "https://i.imgur.com/4HCB0To.jpg"
-    },
-    {
       name: "Clovis",
       role: "Directeur Communication",
       team: "Communication",
