@@ -14,19 +14,20 @@ export default function Team() {
       photo: "https://imgur.com/LeD6M4C.jpg"
     },
     {
-      name: "Tiago",
-      role: "Directeur Communication",
-      team: "Communication",
-      description: "Pilote la stratégie de communication et la visibilité du projet. Coordonne les supports, les réseaux sociaux et les canaux de diffusion du TEDx.",
-      photo: "https://i.imgur.com/sH46wlg.jpeg"
-    },
-    {
       name: "Clovis",
       role: "Directeur Technique",
       team: "Technique",
       description: "Responsable de la technique événementielle : son, lumière, visuels et infrastructure technique. Garant du bon déroulement technique le jour J.",
       photo: "https://imgur.com/nAAULb5.jpg"
     },
+    {
+      name: "Tiago",
+      role: "Directeur Communication",
+      team: "Communication",
+      description: "Pilote la stratégie de communication et la visibilité du projet. Coordonne les supports, les réseaux sociaux et les canaux de diffusion du TEDx.",
+      photo: "https://i.imgur.com/sH46wlg.jpeg"
+    },
+
     {
       name: "Valentin",
       role: "Relation Sponsors",
