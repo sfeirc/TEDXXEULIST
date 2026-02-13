@@ -7,59 +7,66 @@ import { ArrowLeft } from 'lucide-react';
 export default function Team() {
   const teamMembers = [
     {
-      name: "Clovis",
+      name: "Théo",
+      role: "Directeur Général",
+      team: "Direction",
+      description: "Pilotage stratégique et direction de l'équipe organisatrice du TEDx. Assure la cohérence du projet et la coordination entre tous les pôles.",
+      photo: "https://imgur.com/LeD6M4C.jpg"
+    },
+    {
+      name: "Tiago",
       role: "Directeur Communication",
       team: "Communication",
-      description: "Consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore.",
+      description: "Pilote la stratégie de communication et la visibilité du projet. Coordonne les supports, les réseaux sociaux et les canaux de diffusion du TEDx.",
+      photo: "https://i.imgur.com/sH46wlg.jpeg"
+    },
+    {
+      name: "Clovis",
+      role: "Directeur Technique",
+      team: "Technique",
+      description: "Responsable de la technique événementielle : son, lumière, visuels et infrastructure technique. Garant du bon déroulement technique le jour J.",
       photo: "https://imgur.com/nAAULb5.jpg"
+    },
+    {
+      name: "Valentin",
+      role: "Relation Sponsors",
+      team: "Partenariats",
+      description: "En charge du développement des partenariats et de la relation avec les sponsors et mécènes. Assure le lien entre l'équipe et les soutiens du projet.",
+      photo: "https://imgur.com/HS6y4mW.jpg"
+    },
+    {
+      name: "Clarissa",
+      role: "Coordinatrice Junior Entreprise France / Europe",
+      team: "Coordination",
+      description: "Coordination des échanges et des projets avec le réseau Junior Entreprise France et Europe. Interface avec le mouvement JE pour le TEDx.",
+      photo: "https://i.imgur.com/sMOeQnw.jpeg"
     },
     {
       name: "Daner",
       role: "Manager Logistique",
       team: "Logistique",
-      description: "Gère l’accès aux ressources et aux matériels nécessaires pour l’organisation du projet. Assure le respect des différentes exigences associées aux projets (Sécurité, accessibilité…)",
+      description: "Gère l’accès aux ressources et aux matériels nécessaires pour l’organisation du projet. Assure le respect des exigences (sécurité, accessibilité).",
       photo: "https://i.imgur.com/a2E8lRY.jpg"
     },
     {
       name: "Etienne",
       role: "Relations Conférenciers",
       team: "Coordination",
-      description: "Mise en relation avec les différents intervenants de la conférence TEDX IMT, encadre et soutient les différentes prises de parole sur le thème de la conférence.",
+      description: "Mise en relation avec les intervenants de la conférence. Encadre et soutient les prises de parole sur le thème du TEDx.",
       photo: "https://imgur.com/0rTLU7d.jpg"
     },
     {
       name: "Leo",
       role: "Coordinateur Partenariats",
       team: "Partenariats",
-      description: "Recherche et créer des partenariats soutenant la mise en place du projet TEDX IMT, mise en relation entre l’équipe d’organisation et les entreprises partenaires.",
+      description: "Recherche et création de partenariats pour la mise en place du projet. Mise en relation entre l'équipe et les entreprises partenaires.",
       photo: "https://i.imgur.com/bk1Zigv.jpg"
-    },
-    {
-      name: "Clarissa",
-      role: "Créateur de Contenu",
-      team: "Communication",
-      description: "Elaboration de contenu relatif au projet TEDX IMT,  participe à la promotion de la conférence sur les différents médias",
-      photo: "https://i.imgur.com/sMOeQnw.jpeg"
-    },
-    {
-      name: "Theo",
-      role: "Relations Médias",
-      team: "Communication",
-      description: "Gère la communication entre l’équipe d’organisation et les diffèrent média pour amener une visibilité positive, diffuse les message clé du projet",
-      photo: "https://imgur.com/LeD6M4C.jpg"
-    },
-    {
-      name: "Valentin",
-      role: "Responsable Technique",
-      team: "Logistique",
-      description: "Assure la bonne mise en place et exécution du projet. Travaille au bon déroulement de la conférence (éclairage, sons, visuel…)",
-      photo: "https://imgur.com/HS6y4mW.jpg"
     },
     {
       name: "Raphael",
       role: "Responsable Communication",
       team: "Communication",
-      description: "Promouvoir le projet : Mettre en avant la conférence et assurer la bonne image du projet.",
+      description: "Promotion du projet et visibilité de la conférence. Veille à l'image et à la cohérence des messages diffusés.",
       photo: "https://imgur.com/8GwceGM.jpg"
     }
   ];
