@@ -11,7 +11,7 @@ describe('Home', () => {
 
   it('renders date and venue', () => {
     render(<Home />);
-    expect(screen.getByText(/February 2027 · Théâtre Mogador/)).toBeInTheDocument();
+    expect(screen.getByText(/22 February 2027 · Théâtre Mogador/)).toBeInTheDocument();
   });
 
   it('has CTA links to about and contact', () => {

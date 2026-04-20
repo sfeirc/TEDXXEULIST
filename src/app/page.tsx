@@ -16,7 +16,8 @@ export default function Home() {
   });
 
   useEffect(() => {
-    const targetDate = new Date('2026-09-01T00:00:00').getTime();
+    // Event day start (Europe/Paris, Feb 2027)
+    const targetDate = new Date('2027-02-22T00:00:00+01:00').getTime();
 
     const timer = setInterval(() => {
       const now = new Date().getTime();
@@ -107,7 +108,7 @@ export default function Home() {
             </p>
 
             <p className="text-[#e62b1e]/90 text-xs md:text-sm font-semibold tracking-[0.35em] uppercase mb-12 md:mb-14 animate-fade-in delay-500">
-              February 2027 · Théâtre Mogador
+              22 February 2027 · Théâtre Mogador
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in-up delay-500">
