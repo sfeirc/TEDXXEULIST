@@ -44,6 +44,15 @@ function MemberCard({ member }: { member: TeamMember }) {
 export default function Team() {
   const teamMembers: TeamMember[] = [
     {
+      name: 'Clarissa',
+      role: 'Head of Speaker Relations',
+      team: 'Speaker Relations',
+      school: 'IMT Atlantique',
+      description:
+        'Steers the speaker program: strategy, quality of the line-up, and liaison with the Junior-Enterprise network across France and Europe as a key interface for the TEDx.',
+      photo: 'https://i.imgur.com/sMOeQnw.jpeg',
+    },
+    {
       name: 'Théo',
       role: 'General Manager',
       team: 'Leadership',
@@ -60,15 +69,6 @@ export default function Team() {
       description:
         'Defines the technical setup for the venue — sound, lighting, video, and graphics — and leads technicians and cues so the show runs cleanly on the day.',
       photo: 'https://imgur.com/nAAULb5.jpg',
-    },
-    {
-      name: 'Clarissa',
-      role: 'Head of Speaker Relations',
-      team: 'Speaker Relations',
-      school: 'IMT Atlantique',
-      description:
-        'Steers the speaker program: strategy, quality of the line-up, and liaison with the Junior-Enterprise network across France and Europe as a key interface for the TEDx.',
-      photo: 'https://i.imgur.com/sMOeQnw.jpeg',
     },
     {
       name: 'Tiago',
