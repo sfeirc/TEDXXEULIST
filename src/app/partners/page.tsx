@@ -6,82 +6,83 @@ import { ArrowLeft, Handshake, Building, ExternalLink } from 'lucide-react';
 
 export default function Partners() {
   const institutionalPartners = [
-    { 
-      name: "Fondation IMT", 
-      description: "Institut Mines-Télécom", 
-      logo: "https://upload.wikimedia.org/wikipedia/commons/b/b0/IMT_logo_2017.png"
+    {
+      name: 'IMT Foundation',
+      description: 'Institut Mines-Télécom',
+      logo: 'https://upload.wikimedia.org/wikipedia/commons/b/b0/IMT_logo_2017.png',
+      useText: true as boolean,
     },
-    { 
-      name: "EULiST", 
-      description: "European Universities", 
-      logo: "https://eulist.university/wp-content/themes/eulist/images/logo-new.png"
+    {
+      name: 'EULiST',
+      description: 'European Universities',
+      logo: 'https://eulist.university/wp-content/themes/eulist/images/logo-new.png',
+      useText: false,
     },
-    { 
-      name: "IMT Atlantique", 
-      description: "Grande école d'ingénieurs", 
-      logo: "https://www.imt-atlantique.fr/sites/default/files/ecole/logos/imtatlantique/imtatlantique-rvb-reserve.png"
+    {
+      name: 'IMT Atlantique',
+      description: 'Graduate engineering school',
+      logo: 'https://www.imt-atlantique.fr/sites/default/files/ecole/logos/imtatlantique/imtatlantique-rvb-reserve.png',
+      useText: false,
     },
-    { 
-      name: "Union des Élèves de l'IMT", 
-      description: "Sit amet consectetur", 
-      logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSq4jUMcAyO5Ttl_f0mlqs-0UuLgrEQ4PPjOA&s"
+    {
+      name: 'Union des Élèves de l’IMT',
+      description: 'IMT student union',
+      logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSq4jUMcAyO5Ttl_f0mlqs-0UuLgrEQ4PPjOA&s',
+      useText: false,
     },
-    { 
-      name: "TEDx", 
-      description: "Ideas Worth Spreading", 
-      logo: "https://landing-pages.ted.com/tedx-logo-generator/assets/logo.png"
-    }
+    {
+      name: 'TEDx',
+      description: 'Ideas worth spreading',
+      logo: 'https://landing-pages.ted.com/tedx-logo-generator/assets/logo.png',
+      useText: false,
+    },
   ];
 
   const partnershipTiers = [
     {
-      name: "Platine",
-      amount: "€10,000+",
-      benefits: ["Lorem ipsum dolor sit", "Consectetur adipiscing elit", "Sed do eiusmod tempor", "Incididunt ut labore"],
-      color: "from-slate-700 to-slate-800 border-slate-600"
+      name: 'Platinum',
+      amount: '€10,000+',
+      benefits: ['Lorem ipsum dolor sit', 'Consectetur adipiscing elit', 'Sed do eiusmod tempor', 'Incididunt ut labore'],
+      emphasis: true,
     },
     {
-      name: "Or",
-      amount: "€5,000+",
-      benefits: ["Ut enim ad minim", "Quis nostrud exercitation", "Ullamco laboris nisi"],
-      color: "from-yellow-600 to-yellow-700 border-yellow-500"
+      name: 'Gold',
+      amount: '€5,000+',
+      benefits: ['Ut enim ad minim', 'Quis nostrud exercitation', 'Ullamco laboris nisi'],
+      emphasis: false,
     },
     {
-      name: "Argent",
-      amount: "€2,500+",
-      benefits: ["Duis aute irure", "In reprehenderit voluptate", "Velit esse cillum"],
-      color: "from-gray-400 to-gray-500 border-gray-400"
+      name: 'Silver',
+      amount: '€2,500+',
+      benefits: ['Duis aute irure', 'In reprehenderit voluptate', 'Velit esse cillum'],
+      emphasis: false,
     },
     {
-      name: "Bronze",
-      amount: "€1,000+",
-      benefits: ["Excepteur sint", "Cupidatat non proident"],
-      color: "from-orange-600 to-orange-700 border-orange-500"
-    }
+      name: 'Bronze',
+      amount: '€1,000+',
+      benefits: ['Excepteur sint', 'Cupidatat non proident'],
+      emphasis: false,
+    },
   ];
 
   return (
-    <div className="min-h-screen bg-black relative overflow-hidden">
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#e62b1e]/5 rounded-full blur-3xl"></div>
-      </div>
-
+    <div className="min-h-screen relative overflow-hidden font-inter">
       <Navigation />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 py-6">
-        <Link href="/" className="inline-flex items-center gap-2 text-white/80 hover:text-white transition-colors">
+        <Link href="/" className="back-link">
           <ArrowLeft className="w-4 h-4" />
-          Retour à l'accueil
+          Back to home
         </Link>
       </div>
 
       <main className="relative z-10 max-w-7xl mx-auto px-6 pb-20">
         <div className="text-center mb-16">
-          <h1 className="text-5xl font-bold text-white mb-6">Partenaires</h1>
-          
-          {/* Main Partnership Banner - TEDx style, IMT as white text */}
+          <p className="page-eyebrow mb-4">Support</p>
+          <h1 className="font-bold text-4xl md:text-6xl lg:text-7xl text-white mb-6 tracking-tight">Partners</h1>
+
           <div className="max-w-5xl mx-auto mb-12">
-            <div className="glass rounded-2xl p-8 border border-white/10">
+            <div className="nuclear-card rounded-3xl p-8 md:p-10">
               <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12 mb-6">
                 <div className="text-center">
                   <Image
@@ -94,7 +95,12 @@ export default function Partners() {
                 </div>
                 <div className="text-4xl md:text-6xl font-bold text-white tracking-tight">×</div>
                 <div className="text-center flex items-center">
-                  <span className="font-bold text-white tracking-tight text-[3.5rem] md:text-[5.5rem]" style={{ letterSpacing: '-0.04em' }}>IMT</span>
+                  <span
+                    className="font-bold text-white tracking-tight text-[3.5rem] md:text-[5.5rem] bg-gradient-to-b from-white to-white/80 bg-clip-text text-transparent"
+                    style={{ letterSpacing: '-0.04em' }}
+                  >
+                    IMT
+                  </span>
                 </div>
               </div>
               <div className="flex items-center justify-center gap-3 pt-6 border-t border-white/10">
@@ -108,20 +114,23 @@ export default function Partners() {
                 />
               </div>
               <p className="text-white/80 text-center mt-6 max-w-2xl mx-auto">
-                Une collaboration exceptionnelle entre TEDx et la Fondation IMT, soutenue par le réseau européen EULiST
+                A collaboration between TEDx and the IMT Foundation, strengthened by the European EULiST network.
               </p>
             </div>
           </div>
         </div>
 
         <section className="mb-16">
-          <div className="glass rounded-2xl border border-white/10 p-8">
-            <h2 className="text-3xl font-bold text-white mb-8 text-center">Partenaires Institutionnels</h2>
+          <div className="nuclear-card rounded-3xl p-8 md:p-10">
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-10 text-center">Institutional partners</h2>
             <div className="flex flex-wrap justify-center gap-6">
               {institutionalPartners.map((partner, index) => (
-                <div key={index} className="bg-white/5 rounded-xl p-6 text-center border border-white/10 hover:border-white/20 transition-all w-80 flex-shrink-0">
+                <div
+                  key={index}
+                  className="rounded-2xl p-6 text-center border border-[#e62b1e]/15 bg-black/35 hover:border-[#e62b1e]/35 transition-all w-80 flex-shrink-0 card-hover"
+                >
                   <div className="w-full h-32 rounded-lg flex items-center justify-center mx-auto mb-4 p-4 overflow-hidden">
-                    {partner.name === 'Fondation IMT' ? (
+                    {partner.useText ? (
                       <span className="text-4xl font-bold text-white tracking-tight">IMT</span>
                     ) : (
                       <Image
@@ -142,32 +151,37 @@ export default function Partners() {
         </section>
 
         <section className="mb-16">
-          <div className="glass rounded-2xl p-8 text-center border border-white/10">
-            <h2 className="text-3xl font-bold text-white mb-4">Logos Sponsors</h2>
+          <div className="nuclear-card rounded-3xl p-8 md:p-10 text-center">
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">Sponsor logos</h2>
             <p className="text-xl text-white/80 mb-8">
-              Derrière chaque idée, des partenaires engagés : découvrez ceux qui font briller TEDx IMT
+              Behind every idea, partners who make TEDx IMT shine — logos will appear here.
             </p>
-            <div className="bg-white/5 rounded-xl p-8 border border-white/10">
-              <Building className="w-16 h-16 text-white/40 mx-auto mb-4" />
-              <p className="text-white/70">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <div className="rounded-2xl p-8 border border-[#e62b1e]/15 bg-black/40">
+              <Building className="w-16 h-16 text-[#e62b1e]/50 mx-auto mb-4" />
+              <p className="text-white/70">Placeholder — sponsor wall coming soon.</p>
             </div>
           </div>
         </section>
 
         <section className="mb-16">
-          <div className="glass rounded-2xl border border-white/10 p-8">
-            <h2 className="text-3xl font-bold text-white mb-8 text-center">Niveaux de Partenariat</h2>
+          <div className="nuclear-card rounded-3xl p-8 md:p-10">
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-10 text-center">Partnership tiers</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {partnershipTiers.map((tier, index) => (
-                <div key={index} className={`bg-gradient-to-br ${tier.color} rounded-xl p-6 text-white border`}>
-                  <div className="text-center mb-6">
-                    <h3 className="text-xl font-bold mb-2">{tier.name}</h3>
-                    <div className="text-2xl font-bold">{tier.amount}</div>
+                <div
+                  key={index}
+                  className={`tier-nuclear rounded-xl p-6 text-white ${tier.emphasis ? 'tier-nuclear--pulse' : ''}`}
+                >
+                  <div className="text-center mb-6 relative z-[1]">
+                    <h3 className="text-xl font-bold mb-2 text-[#fecaca]">{tier.name}</h3>
+                    <div className="text-2xl font-bold bg-gradient-to-b from-white to-white/75 bg-clip-text text-transparent">
+                      {tier.amount}
+                    </div>
                   </div>
-                  <ul className="space-y-3">
+                  <ul className="space-y-3 relative z-[1]">
                     {tier.benefits.map((benefit, benefitIndex) => (
-                      <li key={benefitIndex} className="flex items-start gap-2 text-sm">
-                        <span className="w-1.5 h-1.5 bg-white rounded-full mt-2 flex-shrink-0"></span>
+                      <li key={benefitIndex} className="flex items-start gap-2 text-sm text-white/85">
+                        <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#e62b1e] shadow-[0_0_6px_rgba(230,43,30,0.9)]" />
                         <span>{benefit}</span>
                       </li>
                     ))}
@@ -179,56 +193,51 @@ export default function Partners() {
         </section>
 
         <section className="mb-16">
-          <div className="glass rounded-2xl border border-white/10 p-8">
+          <div className="nuclear-card rounded-3xl p-8 md:p-10">
             <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold text-white mb-4">Devenez Partenaire</h2>
+              <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">Become a partner</h2>
               <p className="text-xl text-white/80 max-w-3xl mx-auto mb-6">
-                Rejoignez-nous dans cette aventure pour diffuser des idées qui transforment et inspirent.
+                Join us in spreading ideas that transform and inspire.
               </p>
             </div>
 
             <div className="text-center">
-              <a 
+              <a
                 href="https://forms.google.com/partnership-application"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-[#e62b1e] text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-[#c92419] transition-all"
+                className="btn-nuclear-primary inline-flex items-center gap-2 px-10 py-4 rounded-full text-lg"
               >
                 <Handshake className="w-5 h-5" />
-                Devenir Partenaire
+                Apply as a partner
               </a>
             </div>
-            
+
             <p className="text-white/70 text-center mt-6 text-lg">
-              Intéressé par un partenariat ? Rejoignez-nous pour faire partie de cette aventure.
+              Interested in supporting TEDx IMT? We would love to hear from you.
             </p>
           </div>
         </section>
 
         <div className="text-center">
-          <div className="glass rounded-2xl p-8 border border-white/10">
-            <h2 className="text-2xl font-bold text-white mb-4">Prêt à Collaborer?</h2>
-            <p className="text-white/80 mb-6">
-              Ensemble, créons un impact positif et partageons des idées qui changent le monde.
-            </p>
+          <div className="nuclear-card rounded-3xl p-8 md:p-10 max-w-3xl mx-auto">
+            <h2 className="text-2xl font-bold text-white mb-4">Ready to collaborate?</h2>
+            <p className="text-white/80 mb-6">Let&apos;s build positive impact and share ideas that matter.</p>
             <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2 bg-[#e62b1e] text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-[#c92419] transition-all"
-              >
+              <Link href="/contact" className="btn-nuclear-primary inline-flex items-center gap-2 px-10 py-4 rounded-full text-lg">
                 <Handshake className="w-5 h-5" />
-                Nous Contacter
+                Contact us
               </Link>
               <a
                 href="mailto:contact@tedxeulistparis.com"
-                className="inline-flex items-center gap-2 border-2 border-white text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white hover:text-black transition-all"
+                className="btn-nuclear-ghost inline-flex items-center gap-2 px-10 py-4 rounded-full text-lg"
               >
                 <ExternalLink className="w-5 h-5" />
-                Envoyer Email
+                Email us
               </a>
             </div>
             <p className="text-white/70 text-center mt-6 text-lg">
-              Vous souhaitez collaborer avec l'équipe d'organisation du projet TEDx IMT ? Contactez-nous pour en savoir plus.
+              Want to work with the TEDx IMT organizing team? Get in touch for more details.
             </p>
           </div>
         </div>

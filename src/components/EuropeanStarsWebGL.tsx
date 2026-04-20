@@ -7,7 +7,6 @@ const EU_GOLD = 0xffd700;
 const EU_GOLD_HEX = new THREE.Color(EU_GOLD);
 const STAR_COUNT = 12; // EU flag: 12 stars in a circle
 const RADIUS = 1.4;
-const STAR_POINT_UP = true; // EU: one point always upward
 
 function createStarShape(outerRadius = 0.08, innerRadius = 0.04, points = 5): THREE.Shape {
   const shape = new THREE.Shape();

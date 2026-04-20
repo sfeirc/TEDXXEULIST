@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Syne } from "next/font/google";
 import "./globals.css";
+import NuclearAtmosphere from "@/components/NuclearAtmosphere";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -9,10 +10,19 @@ const inter = Inter({
   weight: ["400", "500", "600", "700"],
 });
 
+const syne = Syne({
+  variable: "--font-syne",
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["500", "600", "700", "800"],
+});
+
 export const metadata: Metadata = {
-  title: "TEDxEULiSTParis 2026 - Lorem Ipsum Dolor Sit Amet",
-  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Février 2027 au Théâtre Mogador.",
-  keywords: "TEDx, EULiST, Paris, 2026, technology, innovation, Europe, universities européennes",
+  title: "TEDxEULiSTParis 2027 — What Connects Us",
+  description:
+    "TEDx IMT Paris — exploring human connection. February 2027 at Théâtre Mogador. Ideas worth spreading.",
+  keywords:
+    "TEDx, EULiST, Paris, IMT, technology, innovation, Europe, universities",
   authors: [{ name: "TEDxEULiSTParis Team" }],
   creator: "TEDxEULiSTParis",
   publisher: "TEDxEULiSTParis",
@@ -21,31 +31,33 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL('https://tedxeulistparis.com'),
+  metadataBase: new URL("https://tedxeulistparis.com"),
   alternates: {
-    canonical: '/',
+    canonical: "/",
   },
   openGraph: {
-    title: "TEDxEULiSTParis 2026 - Lorem Ipsum Dolor Sit Amet",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    url: 'https://tedxeulistparis.com',
-    siteName: 'TEDxEULiSTParis',
+    title: "TEDxEULiSTParis 2027 — What Connects Us",
+    description:
+      "TEDx IMT Paris — exploring human connection. February 2027 at Théâtre Mogador.",
+    url: "https://tedxeulistparis.com",
+    siteName: "TEDxEULiSTParis",
     images: [
       {
-        url: '/og-image.jpg',
+        url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: 'TEDxEULiSTParis 2026',
+        alt: "TEDxEULiSTParis 2027",
       },
     ],
-    locale: 'fr_FR',
-    type: 'website',
+    locale: "en_US",
+    type: "website",
   },
   twitter: {
-    card: 'summary_large_image',
-    title: "TEDxEULiSTParis 2026 - Lorem Ipsum Dolor Sit Amet",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    images: ['/og-image.jpg'],
+    card: "summary_large_image",
+    title: "TEDxEULiSTParis 2027 — What Connects Us",
+    description:
+      "TEDx IMT Paris — exploring human connection. February 2027 at Théâtre Mogador.",
+    images: ["/og-image.jpg"],
   },
   robots: {
     index: true,
@@ -53,9 +65,9 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
   },
 };
@@ -66,9 +78,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr" className={inter.variable}>
-      <body className="font-sans antialiased">
-        {children}
+    <html lang="en" className={`${inter.variable} ${syne.variable}`}>
+      <body className="font-sans antialiased text-white min-h-screen">
+        <NuclearAtmosphere />
+        <div className="relative z-10 min-h-screen">{children}</div>
       </body>
     </html>
   );

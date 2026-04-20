@@ -10,11 +10,11 @@ describe('Navigation', () => {
 
   it('renders main nav links', () => {
     render(<Navigation />);
-    expect(screen.getByRole('link', { name: 'À Propos' })).toHaveAttribute('href', '/about');
-    expect(screen.getByRole('link', { name: 'Équipe' })).toHaveAttribute('href', '/team');
-    expect(screen.getByRole('link', { name: 'Conférenciers' })).toHaveAttribute('href', '/speakers');
-    expect(screen.getByRole('link', { name: 'Infos' })).toHaveAttribute('href', '/practical-info');
-    expect(screen.getByRole('link', { name: 'Partenaires' })).toHaveAttribute('href', '/partners');
+    expect(screen.getByRole('link', { name: 'About' })).toHaveAttribute('href', '/about');
+    expect(screen.getByRole('link', { name: 'Team' })).toHaveAttribute('href', '/team');
+    expect(screen.getByRole('link', { name: 'Speakers' })).toHaveAttribute('href', '/speakers');
+    expect(screen.getByRole('link', { name: 'Info' })).toHaveAttribute('href', '/practical-info');
+    expect(screen.getByRole('link', { name: 'Partners' })).toHaveAttribute('href', '/partners');
     expect(screen.getByRole('link', { name: 'Contact' })).toHaveAttribute('href', '/contact');
   });
 });

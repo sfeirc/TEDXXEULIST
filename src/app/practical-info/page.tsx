@@ -6,85 +6,86 @@ import { ArrowLeft, MapPin, Clock, Calendar, MessageCircle } from 'lucide-react'
 export default function PracticalInfo() {
   const faqs = [
     {
-      question: "À qui s'adresse l'événement ?",
-      answer: "L'événement s'adresse à tous ceux qui souhaitent découvrir des idées innovantes et inspirantes. Que vous soyez étudiant, professionnel ou curieux, TEDx IMT est ouvert à tous."
+      question: 'Who is the event for?',
+      answer:
+        'Anyone curious about bold ideas — students, professionals, or first-timers. TEDx IMT is open to all.',
     },
     {
-      question: "Comment puis-je assister à la conférence TEDx IMT ?",
-      answer: "Pour assister à la conférence TEDx IMT, il vous suffit de vous inscrire en ligne via notre formulaire d'inscription. Les places sont limitées, alors ne tardez pas !"
+      question: 'How do I attend TEDx IMT?',
+      answer:
+        'Register online when tickets open. Seats are limited — sign up early.',
     },
     {
-      question: "Quels critères sont pris en compte pour sélectionner les intervenants ?",
-      answer: "Les intervenants sont sélectionnés selon plusieurs critères : la pertinence et l'originalité de leur sujet, leur capacité à inspirer et captiver le public, ainsi que la clarté et l'impact de leur présentation. L'objectif est de garantir des talks mémorables et enrichissants pour tous les participants."
+      question: 'How are speakers selected?',
+      answer:
+        'We look at topic relevance and originality, ability to inspire a live audience, and clarity of delivery — so every talk is memorable.',
     },
     {
-      question: "Y aura-t-il des pauses ou un moment de networking ?",
-      answer: "Oui ! Un moment de networking est prévu de 18h15 à 22h, idéal pour échanger et rencontrer les intervenants ainsi que les autres participants. Pour plus de détails sur les horaires, consultez le programme disponible sur cette page."
-    }
+      question: 'Will there be breaks or networking?',
+      answer:
+        'Yes. Networking runs from 6:15pm to 10:00pm so you can meet speakers and attendees. See the schedule on this page for timings.',
+    },
   ];
 
   return (
-    <div className="min-h-screen bg-black relative overflow-hidden">
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#e62b1e]/5 rounded-full blur-3xl"></div>
-      </div>
-
+    <div className="min-h-screen relative overflow-hidden font-inter">
       <Navigation />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 py-6">
-        <Link href="/" className="inline-flex items-center gap-2 text-white/80 hover:text-white transition-colors">
+        <Link href="/" className="back-link">
           <ArrowLeft className="w-4 h-4" />
-          Retour à l'accueil
+          Back to home
         </Link>
       </div>
 
       <main className="relative z-10 max-w-6xl mx-auto px-6 pb-20">
         <div className="text-center mb-16">
-          <h1 className="text-5xl font-bold text-white mb-6">Informations Pratiques</h1>
-          <p className="text-xl text-white/80 max-w-3xl mx-auto mb-4">
-            Retrouvez ici toutes les informations dont vous avez besoin pour vivre pleinement l'expérience TEDx IMT.
+          <p className="page-eyebrow mb-4">Logistics</p>
+          <h1 className="font-bold text-4xl md:text-6xl lg:text-7xl text-white mb-6 tracking-tight">Practical information</h1>
+          <p className="text-lg md:text-xl text-white/70 max-w-3xl mx-auto">
+            Everything you need to get the most out of TEDx IMT.
           </p>
         </div>
 
         <section className="mb-16">
-          <div className="glass rounded-2xl border border-white/10 p-8">
-            <h2 className="text-3xl font-bold text-white mb-8 flex items-center gap-3">
-              <Calendar className="w-8 h-8 text-[#e62b1e]" />
-              Programme
+          <div className="nuclear-card rounded-3xl p-8 md:p-10">
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-8 flex items-center gap-3">
+              <Calendar className="w-8 h-8 text-[#e62b1e] shrink-0" />
+              Schedule
             </h2>
             <div className="space-y-6">
-              <div className="bg-white/5 rounded-xl p-6 border border-white/10">
+              <div className="rounded-2xl p-6 border border-[#e62b1e]/15 bg-black/35">
                 <h3 className="text-xl font-semibold text-white mb-4 flex items-center gap-2">
                   <Clock className="w-5 h-5 text-[#e62b1e]" />
-                  Matin
+                  Morning
                 </h3>
-                <p className="text-white/80 italic">A priori, rien le matin</p>
+                <p className="text-white/70 italic">No public program in the morning (tbc).</p>
               </div>
-              <div className="bg-white/5 rounded-xl p-6 border border-white/10">
+              <div className="rounded-2xl p-6 border border-[#e62b1e]/15 bg-black/35">
                 <h3 className="text-xl font-semibold text-white mb-4 flex items-center gap-2">
                   <Clock className="w-5 h-5 text-[#e62b1e]" />
-                  Après-midi
+                  Afternoon &amp; evening
                 </h3>
-                <div className="space-y-3 text-white/80">
-                  <div className="flex justify-between">
-                    <span>13h00 – 14h00</span>
-                    <span>Accueil du public et ouverture des portes</span>
+                <div className="space-y-3 text-white/80 text-sm md:text-base">
+                  <div className="flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-4 border-b border-white/5 pb-3 last:border-0">
+                    <span className="text-[#e62b1e]/90 font-mono tabular-nums shrink-0">1:00pm – 2:00pm</span>
+                    <span>Doors open &amp; welcome</span>
                   </div>
-                  <div className="flex justify-between">
-                    <span>14h00 – 16h00</span>
-                    <span>Première session de conférences</span>
+                  <div className="flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-4 border-b border-white/5 pb-3 last:border-0">
+                    <span className="text-[#e62b1e]/90 font-mono tabular-nums shrink-0">2:00pm – 4:00pm</span>
+                    <span>First talk session</span>
                   </div>
-                  <div className="flex justify-between">
-                    <span>16h00 – 16h30</span>
-                    <span>Pause et échanges informels</span>
+                  <div className="flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-4 border-b border-white/5 pb-3 last:border-0">
+                    <span className="text-[#e62b1e]/90 font-mono tabular-nums shrink-0">4:00pm – 4:30pm</span>
+                    <span>Break &amp; informal chat</span>
                   </div>
-                  <div className="flex justify-between">
-                    <span>16h30 – 18h00</span>
-                    <span>Deuxième session de conférences</span>
+                  <div className="flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-4 border-b border-white/5 pb-3 last:border-0">
+                    <span className="text-[#e62b1e]/90 font-mono tabular-nums shrink-0">4:30pm – 6:00pm</span>
+                    <span>Second talk session</span>
                   </div>
-                  <div className="flex justify-between">
-                    <span>18h15 – 22h00</span>
-                    <span>Buffet & session de networking</span>
+                  <div className="flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-4">
+                    <span className="text-[#e62b1e]/90 font-mono tabular-nums shrink-0">6:15pm – 10:00pm</span>
+                    <span>Buffet &amp; networking</span>
                   </div>
                 </div>
               </div>
@@ -93,25 +94,31 @@ export default function PracticalInfo() {
         </section>
 
         <section className="mb-16">
-          <div className="glass rounded-2xl border border-white/10 p-8">
-            <h2 className="text-3xl font-bold text-white mb-8 flex items-center gap-3">
-              <MapPin className="w-8 h-8 text-[#e62b1e]" />
-              Lieu & Accès
+          <div className="nuclear-card rounded-3xl p-8 md:p-10">
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-8 flex items-center gap-3">
+              <MapPin className="w-8 h-8 text-[#e62b1e] shrink-0" />
+              Venue &amp; access
             </h2>
             <div className="grid md:grid-cols-2 gap-8">
               <div>
-                <h3 className="text-xl font-semibold text-white mb-4">Cité des sciences et de l'industrie</h3>
-                <div className="space-y-3 text-white/80">
-                  <p>30, avenue Corentin-Cariou</p>
-                  <p>75019 Paris</p>
+                <h3 className="text-xl font-semibold text-white mb-4">Cité des sciences et de l&apos;industrie</h3>
+                <div className="space-y-3 text-white/75">
+                  <p>30 avenue Corentin-Cariou</p>
+                  <p>75019 Paris, France</p>
                 </div>
               </div>
-              <div className="bg-white/5 rounded-xl p-6 border border-white/10">
-                <h4 className="font-semibold text-white mb-4">Comment S'y Rendre</h4>
-                <div className="space-y-3 text-white/80 text-sm">
-                  <p><strong>Métro :</strong> ligne 7, station Porte de la Villette</p>
-                  <p><strong>Bus :</strong> lignes 71, 139, 150, 152, station Porte de la Villette</p>
-                  <p><strong>Tramway :</strong> T3b (Porte de Vincennes - Porte Dauphine), station Porte de la Villette</p>
+              <div className="rounded-2xl p-6 border border-[#e62b1e]/15 bg-black/35">
+                <h4 className="font-semibold text-white mb-4">Getting here</h4>
+                <div className="space-y-3 text-white/75 text-sm leading-relaxed">
+                  <p>
+                    <strong className="text-white">Metro:</strong> line 7, Porte de la Villette
+                  </p>
+                  <p>
+                    <strong className="text-white">Bus:</strong> 71, 139, 150, 152 — Porte de la Villette
+                  </p>
+                  <p>
+                    <strong className="text-white">Tram:</strong> T3b — Porte de la Villette
+                  </p>
                 </div>
               </div>
             </div>
@@ -119,16 +126,16 @@ export default function PracticalInfo() {
         </section>
 
         <section className="mb-16">
-          <div className="glass rounded-2xl border border-white/10 p-8">
-            <h2 className="text-3xl font-bold text-white mb-8 flex items-center gap-3">
-              <MessageCircle className="w-8 h-8 text-[#e62b1e]" />
+          <div className="nuclear-card rounded-3xl p-8 md:p-10">
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-8 flex items-center gap-3">
+              <MessageCircle className="w-8 h-8 text-[#e62b1e] shrink-0" />
               FAQ
             </h2>
             <div className="space-y-6">
               {faqs.map((faq, index) => (
-                <div key={index} className="border-b border-white/10 pb-6 last:border-b-0">
+                <div key={index} className="border-b border-white/8 pb-6 last:border-b-0 last:pb-0">
                   <h3 className="text-lg font-semibold text-white mb-2">{faq.question}</h3>
-                  <p className="text-white/80">{faq.answer}</p>
+                  <p className="text-white/75 leading-relaxed">{faq.answer}</p>
                 </div>
               ))}
             </div>
@@ -136,17 +143,12 @@ export default function PracticalInfo() {
         </section>
 
         <div className="text-center">
-          <div className="glass rounded-2xl p-8 border border-white/10">
-            <h2 className="text-2xl font-bold text-white mb-4">Encore Des Questions?</h2>
-            <p className="text-white/80 mb-6">
-            Pour toute question supplémentaire, veuillez nous contacter directement via la page dédiée.
-            </p>
-            <Link 
-              href="/contact"
-              className="inline-flex items-center gap-2 bg-[#e62b1e] text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-[#c92419] transition-all"
-            >
+          <div className="nuclear-card rounded-3xl p-8 md:p-10 inline-block w-full max-w-2xl mx-auto">
+            <h2 className="text-2xl font-bold text-white mb-4">More questions?</h2>
+            <p className="text-white/70 mb-8 leading-relaxed">Reach us via the contact page — we&apos;re happy to help.</p>
+            <Link href="/contact" className="btn-nuclear-primary inline-flex items-center gap-2 px-10 py-4 rounded-full text-base">
               <MessageCircle className="w-5 h-5" />
-              Contactez-Nous
+              Contact us
             </Link>
           </div>
         </div>

@@ -1,45 +1,89 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Footer() {
   return (
-    <footer className="relative z-10 mt-20 border-t border-white/10 bg-black/90 backdrop-blur-sm overflow-hidden">
-      <div className="absolute top-0 left-0 right-0 h-0.5 bg-[#e62b1e]"></div>
-      
-      <div className="max-w-7xl mx-auto px-6 py-8">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="flex flex-col items-center gap-3">
-            <div className="flex items-center gap-2">
-              <div className="transition-opacity duration-200 hover:opacity-90">
-                <Image src="https://landing-pages.ted.com/tedx-logo-generator/assets/logo.png" alt="TEDx" width={60} height={24} className="w-auto h-5 md:h-6 ted-logo-red" />
+    <footer className="relative z-20 mt-24 border-t border-[#e62b1e]/20 bg-black/80 backdrop-blur-xl overflow-hidden font-inter">
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#e62b1e] to-transparent opacity-90" />
+      <div
+        className="absolute inset-0 opacity-[0.04] pointer-events-none"
+        style={{
+          backgroundImage: `linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)`,
+          backgroundSize: '48px 48px',
+        }}
+        aria-hidden
+      />
+
+      <div className="relative max-w-7xl mx-auto px-6 py-12 md:py-14">
+        <div className="flex flex-col lg:flex-row justify-between items-center gap-10 lg:gap-12">
+          <div className="flex flex-col items-center lg:items-start gap-4">
+            <div className="flex items-center gap-3">
+              <div className="drop-shadow-[0_0_20px_rgba(230,43,30,0.35)]">
+                <Image
+                  src="https://landing-pages.ted.com/tedx-logo-generator/assets/logo.png"
+                  alt="TEDx"
+                  width={60}
+                  height={24}
+                  className="w-auto h-5 md:h-6 ted-logo-red"
+                />
               </div>
               <span className="text-white font-bold text-2xl tracking-tight">×</span>
-              <span className="text-white font-bold tracking-tight text-[1.5rem] md:text-[1.75rem]">IMT</span>
+              <span className="text-white font-extrabold tracking-tight text-[1.5rem] md:text-[1.85rem]">
+                IMT
+              </span>
             </div>
-            <div className="flex items-center gap-2">
-              <span className="text-white/60 text-xs">in partnership with</span>
-              <div className="transition-opacity hover:opacity-90">
-                <Image src="https://eulist.university/wp-content/themes/eulist/images/logo-new.png" alt="EULiST" width={80} height={40} className="w-auto h-6" />
-              </div>
+            <div className="flex items-center gap-2 flex-wrap justify-center">
+              <span className="text-white/45 text-[0.65rem] font-semibold uppercase tracking-[0.18em]">
+                in partnership with
+              </span>
+              <Image
+                src="https://eulist.university/wp-content/themes/eulist/images/logo-new.png"
+                alt="EULiST"
+                width={80}
+                height={40}
+                className="w-auto h-6 opacity-90"
+              />
             </div>
-            <span className="text-white/60 text-xs">Paris 2026</span>
+            <span className="text-[#e62b1e] text-xs font-semibold tracking-[0.25em] uppercase">
+              Paris 2027
+            </span>
           </div>
-          
-          <div className="text-white/70 text-sm text-center">
-            <p className="text-white font-semibold">Une collaboration TEDx × IMT</p>
-            <p className="text-white/60 text-xs mt-1">avec le soutien d'EULiST</p>
-            <p className="text-xs mt-2 text-white/50">© 2026 TEDx × IMT - Tous droits réservés</p>
+
+          <div className="text-center max-w-md">
+            <p className="font-semibold text-lg md:text-xl text-white tracking-tight">
+              A TEDx × IMT collaboration
+            </p>
+            <p className="text-white/50 text-sm mt-2">with the support of EULiST</p>
+            <p className="text-xs mt-4 text-white/35 tracking-wide">
+              © 2026 TEDx × IMT — All rights reserved
+            </p>
           </div>
-          
-          <div className="flex flex-wrap gap-3 md:gap-4 text-white/60 text-xs md:text-sm justify-center md:justify-end">
-            <a href="https://www.ted.com/about/programs-initiatives/tedx-program" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">TEDx</a>
-            <a href="https://www.imt.fr/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">IMT</a>
-            <a href="https://eulist.university/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">EULiST</a>
-            <a href="https://europa.eu/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">EU</a>
-            <a href="https://www.union-eleves-imt.org/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors whitespace-nowrap">Union IMT</a>
+
+          <div className="flex flex-wrap gap-x-5 gap-y-2 text-white/45 text-xs md:text-sm justify-center lg:justify-end max-w-md">
+            {[
+              ['TEDx', 'https://www.ted.com/about/programs-initiatives/tedx-program'],
+              ['IMT', 'https://www.imt.fr/'],
+              ['EULiST', 'https://eulist.university/'],
+              ['EU', 'https://europa.eu/'],
+              ['Union IMT', 'https://www.union-eleves-imt.org/'],
+            ].map(([label, href]) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-[#e62b1e] transition-colors underline-offset-4 hover:underline"
+              >
+                {label}
+              </a>
+            ))}
+            <Link href="/contact" className="hover:text-[#e62b1e] transition-colors">
+              Contact
+            </Link>
           </div>
         </div>
       </div>
     </footer>
   );
 }
-

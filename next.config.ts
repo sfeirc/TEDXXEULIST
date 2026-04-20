@@ -1,10 +1,13 @@
 import type { NextConfig } from "next";
 
-const isProd = process.env.NODE_ENV === 'production';
+/** Override for GitHub Pages, e.g. `NEXT_BASE_PATH=/TEDXXEULIST npm run build`. Local dev: leave unset (serves `/`). */
+const basePath =
+  process.env.NEXT_BASE_PATH?.replace(/\/$/, "") ??
+  (process.env.NODE_ENV === "production" ? "/TEDXXEULIST" : "");
 
 const nextConfig: NextConfig = {
-  output: 'export',
-  basePath: isProd ? '/TEDXXEULIST' : '',
+  output: "export",
+  basePath,
   images: {
     unoptimized: true,
     remotePatterns: [
@@ -37,6 +40,17 @@ const nextConfig: NextConfig = {
         hostname: 'www.union-eleves-imt.org',
       },
     ],
+  },
+
+  /**
+   * Avoid stale webpack chunk manifests after `rm -rf .next` / concurrent writes
+   * (dev-only "Cannot find module './NNN.js'" from webpack-runtime).
+   */
+  webpack: (config, { dev }) => {
+    if (dev) {
+      config.cache = false;
+    }
+    return config;
   },
 };
 

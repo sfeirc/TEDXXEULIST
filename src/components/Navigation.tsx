@@ -5,72 +5,94 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Menu, X } from 'lucide-react';
 
+const links = [
+  { href: '/about', label: 'About' },
+  { href: '/team', label: 'Team' },
+  { href: '/speakers', label: 'Speakers' },
+  { href: '/practical-info', label: 'Info' },
+  { href: '/partners', label: 'Partners' },
+  { href: '/contact', label: 'Contact' },
+] as const;
+
 export default function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <nav className="relative z-20 px-4 md:px-6 py-3 md:py-4 glass border-b border-white/10">
+    <nav className="nav-chrome relative z-30 px-4 md:px-6 py-3 md:py-4 font-inter">
+      <div className="absolute bottom-0 left-0 h-[2px] w-full bg-gradient-to-r from-transparent via-[#e62b1e]/60 to-transparent pointer-events-none" aria-hidden />
       <div className="max-w-7xl mx-auto flex justify-between items-center">
-        <Link href="/" className="flex items-center gap-2 md:gap-4">
+        <Link href="/" className="flex items-center gap-2 md:gap-4 group">
           <div className="flex items-center gap-2 md:gap-3">
-            {/* TEDx Badge - white logo (Inter-style match) */}
-            <div className="transition-opacity duration-200 hover:opacity-90 flex items-center">
-              <Image 
-                src="https://landing-pages.ted.com/tedx-logo-generator/assets/logo.png" 
-                alt="TEDx" 
-                width={80} 
+            <div className="transition-[filter,opacity] duration-300 group-hover:opacity-95 group-hover:drop-shadow-[0_0_18px_rgba(230,43,30,0.45)] flex items-center">
+              <Image
+                src="https://landing-pages.ted.com/tedx-logo-generator/assets/logo.png"
+                alt="TEDx"
+                width={80}
                 height={30}
                 className="w-auto h-6 md:h-7 ted-logo-red"
               />
             </div>
             <span className="text-white font-bold text-2xl md:text-3xl leading-none tracking-tight">×</span>
-            {/* IMT – larger, matches TEDx logo prominence */}
-            <span className="text-white font-bold tracking-tight leading-none text-[1.75rem] md:text-[2.25rem]">IMT</span>
-            {/* Partnership indicator with EULIST */}
-            <div className="hidden lg:flex items-center gap-2 ml-2 px-3 py-1.5 rounded-full border border-white/20">
-              <span className="text-white/70 text-xs font-medium">in partnership with</span>
-              <div className="transition-all hover:opacity-90">
-                <Image 
-                  src="https://eulist.university/wp-content/themes/eulist/images/logo-new.png" 
-                  alt="EULiST" 
-                  width={80} 
+            <span className="font-bold text-white tracking-tight leading-none text-[1.75rem] md:text-[2.35rem] bg-gradient-to-b from-white to-white/85 bg-clip-text">
+              IMT
+            </span>
+            <div className="hidden lg:flex items-center gap-2 ml-2 px-3 py-1.5 rounded-full border border-[#e62b1e]/25 bg-black/40 shadow-[0_0_24px_-8px_rgba(230,43,30,0.35)]">
+              <span className="text-white/55 text-[0.65rem] font-semibold uppercase tracking-[0.14em]">
+                in partnership with
+              </span>
+              <div className="transition-opacity hover:opacity-95">
+                <Image
+                  src="https://eulist.university/wp-content/themes/eulist/images/logo-new.png"
+                  alt="EULiST"
+                  width={80}
                   height={40}
                   className="w-auto h-5"
                 />
               </div>
             </div>
           </div>
-          <span className="text-white font-semibold text-sm md:text-lg hidden sm:block ml-2">Paris 2026</span>
+          <span className="text-white/90 font-semibold text-sm md:text-lg hidden sm:block ml-2 tracking-wide">
+            Paris 2027
+          </span>
         </Link>
 
-        {/* Desktop Menu – Montmartre: letter-spacing, smooth underline */}
-        <div className="hidden md:flex space-x-8">
-          <Link href="/about" className="text-white/80 hover:text-white transition-colors duration-200 relative group tracking-wide text-[0.9375rem] uppercase">À Propos<span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#e62b1e] transition-[width] duration-200 group-hover:w-full"></span></Link>
-          <Link href="/team" className="text-white/80 hover:text-white transition-colors duration-200 relative group tracking-wide text-[0.9375rem] uppercase">Équipe<span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#e62b1e] transition-[width] duration-200 group-hover:w-full"></span></Link>
-          <Link href="/speakers" className="text-white/80 hover:text-white transition-colors duration-200 relative group tracking-wide text-[0.9375rem] uppercase">Conférenciers<span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#e62b1e] transition-[width] duration-200 group-hover:w-full"></span></Link>
-          <Link href="/practical-info" className="text-white/80 hover:text-white transition-colors duration-200 relative group tracking-wide text-[0.9375rem] uppercase">Infos<span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#e62b1e] transition-[width] duration-200 group-hover:w-full"></span></Link>
-          <Link href="/partners" className="text-white/80 hover:text-white transition-colors duration-200 relative group tracking-wide text-[0.9375rem] uppercase">Partenaires<span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#e62b1e] transition-[width] duration-200 group-hover:w-full"></span></Link>
-          <Link href="/contact" className="text-white/80 hover:text-white transition-colors duration-200 relative group tracking-wide text-[0.9375rem] uppercase">Contact<span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#e62b1e] transition-[width] duration-200 group-hover:w-full"></span></Link>
+        <div className="hidden md:flex items-center gap-10">
+          {links.map(({ href, label }) => (
+            <Link
+              key={href}
+              href={href}
+              className="text-white/70 hover:text-white transition-colors duration-200 relative group text-[0.7rem] font-semibold uppercase tracking-[0.2em]"
+            >
+              {label}
+              <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-gradient-to-r from-[#e62b1e] to-[#ff6b5e] transition-[width] duration-300 group-hover:w-full shadow-[0_0_12px_rgba(230,43,30,0.6)]" />
+            </Link>
+          ))}
         </div>
 
-        <button 
+        <button
+          type="button"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden text-white p-2 hover:bg-white/10 rounded-lg transition-all"
-          aria-label="Toggle menu"
+          className="md:hidden text-white p-2.5 rounded-lg border border-white/10 bg-white/5 hover:bg-[#e62b1e]/15 hover:border-[#e62b1e]/40 transition-all"
+          aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
+          aria-expanded={mobileMenuOpen}
         >
-          {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
 
       {mobileMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 glass border-b border-white/10 animate-fade-in">
-          <div className="flex flex-col space-y-4 p-6">
-            <Link href="/about" onClick={() => setMobileMenuOpen(false)} className="text-white/80 hover:text-white py-2 border-b border-white/10">À Propos</Link>
-            <Link href="/team" onClick={() => setMobileMenuOpen(false)} className="text-white/80 hover:text-white py-2 border-b border-white/10">Équipe</Link>
-            <Link href="/speakers" onClick={() => setMobileMenuOpen(false)} className="text-white/80 hover:text-white py-2 border-b border-white/10">Conférenciers</Link>
-            <Link href="/practical-info" onClick={() => setMobileMenuOpen(false)} className="text-white/80 hover:text-white py-2 border-b border-white/10">Infos Pratiques</Link>
-            <Link href="/partners" onClick={() => setMobileMenuOpen(false)} className="text-white/80 hover:text-white py-2 border-b border-white/10">Partenaires</Link>
-            <Link href="/contact" onClick={() => setMobileMenuOpen(false)} className="text-white/80 hover:text-white py-2">Contact</Link>
+        <div className="md:hidden absolute top-full left-0 right-0 nuclear-card border-t-0 rounded-b-2xl mx-2 border border-[#e62b1e]/20 animate-fade-in shadow-[0_32px_60px_-20px_rgba(0,0,0,0.8)]">
+          <div className="flex flex-col p-2">
+            {links.map(({ href, label }) => (
+              <Link
+                key={href}
+                href={href}
+                onClick={() => setMobileMenuOpen(false)}
+                className="text-white/90 hover:text-white py-3.5 px-4 rounded-xl border border-transparent hover:border-[#e62b1e]/25 hover:bg-white/5 text-sm font-semibold uppercase tracking-wider"
+              >
+                {label}
+              </Link>
+            ))}
           </div>
         </div>
       )}
