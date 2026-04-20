@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
-import { ArrowLeft, Handshake, Building, ExternalLink } from 'lucide-react';
+import { ArrowLeft, Handshake, Building, ExternalLink, Star } from 'lucide-react';
 
 export default function Partners() {
   const institutionalPartners = [
@@ -38,30 +38,50 @@ export default function Partners() {
     },
   ];
 
+  const forumStandBeforeTedx =
+    'Forum stand presence at the theatre before TEDx';
+
   const partnershipTiers = [
     {
-      name: 'Platinum',
-      amount: '€10,000+',
-      benefits: ['Lorem ipsum dolor sit', 'Consectetur adipiscing elit', 'Sed do eiusmod tempor', 'Incididunt ut labore'],
-      emphasis: true,
+      name: 'Partner',
+      amount: '€5,000',
+      includesPrevious: false,
+      popular: false,
+      bullet: 'dot' as const,
+      benefits: [
+        'Logo on the website',
+        'Social media mention',
+        'Logo in the printed program',
+        '5 VIP seats',
+      ],
     },
     {
-      name: 'Gold',
-      amount: '€5,000+',
-      benefits: ['Ut enim ad minim', 'Quis nostrud exercitation', 'Ullamco laboris nisi'],
-      emphasis: false,
+      name: 'Major',
+      amount: '€10,000',
+      includesPrevious: true,
+      popular: true,
+      bullet: 'dot' as const,
+      benefits: [
+        'Buffet stand',
+        'Logo on hall screens',
+        'Job dating access',
+        '20 VIP seats',
+        forumStandBeforeTedx,
+      ],
     },
     {
-      name: 'Silver',
-      amount: '€2,500+',
-      benefits: ['Duis aute irure', 'In reprehenderit voluptate', 'Velit esse cillum'],
-      emphasis: false,
-    },
-    {
-      name: 'Bronze',
-      amount: '€1,000+',
-      benefits: ['Excepteur sint', 'Cupidatat non proident'],
-      emphasis: false,
+      name: 'Principal',
+      amount: '€20,000+',
+      includesPrevious: true,
+      popular: false,
+      bullet: 'star' as const,
+      benefits: [
+        'Stage opening',
+        'Sector exclusivity',
+        'Early access to CV database',
+        '50 VIP seats',
+        forumStandBeforeTedx,
+      ],
     },
   ];
 
@@ -158,30 +178,49 @@ export default function Partners() {
             </p>
             <div className="rounded-2xl p-8 border border-[#e62b1e]/15 bg-black/40">
               <Building className="w-16 h-16 text-[#e62b1e]/50 mx-auto mb-4" />
-              <p className="text-white/70">Placeholder — sponsor wall coming soon.</p>
+              <p className="text-white/70">Sponsor logos will appear here as they are confirmed.</p>
             </div>
           </div>
         </section>
 
         <section className="mb-16">
           <div className="nuclear-card rounded-3xl p-8 md:p-10">
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-10 text-center">Partnership tiers</h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="mb-10">
+              <h2 className="text-2xl md:text-3xl font-bold text-white tracking-wide uppercase mb-3">
+                Partnership tiers
+              </h2>
+              <div className="h-1 w-20 rounded-full bg-[#e62b1e]" aria-hidden />
+            </div>
+            <div className="grid md:grid-cols-3 gap-6">
               {partnershipTiers.map((tier, index) => (
                 <div
                   key={index}
-                  className={`tier-nuclear rounded-xl p-6 text-white ${tier.emphasis ? 'tier-nuclear--pulse' : ''}`}
+                  className={`tier-nuclear rounded-xl p-6 text-white relative ${tier.popular ? 'tier-nuclear--pulse ring-2 ring-[#e62b1e]/50' : ''}`}
                 >
-                  <div className="text-center mb-6 relative z-[1]">
-                    <h3 className="text-xl font-bold mb-2 text-[#fecaca]">{tier.name}</h3>
-                    <div className="text-2xl font-bold bg-gradient-to-b from-white to-white/75 bg-clip-text text-transparent">
+                  {tier.popular && (
+                    <div className="absolute -top-3 left-1/2 z-[2] -translate-x-1/2 rounded-full border border-[#e62b1e]/40 bg-black/80 px-3 py-0.5 text-[0.65rem] font-semibold uppercase tracking-[0.15em] text-[#fecaca]">
+                      Popular
+                    </div>
+                  )}
+                  <div className="text-center mb-6 relative z-[1] pt-1">
+                    <h3 className="text-xl font-bold mb-2 uppercase tracking-wide text-[#fecaca]">{tier.name}</h3>
+                    <div
+                      className={`text-2xl font-bold ${tier.popular ? 'text-[#e62b1e]' : 'bg-gradient-to-b from-white to-white/75 bg-clip-text text-transparent'}`}
+                    >
                       {tier.amount}
                     </div>
+                    {tier.includesPrevious && (
+                      <p className="text-xs text-white/55 mt-3 leading-snug">Includes previous benefits +</p>
+                    )}
                   </div>
-                  <ul className="space-y-3 relative z-[1]">
+                  <ul className="space-y-3 relative z-[1] text-left">
                     {tier.benefits.map((benefit, benefitIndex) => (
                       <li key={benefitIndex} className="flex items-start gap-2 text-sm text-white/85">
-                        <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#e62b1e] shadow-[0_0_6px_rgba(230,43,30,0.9)]" />
+                        {tier.bullet === 'star' ? (
+                          <Star className="mt-0.5 h-4 w-4 shrink-0 fill-[#e62b1e] text-[#e62b1e]" aria-hidden />
+                        ) : (
+                          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#e62b1e] shadow-[0_0_6px_rgba(230,43,30,0.9)]" />
+                        )}
                         <span>{benefit}</span>
                       </li>
                     ))}

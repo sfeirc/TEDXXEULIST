@@ -1,16 +1,15 @@
 # TEDxEULiSTParis 2027 Website
 
-Lorem Ipsum Dolor Sit Amet
+Public site for **TEDx IMT × EULiST** (Paris, February 2027).
 
 ## 🎯 Overview
 
-This is the official website for TEDxEULiSTParis 2027, combining the bold aesthetic of TEDx with the academic, European feel of EULiST. The event will be held at Théâtre Mogador in February 2027.
+Official English-language site for TEDxEULiSTParis 2027, with a dark “nuclear” TEDx red theme. The event is at Théâtre Mogador in February 2027.
 
 ### Design Philosophy
-- **TEDx Red** + **EULiST Blue**: Blended color scheme combining both brands
-- **Dark Academic Theme**: Slate/blue gradient backgrounds
-- **French Interface**: All UI text in French
-- **Lorem Ipsum Content**: Placeholder Latin text throughout
+- **TEDx red** on deep black, with EULiST partnership callouts
+- **Dark, high-contrast UI** with glass-style cards and subtle motion
+- **English copy** across navigation and pages (proper nouns may keep French diacritics, e.g. Théâtre Mogador)
 
 ## 🚀 Features
 
@@ -129,7 +128,7 @@ netlify deploy --prod
 
 ### GitHub Pages
 
-1. Update `next.config.js` with `output: 'export'`
+1. Configure `next.config.ts` with `output: 'export'` (already set) and `basePath` for GitHub Pages if needed
 2. Run `npm run build`
 3. Deploy the `out` directory
 
@@ -163,10 +162,8 @@ This project is created for TEDxEULiSTParis 2027, operating under a TEDx license
 
 ## 📧 Contact
 
-- **General**: contact@tedxeulistparis.com
-- **Team**: team@tedxeulistparis.com
-- **Partnerships**: partnerships@tedxeulistparis.com
-- **Speakers**: speakers@tedxeulistparis.com
+- **Speakers & talk proposals**: tedx.imt2026@gmail.com
+- **Sponsorship & partnerships**: tedximtpartenaire@gmail.com
 
 ## 🎉 MVP Launch Checklist
 
@@ -183,7 +180,7 @@ This project is created for TEDxEULiSTParis 2027, operating under a TEDx license
 - ⬜ Add partner logos
 - ⬜ Configure form submission endpoint
 - ⬜ Add Google Maps embed
-- ⬜ Create favicon
+- ✅ Favicon (`public/favicon.png`)
 - ⬜ Set up domain
 - ⬜ Configure analytics
 

@@ -10,6 +10,7 @@ const links = [
   { href: '/team', label: 'Team' },
   { href: '/speakers', label: 'Speakers' },
   { href: '/practical-info', label: 'Info' },
+  { href: '/eulist-mobility', label: 'EULiST mobility' },
   { href: '/partners', label: 'Partners' },
   { href: '/contact', label: 'Contact' },
 ] as const;
@@ -20,8 +21,8 @@ export default function Navigation() {
   return (
     <nav className="nav-chrome relative z-30 px-4 md:px-6 py-3 md:py-4 font-inter">
       <div className="absolute bottom-0 left-0 h-[2px] w-full bg-gradient-to-r from-transparent via-[#e62b1e]/60 to-transparent pointer-events-none" aria-hidden />
-      <div className="max-w-7xl mx-auto flex justify-between items-center">
-        <Link href="/" className="flex items-center gap-2 md:gap-4 group">
+      <div className="max-w-7xl mx-auto flex items-center gap-4 md:gap-6 min-w-0">
+        <Link href="/" className="flex shrink-0 min-w-0 items-center gap-2 md:gap-4 group">
           <div className="flex items-center gap-2 md:gap-3">
             <div className="transition-[filter,opacity] duration-300 group-hover:opacity-95 group-hover:drop-shadow-[0_0_18px_rgba(230,43,30,0.45)] flex items-center">
               <Image
@@ -56,17 +57,19 @@ export default function Navigation() {
           </span>
         </Link>
 
-        <div className="hidden md:flex items-center gap-10">
-          {links.map(({ href, label }) => (
-            <Link
-              key={href}
-              href={href}
-              className="text-white/70 hover:text-white transition-colors duration-200 relative group text-[0.7rem] font-semibold uppercase tracking-[0.2em]"
-            >
-              {label}
-              <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-gradient-to-r from-[#e62b1e] to-[#ff6b5e] transition-[width] duration-300 group-hover:w-full shadow-[0_0_12px_rgba(230,43,30,0.6)]" />
-            </Link>
-          ))}
+        <div className="hidden md:flex min-w-0 flex-1 justify-end overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          <div className="flex flex-nowrap items-center gap-x-5 lg:gap-x-6 pl-2">
+            {links.map(({ href, label }) => (
+              <Link
+                key={href}
+                href={href}
+                className="shrink-0 whitespace-nowrap text-white/70 hover:text-white transition-colors duration-200 relative group text-[0.65rem] lg:text-[0.7rem] font-semibold uppercase tracking-[0.16em] lg:tracking-[0.2em] leading-none py-1"
+              >
+                {label}
+                <span className="absolute -bottom-0.5 left-0 w-0 h-[2px] bg-gradient-to-r from-[#e62b1e] to-[#ff6b5e] transition-[width] duration-300 group-hover:w-full shadow-[0_0_12px_rgba(230,43,30,0.6)]" />
+              </Link>
+            ))}
+          </div>
         </div>
 
         <button

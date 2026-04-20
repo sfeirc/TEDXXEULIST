@@ -79,6 +79,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${syne.variable}`}>
+      <head>
+        <link rel="icon" href="/favicon.png" type="image/png" sizes="any" />
+        <link rel="apple-touch-icon" href="/favicon.png" />
+      </head>
       <body className="font-sans antialiased text-white min-h-screen">
         <NuclearAtmosphere />
         <div className="relative z-10 min-h-screen">{children}</div>

@@ -10,26 +10,20 @@ type TeamMember = {
   team: string;
   description: string;
   photo: string;
+  /** IMT school / institution when relevant */
+  school?: string;
 };
 
-function MemberCard({ member, featured = false }: { member: TeamMember; featured?: boolean }) {
+function MemberCard({ member }: { member: TeamMember }) {
   return (
-    <div
-      className={`nuclear-card rounded-3xl p-8 group card-hover hover:border-[#e62b1e]/30 ${
-        featured ? 'max-w-md w-full mx-auto' : ''
-      }`}
-    >
+    <div className="nuclear-card rounded-3xl p-8 group card-hover hover:border-[#e62b1e]/30">
       <div className="text-center mb-5">
-        <div
-          className={`mx-auto mb-5 relative overflow-hidden rounded-full border-2 border-[#e62b1e]/45 group-hover:scale-[1.03] transition-transform duration-300 shadow-[0_0_40px_-12px_rgba(230,43,30,0.45)] ${
-            featured ? 'w-44 h-44 md:w-48 md:h-48' : 'w-40 h-40'
-          }`}
-        >
+        <div className="w-40 h-40 mx-auto mb-5 relative overflow-hidden rounded-full border-2 border-[#e62b1e]/45 group-hover:scale-[1.03] transition-transform duration-300 shadow-[0_0_40px_-12px_rgba(230,43,30,0.45)]">
           <Image
             src={member.photo}
             alt={member.name}
-            width={featured ? 192 : 160}
-            height={featured ? 192 : 160}
+            width={160}
+            height={160}
             className="w-full h-full object-cover"
           />
         </div>
@@ -38,6 +32,9 @@ function MemberCard({ member, featured = false }: { member: TeamMember; featured
         <span className="inline-block bg-black/40 text-white/75 text-xs px-4 py-1.5 rounded-full border border-[#e62b1e]/25">
           {member.team}
         </span>
+        {member.school && (
+          <p className="text-white/60 text-xs mt-3 font-medium tracking-wide">{member.school}</p>
+        )}
       </div>
       <p className="text-white/70 text-sm text-center leading-relaxed">{member.description}</p>
     </div>
@@ -50,78 +47,157 @@ export default function Team() {
       name: 'Théo',
       role: 'General Manager',
       team: 'Leadership',
+      school: 'IMT Atlantique',
       description:
-        'Strategic direction of the organizing team. Keeps the project coherent and coordinates every workstream.',
+        'Sets priorities and timelines for the edition, arbitrates across teams, and is the main representative of the organizing committee to institutions and major partners.',
       photo: 'https://imgur.com/LeD6M4C.jpg',
     },
     {
       name: 'Clovis',
       role: 'Technical Director',
       team: 'Technical',
+      school: 'IMT Atlantique',
       description:
-        'Leads event technology: sound, lighting, visuals, and infrastructure — execution on show day.',
+        'Defines the technical setup for the venue — sound, lighting, video, and graphics — and leads technicians and cues so the show runs cleanly on the day.',
       photo: 'https://imgur.com/nAAULb5.jpg',
-    },
-    {
-      name: 'Tiago',
-      role: 'Communications Director',
-      team: 'Communications',
-      description:
-        'Owns comms strategy and visibility: channels, social media, and how the TEDx reaches its audience.',
-      photo: 'https://i.imgur.com/sH46wlg.jpeg',
     },
     {
       name: 'Clarissa',
       role: 'Head of Speaker Relations',
       team: 'Speaker Relations',
+      school: 'IMT Atlantique',
       description:
-        'Coordinates exchanges with the Junior Entreprise network across France and Europe as interface for the TEDx.',
+        'Steers the speaker program: strategy, quality of the line-up, and liaison with the Junior-Enterprise network across France and Europe as a key interface for the TEDx.',
       photo: 'https://i.imgur.com/sMOeQnw.jpeg',
     },
     {
-      name: 'Valentin',
-      role: 'Sponsorship Relations',
-      team: 'Partnerships',
+      name: 'Tiago',
+      role: 'Communications Director',
+      team: 'Communications',
+      school: 'IMT Atlantique',
       description:
-        'Develops partnerships and maintains relationships with sponsors and supporters of the project.',
-      photo: 'https://imgur.com/HS6y4mW.jpg',
+        'Owns overall communications strategy — brand positioning, flagship campaigns, and channel mix — so public messaging stays bold, coherent, and on strategy.',
+      photo: 'https://i.imgur.com/sH46wlg.jpeg',
     },
     {
       name: 'Daner',
       role: 'Logistics Manager',
       team: 'Logistics',
+      school: 'IMT Atlantique',
       description:
-        'Secures resources and materials for the event and ensures safety and accessibility requirements are met.',
+        'Plans venue flow, supplies, signage, and volunteer tasks; manages risk, access, and on-site safety so audience, crew, and speakers can move through the event without friction.',
       photo: 'https://i.imgur.com/a2E8lRY.jpg',
+    },
+    {
+      name: 'Thi Binh Minh Lê',
+      role: 'Communications Team',
+      team: 'Communications',
+      school: 'IMT Atlantique',
+      description:
+        'Contributes hands-on to comms production — copy, visuals, and campus outreach — under the director and lead, in line with the agreed editorial plan.',
+      photo: "https://i.imgur.com/7h2FtZC.png",
+    },
+    {
+      name: 'Eléonore Piette',
+      role: 'Secretary',
+      team: 'Leadership',
+      school: 'IMT Nord Europe',
+      description:
+        'Supports the secretary function alongside Arthur — agendas, written follow-ups, and formal coordination — with a focus on the IMT Nord Europe community.',
+      photo: "https://i.imgur.com/p73gfmR.jpeg",
     },
     {
       name: 'Etienne',
       role: 'Speaker Relations',
       team: 'Coordination',
+      school: 'IMT Atlantique',
       description:
-        'Primary contact for speakers — supports rehearsals and talks aligned with the event theme.',
+        'Central liaison for speakers inside the coordination track: schedules, deadlines, and alignment between speakers, rehearsals, and the rest of the organizing team.',
       photo: 'https://imgur.com/0rTLU7d.jpg',
-    },
-    {
-      name: 'Leo',
-      role: 'Partnerships Coordinator',
-      team: 'Partnerships',
-      description:
-        'Sources and builds partnerships, connecting the team with companies that support the project.',
-      photo: 'https://i.imgur.com/bk1Zigv.jpg',
     },
     {
       name: 'Raphael',
       role: 'Communications Lead',
       team: 'Communications',
+      school: 'IMT Atlantique',
       description:
-        'Promotes the conference and safeguards a consistent, strong message across all outreach.',
+        'Runs day-to-day comms execution: editorial calendar, key assets, and rollout across channels, keeping tone and timing consistent with the director\'s strategy.',
       photo: 'https://imgur.com/8GwceGM.jpg',
     },
+    {
+      name: 'Nour El Houda El Bouz',
+      role: 'Communications Team',
+      team: 'Communications',
+      school: 'IMT Nord Europe',
+      description:
+        'Supports campaigns and messaging for IMT Nord Europe audiences — amplifying the event locally and helping stories travel within that community.',
+      photo: "https://i.imgur.com/VDa5tcl.png",
+    },
+    {
+      name: 'Eunice Mboutchouang',
+      role: 'Hiring Team',
+      team: 'Hiring',
+      school: 'IMT Mines Albi',
+      description:
+        'Recruits and on-boards volunteers and contributors for the organizing team, working with IMT Mines Albi channels to grow a reliable crew around the event.',
+      photo: "https://i.imgur.com/pDsGgAN.jpeg",
+    },
+    {
+      name: 'Nicolas De Oliveira-Neige',
+      role: 'Partnerships Relations',
+      team: 'Partnerships',
+      school: 'Mines Saint-Étienne',
+      description:
+        'Prospects and cultivates sponsors and partners from the Mines Saint-Étienne and regional ecosystem, from first contact through deliverables and event-day recognition.',
+      photo: "https://i.imgur.com/qZJNz5M.jpeg",
+    },
+    
+    {
+      name: 'Oscar Hu',
+      role: 'Partnerships Relations',
+      team: 'Partnerships',
+      school: 'Télécom Paris',
+      description:
+        'Drives partnership outreach and follow-up anchored at Télécom Paris, connecting companies and foundations with sponsorship packages and on-site visibility.',
+      photo: "https://i.imgur.com/tTlWZbS.jpeg",
+    },
+    {
+      name: 'Théo Menoux',
+      role: 'Speaker Relations',
+      team: 'Speaker Relations',
+      school: 'IMT Mines Alès',
+      description:
+        'Part of the dedicated speaker squad: briefings, rehearsal logistics, and continuity so every talk fits the format, theme, and TEDx standards before the curtain goes up.',
+      photo: "https://i.imgur.com/hMwzqZJ.png",
+    },
+    {
+      name: 'Antoine Boissel',
+      role: 'Speaker Relations',
+      team: 'Speaker Relations',
+      school: 'IMT Alès',
+      description:
+        'Focuses on speaker preparation — content checks, staging notes, and backstage handovers — alongside the Alès-based speaker team through show week.',
+      photo: "https://i.imgur.com/qzjfmHj.jpeg",
+    },
+    {
+      name: 'Théophile Trillat',
+      role: 'Partnerships Relations',
+      team: 'Partnerships',
+      school: 'IMT Atlantique',
+      description:
+        'Builds the sponsor pipeline from IMT Atlantique: identifying prospects, tailoring pitches, and coordinating contract steps with the partnerships lead.',
+      photo: "https://i.imgur.com/HEpZyZs.jpeg",
+    },
+    {
+      name: 'Arthur Pasquier',
+      role: 'Secretary',
+      team: 'Leadership',
+      school: 'IMT Atlantique',
+      description:
+        'Keeps the committee\'s paper trail in order — agendas, minutes, official correspondence, and tracking decisions — so governance stays clear for leadership and sponsors.',
+      photo: "https://i.imgur.com/tP2M175.jpeg",
+    },
   ];
-
-  const lead = teamMembers.find((m) => m.name === 'Théo');
-  const rest = teamMembers.filter((m) => m.name !== 'Théo');
 
   return (
     <div className="min-h-screen relative overflow-hidden font-inter">
@@ -146,35 +222,11 @@ export default function Team() {
           </p>
         </div>
 
-        <section className="mb-6">
-          <div className="flex flex-col items-center">
-            {lead ? (
-              <>
-                <p className="text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-[#e62b1e]/90 mb-6">
-                  Leadership
-                </p>
-                <MemberCard member={lead} featured />
-              </>
-            ) : null}
-
-            <div className="flex flex-col items-center my-8 md:my-10" aria-hidden>
-              <div className="h-12 w-px bg-gradient-to-b from-[#e62b1e] via-[#e62b1e]/60 to-[#e62b1e]/20" />
-              <div
-                className="my-1 h-3 w-3 rounded-full border-2 border-[#e62b1e]/70 bg-[#e62b1e]/30 shadow-[0_0_20px_rgba(230,43,30,0.55)]"
-                aria-hidden
-              />
-              <div className="h-12 w-px bg-gradient-to-b from-[#e62b1e]/20 to-transparent" />
-            </div>
-
-            <p className="text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-white/45 mb-10">
-              Core team
-            </p>
-
-            <div className="grid w-full md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-              {rest.map((member) => (
-                <MemberCard key={member.name} member={member} />
-              ))}
-            </div>
+        <section>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            {teamMembers.map((member, index) => (
+              <MemberCard key={`${member.name}-${index}`} member={member} />
+            ))}
           </div>
         </section>
       </main>

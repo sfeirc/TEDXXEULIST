@@ -1,12 +1,23 @@
 import type { NextConfig } from "next";
 
-/** Override for GitHub Pages, e.g. `NEXT_BASE_PATH=/TEDXXEULIST npm run build`. Local dev: leave unset (serves `/`). */
+const isProd = process.env.NODE_ENV === "production";
+
+/**
+ * Dev runs **without** `output: "export"` and **without** Turbopack by default. That combination avoids manifest
+ * races (ENOENT on `app-build-manifest.json`, `_buildManifest.js.tmp.*`) seen with `next dev --turbopack` + static
+ * export.
+ *
+ * `output: "export"` applies only for production `next build` (GitHub Pages). Don’t edit this file while the dev
+ * server is running — Next restarts and can race with in-flight requests against `.next/`.
+ *
+ * GitHub Pages: `NEXT_BASE_PATH=/TEDXXEULIST npm run build`. Local dev: leave unset (serves `/`).
+ */
 const basePath =
   process.env.NEXT_BASE_PATH?.replace(/\/$/, "") ??
-  (process.env.NODE_ENV === "production" ? "/TEDXXEULIST" : "");
+  (isProd ? "/TEDXXEULIST" : "");
 
 const nextConfig: NextConfig = {
-  output: "export",
+  ...(isProd ? { output: "export" as const } : {}),
   basePath,
   images: {
     unoptimized: true,
@@ -39,18 +50,11 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'www.union-eleves-imt.org',
       },
+      {
+        protocol: 'https',
+        hostname: 'ui-avatars.com',
+      },
     ],
-  },
-
-  /**
-   * Avoid stale webpack chunk manifests after `rm -rf .next` / concurrent writes
-   * (dev-only "Cannot find module './NNN.js'" from webpack-runtime).
-   */
-  webpack: (config, { dev }) => {
-    if (dev) {
-      config.cache = false;
-    }
-    return config;
   },
 };
 

@@ -1,7 +1,10 @@
 import Link from 'next/link';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
-import { ArrowLeft, MapPin, Clock, Calendar, MessageCircle } from 'lucide-react';
+import { ArrowLeft, MapPin, Clock, Calendar, MessageCircle, FileDown, FileText } from 'lucide-react';
+
+const EULIST_BOOKLET_PDF_URL =
+  'https://drive.google.com/uc?id=1tTvaOdfvoImQAzlBbp_wT8bllQyv55rk';
 
 export default function PracticalInfo() {
   const faqs = [
@@ -46,6 +49,61 @@ export default function PracticalInfo() {
             Everything you need to get the most out of TEDx IMT.
           </p>
         </div>
+
+        <section className="mb-16" aria-labelledby="eulist-booklet-heading">
+          <div className="nuclear-card rounded-3xl p-0 overflow-hidden">
+            <div className="grid lg:grid-cols-[minmax(0,340px)_1fr]">
+              <div className="relative order-2 lg:order-1 border-t lg:border-t-0 lg:border-r border-[#e62b1e]/12 min-h-[220px] lg:min-h-[300px]">
+                <div className="absolute inset-0 bg-[radial-gradient(ellipse_85%_60%_at_50%_-10%,rgba(230,43,30,0.22),transparent_55%)] pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-br from-[#1f0a0a]/90 via-black/80 to-black pointer-events-none" />
+                <div className="relative z-10 h-full flex flex-col items-center justify-center px-8 py-10 lg:py-12">
+                  <div className="relative w-full max-w-[210px]">
+                    <div
+                      className="absolute -right-2 -top-2 h-full w-full rounded-lg border border-[#e62b1e]/20 bg-black/60 rotate-[2deg] shadow-lg"
+                      aria-hidden
+                    />
+                    <div
+                      className="absolute -right-1 -top-1 h-full w-full rounded-lg border border-[#e62b1e]/15 bg-black/50 -rotate-1 shadow-md"
+                      aria-hidden
+                    />
+                    <div className="relative rounded-lg border border-[#e62b1e]/35 bg-gradient-to-b from-[#140808] to-black p-8 shadow-[0_0_48px_-12px_rgba(230,43,30,0.35)] flex flex-col items-center text-center">
+                      <FileText className="w-12 h-12 text-[#e62b1e] mb-5 drop-shadow-[0_0_20px_rgba(230,43,30,0.35)]" aria-hidden />
+                      <p className="text-[0.65rem] uppercase tracking-[0.28em] text-[#fecaca]/85 mb-3">Booklet</p>
+                      <p className="font-semibold text-white text-base leading-snug tracking-tight">
+                        TEDx IMT
+                        <span className="block text-[#e62b1e]/95 mt-1">× EULiST</span>
+                      </p>
+                      <span className="mt-6 inline-block h-px w-12 bg-gradient-to-r from-transparent via-[#e62b1e]/50 to-transparent" aria-hidden />
+                      <p className="mt-4 text-[0.7rem] text-white/40 font-mono tabular-nums">PDF</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="order-1 lg:order-2 p-8 md:p-10 lg:p-12 flex flex-col justify-center">
+                <span className="inline-flex items-center gap-2 rounded-full border border-[#e62b1e]/30 bg-[#e62b1e]/10 px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-[#fecaca] w-fit mb-5">
+                  EULiST network
+                </span>
+                <h2 id="eulist-booklet-heading" className="text-2xl md:text-3xl font-bold text-white mb-4 tracking-tight">
+                  Partnership booklet
+                </h2>
+                <p className="text-white/70 leading-relaxed mb-8 max-w-lg text-[15px] md:text-base">
+                  Official PDF covering the TEDx IMT × EULiST collaboration — context on the European university
+                  alliance, what to expect on site, and useful pointers for participants coming from partner schools.
+                </p>
+                <a
+                  href={EULIST_BOOKLET_PDF_URL}
+                  className="btn-nuclear-primary inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full text-base sm:w-auto w-full"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FileDown className="w-5 h-5 shrink-0" aria-hidden />
+                  Download booklet
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
 
         <section className="mb-16">
           <div className="nuclear-card rounded-3xl p-8 md:p-10">
@@ -101,23 +159,27 @@ export default function PracticalInfo() {
             </h2>
             <div className="grid md:grid-cols-2 gap-8">
               <div>
-                <h3 className="text-xl font-semibold text-white mb-4">Cité des sciences et de l&apos;industrie</h3>
+                <h3 className="text-xl font-semibold text-white mb-4">Théâtre Mogador</h3>
+                <p className="text-white/65 text-sm mb-4">Historic theatre in the 9th arrondissement — main stage for TEDx IMT.</p>
                 <div className="space-y-3 text-white/75">
-                  <p>30 avenue Corentin-Cariou</p>
-                  <p>75019 Paris, France</p>
+                  <p>25 rue de Mogador</p>
+                  <p>75009 Paris, France</p>
                 </div>
               </div>
               <div className="rounded-2xl p-6 border border-[#e62b1e]/15 bg-black/35">
                 <h4 className="font-semibold text-white mb-4">Getting here</h4>
                 <div className="space-y-3 text-white/75 text-sm leading-relaxed">
                   <p>
-                    <strong className="text-white">Metro:</strong> line 7, Porte de la Villette
+                    <strong className="text-white">Metro:</strong> Notre-Dame-de-Lorette (line 12) — about 3 min walk;
+                    Chaussée d&apos;Antin — La Fayette (lines 7 &amp; 9) — about 5 min walk
                   </p>
                   <p>
-                    <strong className="text-white">Bus:</strong> 71, 139, 150, 152 — Porte de la Villette
+                    <strong className="text-white">Bus:</strong> lines serving Boulevard Haussmann / Chaussée
+                    d&apos;Antin area (e.g. 20, 27, 32, 42, 45, 66, 74, 85 — check stops near rue de Mogador)
                   </p>
                   <p>
-                    <strong className="text-white">Tram:</strong> T3b — Porte de la Villette
+                    <strong className="text-white">RER:</strong> Auber (RER A) or Haussmann — Saint-Lazare (RER E, metro
+                    7/9/12/13/14), then short walk
                   </p>
                 </div>
               </div>

@@ -5,9 +5,10 @@
   "description": "TEDxEULiSTParis 2027 - Engineering the Future of Connections",
   "author": "TEDxEULiSTParis Team",
   "scripts": {
-    "dev": "next dev --turbopack",
-    "dev:webpack": "next dev",
-    "dev:clean": "rm -rf .next && next dev --turbopack",
+    "dev": "next dev",
+    "dev:turbo": "next dev --turbopack",
+    "clean": "rm -rf .next node_modules/.cache",
+    "dev:clean": "npm run clean && next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",

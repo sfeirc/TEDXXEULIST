@@ -37,15 +37,15 @@ export default function Contact() {
   const contactInfo = [
     {
       icon: Mail,
-      title: 'General email',
-      details: 'contact@tedxeulistparis.com',
-      description: 'General questions and information requests',
+      title: 'Speakers & talk proposals',
+      details: 'tedx.imt2026@gmail.com',
+      description: 'Apply to speak, suggest a talk, or ask about the speaker line-up.',
     },
     {
       icon: Mail,
-      title: 'Team',
-      details: 'team@tedxeulistparis.com',
-      description: 'Reach the TEDx IMT organizing team',
+      title: 'Sponsorship & partnerships',
+      details: 'tedximtpartenaire@gmail.com',
+      description: 'Sponsor packages, partner tiers, and institutional visibility.',
     },
   ];
 
@@ -235,11 +235,11 @@ export default function Contact() {
                   <MapPin className="h-6 w-6 text-[#e62b1e]" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-white">Cité des sciences et de l&apos;industrie</h3>
+                  <h3 className="font-semibold text-white">Théâtre Mogador</h3>
                   <p className="text-white/75 text-sm mt-2 leading-relaxed">
-                    30 avenue Corentin-Cariou
+                    25 rue de Mogador
                     <br />
-                    75019 Paris, France
+                    75009 Paris, France
                   </p>
                 </div>
               </div>

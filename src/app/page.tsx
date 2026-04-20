@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
-import { Calendar, Users, Handshake, Zap } from 'lucide-react';
+import { Calendar, Users, Handshake } from 'lucide-react';
 
 export default function Home() {
   const [timeLeft, setTimeLeft] = useState({
@@ -42,13 +42,6 @@ export default function Home() {
       <main className="relative z-10">
         <section className="min-h-[88vh] flex flex-col justify-center px-4 md:px-8 py-16 md:py-24">
           <div className="max-w-6xl mx-auto w-full text-center">
-            <div className="mb-8 md:mb-10 flex justify-center">
-              <div className="inline-flex items-center gap-2 rounded-full border border-[#e62b1e]/30 bg-black/50 px-4 py-2 text-[0.65rem] font-semibold uppercase tracking-[0.22em] text-white/70 shadow-[0_0_40px_-12px_rgba(230,43,30,0.45)]">
-                <Zap className="h-3.5 w-3.5 text-[#e62b1e]" aria-hidden />
-                TEDx · engineering connection
-              </div>
-            </div>
-
             <div className="flex items-center justify-center gap-6 md:gap-14 mb-12 md:mb-16 flex-wrap">
               <a
                 href="https://www.ted.com/about/programs-initiatives/tedx-program"

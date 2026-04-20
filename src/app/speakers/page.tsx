@@ -3,6 +3,34 @@ import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { ArrowLeft, Mic, Calendar, ExternalLink } from 'lucide-react';
 
+const speakerDirections = [
+  {
+    theme: 'Social professions',
+    skills: 'Relations, solidarity, inclusion',
+    profession: 'Sociologist, psychologist, mediator, social worker',
+  },
+  {
+    theme: 'Networks and technology',
+    skills: 'Internet, social networks, global interconnection',
+    profession: 'Network engineer, data scientist, cybersecurity specialist',
+  },
+  {
+    theme: 'Environment',
+    skills: 'Ecosystems; links between people and nature',
+    profession: 'Environmental engineer, climatologist, sustainable urban planner',
+  },
+  {
+    theme: 'Science and interdisciplinarity',
+    skills: 'Collaboration across scientific fields',
+    profession: 'Researcher, R&D engineer, scientific project lead',
+  },
+  {
+    theme: 'Culture and communication',
+    skills: 'Language, art, how ideas travel',
+    profession: 'Journalist, communicator, translator, artist',
+  },
+] as const;
+
 export default function Speakers() {
   return (
     <div className="min-h-screen relative overflow-hidden font-inter">
@@ -45,48 +73,45 @@ export default function Speakers() {
 
         <section className="mb-16">
           <div className="nuclear-card rounded-3xl p-8 md:p-10">
-            <div className="text-center mb-10">
-              <h2 className="font-bold text-2xl md:text-4xl text-white mb-4">Apply to speak</h2>
-              <p className="text-lg text-white/75 max-w-3xl mx-auto leading-relaxed">
-                Interested in the red circle? Here is what we look for and what we offer speakers.
+            <div className="text-center mb-8">
+              <h2 className="font-bold text-2xl md:text-4xl text-white mb-3">Apply to speak</h2>
+              <p className="text-white/70 max-w-2xl mx-auto mb-6">
+                Five directions we care about — each in three short columns: theme, profession, skills.
               </p>
+              <h3 className="text-lg md:text-xl font-bold text-white tracking-tight">What we look for</h3>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-8 mb-10">
-              <div className="rounded-2xl border border-[#e62b1e]/15 bg-black/35 p-6">
-                <h3 className="text-xl font-bold text-white mb-4">What we look for</h3>
-                <ul className="space-y-3 text-white/80 text-sm leading-relaxed">
-                  <li className="flex items-start gap-3">
-                    <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-[#e62b1e] shadow-[0_0_8px_rgba(230,43,30,0.8)]" />
-                    <span>Lorem ipsum dolor sit amet consectetur adipiscing elit</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-[#e62b1e] shadow-[0_0_8px_rgba(230,43,30,0.8)]" />
-                    <span>Sed do eiusmod tempor incididunt ut labore</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-[#e62b1e] shadow-[0_0_8px_rgba(230,43,30,0.8)]" />
-                    <span>Ut enim ad minim veniam quis nostrud</span>
-                  </li>
-                </ul>
-              </div>
-              <div className="rounded-2xl border border-white/10 bg-black/35 p-6">
-                <h3 className="text-xl font-bold text-white mb-4">Benefits</h3>
-                <ul className="space-y-3 text-white/80 text-sm leading-relaxed">
-                  <li className="flex items-start gap-3">
-                    <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-white/80" />
-                    <span>Duis aute irure dolor in reprehenderit</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-white/80" />
-                    <span>Excepteur sint occaecat cupidatat non proident</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-white/80" />
-                    <span>Sunt in culpa qui officia deserunt mollit</span>
-                  </li>
-                </ul>
-              </div>
+            <div className="space-y-4 mb-10">
+              {speakerDirections.map((row, i) => (
+                <div
+                  key={row.theme}
+                  className="rounded-2xl border border-[#e62b1e]/15 bg-black/35 overflow-hidden"
+                >
+                  <p className="px-4 pt-3 pb-1 text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-[#e62b1e]/85">
+                    {i + 1}
+                  </p>
+                  <div className="grid sm:grid-cols-3 gap-0 sm:divide-x sm:divide-[#e62b1e]/15">
+                    <div className="p-4 sm:p-5 border-b sm:border-b-0 border-[#e62b1e]/15">
+                      <h3 className="text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-white/45 mb-2">
+                        Theme
+                      </h3>
+                      <p className="text-white font-semibold text-sm leading-snug">{row.theme}</p>
+                    </div>
+                    <div className="p-4 sm:p-5 border-b sm:border-b-0 border-[#e62b1e]/15">
+                      <h3 className="text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-white/45 mb-2">
+                        Profession
+                      </h3>
+                      <p className="text-white/80 text-sm leading-relaxed">{row.profession}</p>
+                    </div>
+                    <div className="p-4 sm:p-5">
+                      <h3 className="text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-white/45 mb-2">
+                        Skills
+                      </h3>
+                      <p className="text-white/80 text-sm leading-relaxed">{row.skills}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
 
             <div className="text-center">
