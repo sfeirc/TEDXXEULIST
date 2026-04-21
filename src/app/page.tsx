@@ -108,7 +108,7 @@ export default function Home() {
             </p>
 
             <p className="text-[#e62b1e]/90 text-xs md:text-sm font-semibold tracking-[0.35em] uppercase mb-12 md:mb-14 animate-fade-in delay-500">
-              22 February 2027 · Théâtre Mogador
+              22 February 2027 · Théâtre Folies Bergère
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in-up delay-500">

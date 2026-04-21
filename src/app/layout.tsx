@@ -20,7 +20,7 @@ const syne = Syne({
 export const metadata: Metadata = {
   title: "TEDxEULiSTParis 2027 — What Connects Us",
   description:
-    "TEDx IMT Paris — exploring human connection. February 2027 at Théâtre Mogador. Ideas worth spreading.",
+    "TEDx IMT Paris — exploring human connection. February 2027 at Théâtre Folies Bergère. Ideas worth spreading.",
   keywords:
     "TEDx, EULiST, Paris, IMT, technology, innovation, Europe, universities",
   authors: [{ name: "TEDxEULiSTParis Team" }],
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "TEDxEULiSTParis 2027 — What Connects Us",
     description:
-      "TEDx IMT Paris — exploring human connection. February 2027 at Théâtre Mogador.",
+      "TEDx IMT Paris — exploring human connection. February 2027 at Théâtre Folies Bergère.",
     url: "https://tedxeulistparis.com",
     siteName: "TEDxEULiSTParis",
     images: [
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "TEDxEULiSTParis 2027 — What Connects Us",
     description:
-      "TEDx IMT Paris — exploring human connection. February 2027 at Théâtre Mogador.",
+      "TEDx IMT Paris — exploring human connection. February 2027 at Théâtre Folies Bergère.",
     images: ["/og-image.jpg"],
   },
   robots: {

@@ -4,12 +4,12 @@ Public site for **TEDx IMT × EULiST** (Paris, February 2027).
 
 ## 🎯 Overview
 
-Official English-language site for TEDxEULiSTParis 2027, with a dark “nuclear” TEDx red theme. The event is at Théâtre Mogador in February 2027.
+Official English-language site for TEDxEULiSTParis 2027, with a dark “nuclear” TEDx red theme. The event is at Théâtre Folies Bergère in February 2027.
 
 ### Design Philosophy
 - **TEDx red** on deep black, with EULiST partnership callouts
 - **Dark, high-contrast UI** with glass-style cards and subtle motion
-- **English copy** across navigation and pages (proper nouns may keep French diacritics, e.g. Théâtre Mogador)
+- **English copy** across navigation and pages (proper nouns may keep French diacritics, e.g. Théâtre Folies Bergère)
 
 ## 🚀 Features
 

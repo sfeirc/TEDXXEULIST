@@ -159,10 +159,12 @@ export default function PracticalInfo() {
             </h2>
             <div className="grid md:grid-cols-2 gap-8">
               <div>
-                <h3 className="text-xl font-semibold text-white mb-4">Théâtre Mogador</h3>
-                <p className="text-white/65 text-sm mb-4">Historic theatre in the 9th arrondissement — main stage for TEDx IMT.</p>
+                <h3 className="text-xl font-semibold text-white mb-4">Théâtre Folies Bergère</h3>
+                <p className="text-white/65 text-sm mb-4">
+                  Historic Parisian cabaret and theatre in the 9th arrondissement — main stage for TEDx IMT.
+                </p>
                 <div className="space-y-3 text-white/75">
-                  <p>25 rue de Mogador</p>
+                  <p>32 rue Richer</p>
                   <p>75009 Paris, France</p>
                 </div>
               </div>
@@ -170,16 +172,17 @@ export default function PracticalInfo() {
                 <h4 className="font-semibold text-white mb-4">Getting here</h4>
                 <div className="space-y-3 text-white/75 text-sm leading-relaxed">
                   <p>
-                    <strong className="text-white">Metro:</strong> Notre-Dame-de-Lorette (line 12) — about 3 min walk;
-                    Chaussée d&apos;Antin — La Fayette (lines 7 &amp; 9) — about 5 min walk
+                    <strong className="text-white">Metro:</strong> Grands Boulevards (lines 8 &amp; 9) — about 2 min walk;
+                    Cadet or Le Peletier (line 7) — about 5 min walk; Chaussée d&apos;Antin — La Fayette (lines 7 &amp; 9)
+                    — about 7 min walk
                   </p>
                   <p>
-                    <strong className="text-white">Bus:</strong> lines serving Boulevard Haussmann / Chaussée
-                    d&apos;Antin area (e.g. 20, 27, 32, 42, 45, 66, 74, 85 — check stops near rue de Mogador)
+                    <strong className="text-white">Bus:</strong> lines along Boulevard Montmartre / Boulevard Haussmann
+                    (e.g. 20, 27, 32, 42, 45, 66, 74, 85 — check stops near rue Richer)
                   </p>
                   <p>
                     <strong className="text-white">RER:</strong> Auber (RER A) or Haussmann — Saint-Lazare (RER E, metro
-                    7/9/12/13/14), then short walk
+                    7/9/12/13/14), then metro or short walk to Grands Boulevards area
                   </p>
                 </div>
               </div>

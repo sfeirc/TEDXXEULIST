@@ -235,9 +235,9 @@ export default function Contact() {
                   <MapPin className="h-6 w-6 text-[#e62b1e]" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-white">Théâtre Mogador</h3>
+                  <h3 className="font-semibold text-white">Théâtre Folies Bergère</h3>
                   <p className="text-white/75 text-sm mt-2 leading-relaxed">
-                    25 rue de Mogador
+                    32 rue Richer
                     <br />
                     75009 Paris, France
                   </p>
