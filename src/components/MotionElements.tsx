@@ -107,7 +107,7 @@ export function StaggerContainer({
   margin?: string;
 }) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin });
+  const isInView = useInView(ref, { once: true, margin: margin as `${number}px ${number}px ${number}px ${number}px` });
 
   return (
     <motion.div

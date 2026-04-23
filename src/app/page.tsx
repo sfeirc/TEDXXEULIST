@@ -15,7 +15,6 @@ import {
   TiltCard,
   StaggerContainer,
   StaggerItem,
-  ParallaxLayer,
 } from '@/components/MotionElements';
 import { Calendar, Users, Handshake } from 'lucide-react';
 

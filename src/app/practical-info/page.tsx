@@ -17,7 +17,7 @@ import {
 const EULIST_BOOKLET_PDF_URL =
   'https://drive.google.com/uc?id=1tTvaOdfvoImQAzlBbp_wT8bllQyv55rk';
 
-function FaqItem({ question, answer, index }: { question: string; answer: string; index: number }) {
+function FaqItem({ question, answer }: { question: string; answer: string }) {
   const [open, setOpen] = useState(false);
   return (
     <motion.div
@@ -263,7 +263,7 @@ export default function PracticalInfo() {
               </h2>
               <div>
                 {faqs.map((faq, index) => (
-                  <FaqItem key={index} question={faq.question} answer={faq.answer} index={index} />
+                  <FaqItem key={index} question={faq.question} answer={faq.answer} />
                 ))}
               </div>
             </div>
