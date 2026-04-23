@@ -1,8 +1,16 @@
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { ArrowLeft } from 'lucide-react';
+import {
+  ScrollReveal,
+  StaggerContainer,
+  StaggerItem,
+  TiltCard,
+} from '@/components/MotionElements';
 
 type TeamMember = {
   name: string;
@@ -10,34 +18,36 @@ type TeamMember = {
   team: string;
   description: string;
   photo: string;
-  /** IMT school / institution when relevant */
   school?: string;
 };
 
 function MemberCard({ member }: { member: TeamMember }) {
   return (
-    <div className="nuclear-card rounded-3xl p-8 group card-hover hover:border-[#e62b1e]/30">
-      <div className="text-center mb-5">
-        <div className="w-40 h-40 mx-auto mb-5 relative overflow-hidden rounded-full border-2 border-[#e62b1e]/45 group-hover:scale-[1.03] transition-transform duration-300 shadow-[0_0_40px_-12px_rgba(230,43,30,0.45)]">
-          <Image
-            src={member.photo}
-            alt={member.name}
-            width={160}
-            height={160}
-            className="w-full h-full object-cover"
-          />
+    <TiltCard intensity={6}>
+      <div className="nuclear-card rounded-3xl p-8 group hover:border-[#e62b1e]/30 h-full transition-all duration-500">
+        <div className="text-center mb-5">
+          <div className="w-40 h-40 mx-auto mb-5 relative overflow-hidden rounded-full border-2 border-[#e62b1e]/45 group-hover:scale-[1.06] transition-all duration-500 shadow-[0_0_40px_-12px_rgba(230,43,30,0.45)] group-hover:shadow-[0_0_60px_-12px_rgba(230,43,30,0.65)] group-hover:border-[#e62b1e]/70">
+            <Image
+              src={member.photo}
+              alt={member.name}
+              width={160}
+              height={160}
+              className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          </div>
+          <h3 className="text-xl font-bold text-white mb-2">{member.name}</h3>
+          <p className="text-[#e62b1e] font-semibold text-sm mb-3 tracking-wide">{member.role}</p>
+          <span className="inline-block bg-black/40 text-white/75 text-xs px-4 py-1.5 rounded-full border border-[#e62b1e]/25">
+            {member.team}
+          </span>
+          {member.school && (
+            <p className="text-white/60 text-xs mt-3 font-medium tracking-wide">{member.school}</p>
+          )}
         </div>
-        <h3 className="text-xl font-bold text-white mb-2">{member.name}</h3>
-        <p className="text-[#e62b1e] font-semibold text-sm mb-3 tracking-wide">{member.role}</p>
-        <span className="inline-block bg-black/40 text-white/75 text-xs px-4 py-1.5 rounded-full border border-[#e62b1e]/25">
-          {member.team}
-        </span>
-        {member.school && (
-          <p className="text-white/60 text-xs mt-3 font-medium tracking-wide">{member.school}</p>
-        )}
+        <p className="text-white/70 text-sm text-center leading-relaxed">{member.description}</p>
       </div>
-      <p className="text-white/70 text-sm text-center leading-relaxed">{member.description}</p>
-    </div>
+    </TiltCard>
   );
 }
 
@@ -151,7 +161,6 @@ export default function Team() {
         'Prospects and cultivates sponsors and partners from the Mines Saint-Étienne and regional ecosystem, from first contact through deliverables and event-day recognition.',
       photo: "https://i.imgur.com/qZJNz5M.jpeg",
     },
-    
     {
       name: 'Oscar Hu',
       role: 'Partnerships Relations',
@@ -212,22 +221,30 @@ export default function Team() {
 
       <main className="relative z-10 max-w-7xl mx-auto px-6 pb-20">
         <div className="text-center mb-14 md:mb-16">
-          <p className="page-eyebrow mb-4">Organization</p>
-          <h1 className="font-bold text-4xl md:text-6xl lg:text-7xl text-white mb-6 tracking-tight">
-            Organizing team
-          </h1>
-          <p className="text-lg md:text-xl text-white/70 max-w-3xl mx-auto leading-relaxed">
-            TEDx IMT is run by students from across IMT, organized by role across comms, partnerships, logistics, and
-            more.
-          </p>
+          <ScrollReveal>
+            <p className="page-eyebrow mb-4">Organization</p>
+          </ScrollReveal>
+          <ScrollReveal delay={0.1}>
+            <h1 className="font-bold text-4xl md:text-6xl lg:text-7xl text-white mb-6 tracking-tight">
+              Organizing team
+            </h1>
+          </ScrollReveal>
+          <ScrollReveal delay={0.2}>
+            <p className="text-lg md:text-xl text-white/70 max-w-3xl mx-auto leading-relaxed">
+              TEDx IMT is run by students from across IMT, organized by role across comms, partnerships, logistics, and
+              more.
+            </p>
+          </ScrollReveal>
         </div>
 
         <section>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+          <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8" staggerDelay={0.06}>
             {teamMembers.map((member, index) => (
-              <MemberCard key={`${member.name}-${index}`} member={member} />
+              <StaggerItem key={`${member.name}-${index}`}>
+                <MemberCard member={member} />
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
         </section>
       </main>
 

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Syne } from "next/font/google";
 import "./globals.css";
 import NuclearAtmosphere from "@/components/NuclearAtmosphere";
+import { ScrollProgress, GlowCursor } from "@/components/MotionElements";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -85,6 +86,8 @@ export default function RootLayout({
       </head>
       <body className="font-sans antialiased text-white min-h-screen">
         <NuclearAtmosphere />
+        <ScrollProgress />
+        <GlowCursor />
         <div className="relative z-10 min-h-screen">{children}</div>
       </body>
     </html>
