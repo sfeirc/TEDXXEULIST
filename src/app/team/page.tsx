@@ -124,7 +124,11 @@ function PersonCard({ person, variant = 'member' }: { person: Person; variant?: 
       </div>
       <h3 className={`${c.name} font-bold text-white mb-0.5`}>{person.name}</h3>
       <p className={`${c.role} text-[#e62b1e] font-semibold tracking-wide`}>{person.role}</p>
-      {person.school && <p className="text-white/45 text-[0.65rem] mt-1 font-medium">{person.school}</p>}
+      {person.school && (
+        <p className="mt-2 inline-block bg-white/5 text-white/70 text-[0.7rem] font-semibold px-2.5 py-0.5 rounded-full border border-white/10 tracking-wide">
+          {person.school}
+        </p>
+      )}
     </div>
   );
 }
