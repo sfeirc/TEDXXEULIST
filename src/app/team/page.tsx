@@ -20,6 +20,13 @@ type Pole = {
   members: Person[];
 };
 
+const leader: Person = {
+  name: 'Théo',
+  role: 'General Manager',
+  photo: 'https://imgur.com/LeD6M4C.jpg',
+  school: 'IMT Atlantique',
+};
+
 const poles: Pole[] = [
   {
     name: 'Speaker Relations',
@@ -30,7 +37,6 @@ const poles: Pole[] = [
       school: 'IMT Atlantique',
     },
     members: [
-      { name: 'Etienne', role: 'Speaker Relations', photo: 'https://imgur.com/0rTLU7d.jpg', school: 'IMT Atlantique' },
       { name: 'Théo Menoux', role: 'Speaker Relations', photo: 'https://i.imgur.com/hMwzqZJ.png', school: 'IMT Mines Alès' },
       { name: 'Antoine Boissel', role: 'Speaker Relations', photo: 'https://i.imgur.com/qzjfmHj.jpeg', school: 'IMT Alès' },
       { name: 'Eunice Mboutchouang', role: 'Hiring', photo: 'https://i.imgur.com/pDsGgAN.jpeg', school: 'IMT Mines Albi' },
@@ -47,22 +53,6 @@ const poles: Pole[] = [
     members: [],
   },
   {
-    name: 'General Management',
-    director: {
-      name: 'Théo',
-      role: 'General Manager',
-      photo: 'https://imgur.com/LeD6M4C.jpg',
-      school: 'IMT Atlantique',
-    },
-    members: [
-      { name: 'Nicolas De Oliveira-Neige', role: 'Partnerships', photo: 'https://i.imgur.com/qZJNz5M.jpeg', school: 'Mines Saint-Étienne' },
-      { name: 'Oscar Hu', role: 'Partnerships', photo: 'https://i.imgur.com/tTlWZbS.jpeg', school: 'Télécom Paris' },
-      { name: 'Théophile Trillat', role: 'Partnerships', photo: 'https://i.imgur.com/HEpZyZs.jpeg', school: 'IMT Atlantique' },
-      { name: 'Arthur Pasquier', role: 'Secretary', photo: 'https://i.imgur.com/tP2M175.jpeg', school: 'IMT Atlantique' },
-      { name: 'Eléonore Piette', role: 'Secretary', photo: 'https://i.imgur.com/p73gfmR.jpeg', school: 'IMT Nord Europe' },
-    ],
-  },
-  {
     name: 'Communications',
     director: {
       name: 'Tiago',
@@ -74,6 +64,21 @@ const poles: Pole[] = [
       { name: 'Raphael', role: 'Communications Lead', photo: 'https://imgur.com/8GwceGM.jpg', school: 'IMT Atlantique' },
       { name: 'Thi Binh Minh Lê', role: 'Communications', photo: 'https://i.imgur.com/7h2FtZC.png', school: 'IMT Atlantique' },
       { name: 'Nour El Houda El Bouz', role: 'Communications', photo: 'https://i.imgur.com/VDa5tcl.png', school: 'IMT Nord Europe' },
+      { name: 'Eléonore Piette', role: 'Communication & Secretary', photo: 'https://i.imgur.com/HLAv67e.png', school: 'IMT Nord Europe' },
+    ],
+  },
+  {
+    name: 'Partnerships',
+    director: {
+      name: 'Charles Husson',
+      role: 'Head of Partnerships',
+      photo: 'https://i.imgur.com/jNNZ6MV.png',
+      school: 'Télécom SudParis',
+    },
+    members: [
+      { name: 'Nicolas De Oliveira-Neige', role: 'Partnerships', photo: 'https://i.imgur.com/qZJNz5M.jpeg', school: 'Mines Saint-Étienne' },
+      { name: 'Oscar Hu', role: 'Partnerships', photo: 'https://i.imgur.com/tTlWZbS.jpeg', school: 'Télécom Paris' },
+      { name: 'Théophile Trillat', role: 'Partnerships', photo: 'https://i.imgur.com/HEpZyZs.jpeg', school: 'IMT Atlantique' },
     ],
   },
   {
@@ -86,6 +91,11 @@ const poles: Pole[] = [
     },
     members: [],
   },
+];
+
+const activeMembers: Person[] = [
+  { name: 'Arthur Pasquier', role: 'Active Member', photo: 'https://i.imgur.com/tP2M175.jpeg', school: 'IMT Atlantique' },
+  { name: 'Etienne', role: 'Active Member', photo: 'https://imgur.com/0rTLU7d.jpg', school: 'IMT Atlantique' },
 ];
 
 function PersonCard({ person, variant = 'member' }: { person: Person; variant?: 'leader' | 'director' | 'member' }) {
@@ -202,6 +212,18 @@ export default function Team() {
         {/* === Org Chart === */}
         <section className="overflow-x-auto">
           <div className="min-w-[1000px] lg:min-w-0">
+
+            {/* General Manager */}
+            <ScrollReveal>
+              <div className="flex justify-center">
+                <PersonCard person={leader} variant="leader" />
+              </div>
+            </ScrollReveal>
+
+            {/* Connector from GM to directors */}
+            <VerticalLine height="h-10" />
+
+            {/* Director poles */}
             <ScrollReveal delay={0.15}>
               <div className="relative">
                 <div className="absolute top-0 left-[10%] right-[10%] h-px bg-gradient-to-r from-transparent via-[#e62b1e]/40 to-transparent" />
@@ -213,6 +235,23 @@ export default function Team() {
                 </div>
               </div>
             </ScrollReveal>
+
+            {/* Active Members */}
+            <div className="mt-16">
+              <ScrollReveal delay={0.25}>
+                <div className="text-center mb-6">
+                  <span className="text-white/30 text-xs font-semibold tracking-widest uppercase">
+                    Active Members
+                  </span>
+                </div>
+                <div className="flex justify-center gap-4">
+                  {activeMembers.map((member) => (
+                    <PersonCard key={member.name} person={member} variant="member" />
+                  ))}
+                </div>
+              </ScrollReveal>
+            </div>
+
           </div>
         </section>
       </main>
