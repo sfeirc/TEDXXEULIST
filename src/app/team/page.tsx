@@ -40,6 +40,8 @@ const poles: Pole[] = [
       { name: 'Théo Menoux', role: 'Speaker Relations', photo: 'https://i.imgur.com/hMwzqZJ.png', school: 'IMT Mines Alès' },
       { name: 'Antoine Boissel', role: 'Speaker Relations', photo: 'https://i.imgur.com/qzjfmHj.jpeg', school: 'IMT Alès' },
       { name: 'Eunice Mboutchouang', role: 'Hiring', photo: 'https://i.imgur.com/pDsGgAN.jpeg', school: 'IMT Mines Albi' },
+      { name: 'Alyssa Guichard', role: 'Speaker Relations', photo: 'https://i.imgur.com/HLAv67e.png', school: 'IMT Business School' },
+
     ],
   },
   {
@@ -64,7 +66,7 @@ const poles: Pole[] = [
       { name: 'Raphael', role: 'Communications Lead', photo: 'https://imgur.com/8GwceGM.jpg', school: 'IMT Atlantique' },
       { name: 'Thi Binh Minh Lê', role: 'Communications', photo: 'https://i.imgur.com/7h2FtZC.png', school: 'IMT Atlantique' },
       { name: 'Nour El Houda El Bouz', role: 'Communications', photo: 'https://i.imgur.com/VDa5tcl.png', school: 'IMT Nord Europe' },
-      { name: 'Eléonore Piette', role: 'Communication & Secretary', photo: 'https://i.imgur.com/HLAv67e.png', school: 'IMT Nord Europe' },
+      { name: 'Eléonore Piette', role: 'Communication & Secretary', photo: 'https://i.imgur.com/p73gfmR.jpeg', school: 'IMT Nord Europe' },
     ],
   },
   {
