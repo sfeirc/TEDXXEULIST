@@ -1,5 +1,3 @@
-'use client';
-
 import Link from 'next/link';
 import { ArrowLeft, Users, Target, Lightbulb, Globe } from 'lucide-react';
 import Navigation from '@/components/Navigation';
@@ -11,8 +9,22 @@ import {
   TiltCard,
   MagneticWrapper,
 } from '@/components/MotionElements';
+import { createClient } from '@/lib/supabase/server';
 
-export default function About() {
+export const revalidate = 60;
+
+const DEFAULT_ABOUT_TEXT = 'TEDx IMT Paris is an independently organized TED event bringing together students, researchers, innovators and visionaries from Institut Mines-Télécom and the EULiST European university network. Our theme explores the connections — between people, ideas, disciplines and continents — that shape our shared future.';
+
+async function getAboutText(): Promise<string> {
+  try {
+    const supabase = await createClient();
+    const { data } = await supabase.from('site_settings').select('value').eq('key', 'about_text').single();
+    return data?.value || DEFAULT_ABOUT_TEXT;
+  } catch { return DEFAULT_ABOUT_TEXT; }
+}
+
+export default async function About() {
+  const aboutText = await getAboutText();
   return (
     <div className="min-h-screen relative overflow-hidden font-inter">
       <Navigation />
@@ -48,11 +60,9 @@ export default function About() {
                   How we started
                 </h2>
                 <div className="prose prose-invert text-white/80 max-w-none">
-                  <p>
-                    We are students at IMT Atlantique — an engineering school focused on innovation, research, and
-                    tomorrow&apos;s challenges. Driven by curiosity and a desire to share ideas that matter, we chose to host
-                    a TEDx and give a platform to people who move things forward.
-                  </p>
+                  {aboutText.split('\n').filter(Boolean).map((paragraph, i) => (
+                    <p key={i}>{paragraph}</p>
+                  ))}
                 </div>
               </div>
             </TiltCard>

@@ -1,4 +1,4 @@
-'use client';
+export const revalidate = 60;
 
 import Link from 'next/link';
 import Image from 'next/image';
@@ -6,6 +6,7 @@ import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { ArrowLeft } from 'lucide-react';
 import { ScrollReveal } from '@/components/MotionElements';
+import { createClient } from '@/lib/supabase/server';
 
 type Person = {
   name: string;
@@ -20,85 +21,64 @@ type Pole = {
   members: Person[];
 };
 
-const leader: Person = {
-  name: 'Théo',
-  role: 'General Manager',
-  photo: 'https://imgur.com/LeD6M4C.jpg',
-  school: 'IMT Atlantique',
+type TeamMemberRow = {
+  id: string;
+  name: string;
+  role: string;
+  school: string | null;
+  pole: string | null;
+  image_url: string | null;
+  display_order: number;
+  is_published: boolean;
 };
 
-const poles: Pole[] = [
-  {
-    name: 'Speaker Relations',
-    director: {
-      name: 'Clarissa',
-      role: 'Head of Speaker Relations',
-      photo: 'https://i.imgur.com/sMOeQnw.jpeg',
-      school: 'IMT Atlantique',
-    },
-    members: [
-      { name: 'Théo Menoux', role: 'Speaker Relations', photo: 'https://i.imgur.com/hMwzqZJ.png', school: 'IMT Mines Alès' },
-      { name: 'Antoine Boissel', role: 'Speaker Relations', photo: 'https://i.imgur.com/qzjfmHj.jpeg', school: 'IMT Alès' },
-      { name: 'Eunice Mboutchouang', role: 'Hiring', photo: 'https://i.imgur.com/pDsGgAN.jpeg', school: 'IMT Mines Albi' },
-      { name: 'Alyssa Guichard', role: 'Speaker Relations', photo: 'https://i.imgur.com/HLAv67e.png', school: 'IMT Business School' },
+function mapRowsToOrgChart(rows: TeamMemberRow[]): {
+  leader: Person | null;
+  poles: Pole[];
+  activeMembers: Person[];
+} {
+  let leader: Person | null = null;
+  const polesMap = new Map<string, Pole>();
+  const activeMembers: Person[] = [];
 
-    ],
-  },
-  {
-    name: 'Technical',
-    director: {
-      name: 'Clovis',
-      role: 'Technical Director',
-      photo: 'https://imgur.com/nAAULb5.jpg',
-      school: 'IMT Atlantique',
-    },
-    members: [],
-  },
-  {
-    name: 'Communications',
-    director: {
-      name: 'Tiago',
-      role: 'Communications Director',
-      photo: 'https://i.imgur.com/sH46wlg.jpeg',
-      school: 'IMT Atlantique',
-    },
-    members: [
-      { name: 'Raphael', role: 'Communications Lead', photo: 'https://imgur.com/8GwceGM.jpg', school: 'IMT Atlantique' },
-      { name: 'Thi Binh Minh Lê', role: 'Communications', photo: 'https://i.imgur.com/7h2FtZC.png', school: 'IMT Atlantique' },
-      { name: 'Nour El Houda El Bouz', role: 'Communications', photo: 'https://i.imgur.com/VDa5tcl.png', school: 'IMT Nord Europe' },
-      { name: 'Eléonore Piette', role: 'Communication & Secretary', photo: 'https://i.imgur.com/p73gfmR.jpeg', school: 'IMT Nord Europe' },
-    ],
-  },
-  {
-    name: 'Partnerships',
-    director: {
-      name: 'Charles Husson',
-      role: 'Head of Partnerships',
-      photo: 'https://i.imgur.com/jNNZ6MV.png',
-      school: 'Télécom SudParis',
-    },
-    members: [
-      { name: 'Nicolas De Oliveira-Neige', role: 'Partnerships', photo: 'https://i.imgur.com/qZJNz5M.jpeg', school: 'Mines Saint-Étienne' },
-      { name: 'Oscar Hu', role: 'Partnerships', photo: 'https://i.imgur.com/tTlWZbS.jpeg', school: 'Télécom Paris' },
-      { name: 'Théophile Trillat', role: 'Partnerships', photo: 'https://i.imgur.com/HEpZyZs.jpeg', school: 'IMT Atlantique' },
-    ],
-  },
-  {
-    name: 'Logistics',
-    director: {
-      name: 'Daner',
-      role: 'Logistics Director',
-      photo: 'https://i.imgur.com/a2E8lRY.jpg',
-      school: 'IMT Atlantique',
-    },
-    members: [],
-  },
-];
+  for (const row of rows) {
+    const person: Person = {
+      name: row.name,
+      role: row.role,
+      photo: row.image_url ?? '',
+      school: row.school ?? undefined,
+    };
 
-const activeMembers: Person[] = [
-  { name: 'Arthur Pasquier', role: 'Active Member', photo: 'https://i.imgur.com/tP2M175.jpeg', school: 'IMT Atlantique' },
-  { name: 'Etienne', role: 'Active Member', photo: 'https://imgur.com/0rTLU7d.jpg', school: 'IMT Atlantique' },
-];
+    if (!row.pole) {
+      leader = person;
+      continue;
+    }
+
+    if (row.pole === 'Active Member') {
+      activeMembers.push(person);
+      continue;
+    }
+
+    if (!polesMap.has(row.pole)) {
+      polesMap.set(row.pole, { name: row.pole, director: null, members: [] });
+    }
+    const pole = polesMap.get(row.pole)!;
+
+    const roleLower = row.role.toLowerCase();
+    const isDirector =
+      roleLower.startsWith('head of') ||
+      roleLower.endsWith('director') ||
+      roleLower.endsWith('manager');
+
+    if (isDirector && !pole.director) {
+      pole.director = person;
+    } else {
+      pole.members.push(person);
+    }
+  }
+
+  return { leader, poles: Array.from(polesMap.values()), activeMembers };
+}
 
 function PersonCard({ person, variant = 'member' }: { person: Person; variant?: 'leader' | 'director' | 'member' }) {
   const config = {
@@ -132,7 +112,13 @@ function PersonCard({ person, variant = 'member' }: { person: Person; variant?: 
   return (
     <div className={`nuclear-card ${c.radius} ${c.card} text-center group hover:border-[#e62b1e]/30 transition-all duration-300`}>
       <div className={`${c.img} mx-auto mb-2 relative overflow-hidden rounded-full border-2 ${c.border} group-hover:scale-105 transition-all duration-500`}>
-        <Image src={person.photo} alt={person.name} width={160} height={160} className="w-full h-full object-cover" />
+        {person.photo ? (
+          <Image src={person.photo} alt={person.name} width={160} height={160} className="w-full h-full object-cover" />
+        ) : (
+          <div className="w-full h-full bg-white/10 flex items-center justify-center text-white/30 text-xl font-bold">
+            {person.name.charAt(0)}
+          </div>
+        )}
       </div>
       <h3 className={`${c.name} font-bold text-white mb-0.5`}>{person.name}</h3>
       <p className={`${c.role} text-[#e62b1e] font-semibold tracking-wide`}>{person.role}</p>
@@ -180,7 +166,29 @@ function PoleColumn({ pole }: { pole: Pole }) {
   );
 }
 
-export default function Team() {
+export default async function Team() {
+  const supabase = await createClient();
+  const { data, error } = await supabase
+    .from('team_members')
+    .select('id, name, role, school, pole, image_url, display_order, is_published')
+    .eq('is_published', true)
+    .order('display_order');
+
+  const rows: TeamMemberRow[] = (!error && data && data.length > 0) ? data : [];
+  const { leader, poles, activeMembers } = mapRowsToOrgChart(rows);
+
+  if (!leader && poles.length === 0) {
+    return (
+      <div className="min-h-screen relative overflow-hidden font-inter">
+        <Navigation />
+        <main className="relative z-10 max-w-7xl mx-auto px-6 py-32 text-center">
+          <p className="text-white/40">Team coming soon.</p>
+        </main>
+        <Footer />
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen relative overflow-hidden font-inter">
       <Navigation />
@@ -216,43 +224,48 @@ export default function Team() {
           <div className="min-w-[1000px] lg:min-w-0">
 
             {/* General Manager */}
-            <ScrollReveal>
-              <div className="flex justify-center">
-                <PersonCard person={leader} variant="leader" />
-              </div>
-            </ScrollReveal>
-
-            {/* Connector from GM to directors */}
-            <VerticalLine height="h-10" />
-
-            {/* Director poles */}
-            <ScrollReveal delay={0.15}>
-              <div className="relative">
-                <div className="absolute top-0 left-[10%] right-[10%] h-px bg-gradient-to-r from-transparent via-[#e62b1e]/40 to-transparent" />
-
-                <div className="grid grid-cols-5 gap-3 lg:gap-5">
-                  {poles.map((pole) => (
-                    <PoleColumn key={pole.name} pole={pole} />
-                  ))}
-                </div>
-              </div>
-            </ScrollReveal>
-
-            {/* Active Members */}
-            <div className="mt-16">
-              <ScrollReveal delay={0.25}>
-                <div className="text-center mb-6">
-                  <span className="text-white/30 text-xs font-semibold tracking-widest uppercase">
-                    Active Members
-                  </span>
-                </div>
-                <div className="flex justify-center gap-4">
-                  {activeMembers.map((member) => (
-                    <PersonCard key={member.name} person={member} variant="member" />
-                  ))}
+            {leader && (
+              <ScrollReveal>
+                <div className="flex justify-center">
+                  <PersonCard person={leader} variant="leader" />
                 </div>
               </ScrollReveal>
-            </div>
+            )}
+
+            {/* Connector from GM to directors */}
+            {leader && poles.length > 0 && <VerticalLine height="h-10" />}
+
+            {/* Director poles */}
+            {poles.length > 0 && (
+              <ScrollReveal delay={0.15}>
+                <div className="relative">
+                  <div className="absolute top-0 left-[10%] right-[10%] h-px bg-gradient-to-r from-transparent via-[#e62b1e]/40 to-transparent" />
+                  <div className={`grid gap-3 lg:gap-5`} style={{ gridTemplateColumns: `repeat(${poles.length}, 1fr)` }}>
+                    {poles.map((pole) => (
+                      <PoleColumn key={pole.name} pole={pole} />
+                    ))}
+                  </div>
+                </div>
+              </ScrollReveal>
+            )}
+
+            {/* Active Members */}
+            {activeMembers.length > 0 && (
+              <div className="mt-16">
+                <ScrollReveal delay={0.25}>
+                  <div className="text-center mb-6">
+                    <span className="text-white/30 text-xs font-semibold tracking-widest uppercase">
+                      Active Members
+                    </span>
+                  </div>
+                  <div className="flex justify-center gap-4 flex-wrap">
+                    {activeMembers.map((member) => (
+                      <PersonCard key={member.name} person={member} variant="member" />
+                    ))}
+                  </div>
+                </ScrollReveal>
+              </div>
+            )}
 
           </div>
         </section>

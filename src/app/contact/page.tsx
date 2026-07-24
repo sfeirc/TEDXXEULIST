@@ -6,56 +6,75 @@ import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { ArrowLeft, Mail, MapPin, Send } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import {
-  ScrollReveal,
-  TiltCard,
-  MagneticWrapper,
-} from '@/components/MotionElements';
+import { ScrollReveal, TiltCard, MagneticWrapper } from '@/components/MotionElements';
+import { submitContact } from '@/app/actions/contact';
+import { subscribeNewsletter } from '@/app/actions/newsletter';
+
+const contactInfo = [
+  {
+    icon: Mail,
+    title: 'Speakers & talk proposals',
+    details: 'tedx.imt2026@gmail.com',
+    description: 'Apply to speak, suggest a talk, or ask about the speaker line-up.',
+  },
+  {
+    icon: Mail,
+    title: 'Sponsorship & partnerships',
+    details: 'tedximtpartenaire@gmail.com',
+    description: 'Sponsor packages, partner tiers, and institutional visibility.',
+  },
+];
+
+const labelClass = 'block text-xs font-semibold uppercase tracking-wider text-white/50 mb-2';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: '',
-    interest: '',
+    name: '', email: '', subject: '', message: '', interest: '',
   });
-
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [formError, setFormError] = useState('');
+
+  const [newsletterEmail, setNewsletterEmail] = useState('');
+  const [newsletterState, setNewsletterState] = useState<'idle' | 'loading' | 'done' | 'error'>('idle');
+  const [newsletterError, setNewsletterError] = useState('');
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    setFormData(prev => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    setFormError('');
+    const result = await submitContact({
+      name: formData.name,
+      email: formData.email,
+      subject: formData.subject,
+      message: formData.message,
+      interest: formData.interest || undefined,
+    });
     setIsSubmitting(false);
-    setIsSubmitted(true);
+    if (result.success) {
+      setIsSubmitted(true);
+    } else {
+      setFormError(result.error);
+    }
   };
 
-  const contactInfo = [
-    {
-      icon: Mail,
-      title: 'Speakers & talk proposals',
-      details: 'tedx.imt2026@gmail.com',
-      description: 'Apply to speak, suggest a talk, or ask about the speaker line-up.',
-    },
-    {
-      icon: Mail,
-      title: 'Sponsorship & partnerships',
-      details: 'tedximtpartenaire@gmail.com',
-      description: 'Sponsor packages, partner tiers, and institutional visibility.',
-    },
-  ];
-
-  const labelClass = 'block text-xs font-semibold uppercase tracking-wider text-white/50 mb-2';
+  const handleNewsletter = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setNewsletterState('loading');
+    setNewsletterError('');
+    const result = await subscribeNewsletter(newsletterEmail);
+    if (result.success) {
+      setNewsletterState('done');
+    } else {
+      setNewsletterState('error');
+      setNewsletterError(result.error);
+    }
+  };
 
   return (
     <div className="min-h-screen relative overflow-hidden font-inter">
@@ -129,64 +148,26 @@ export default function Contact() {
                       onSubmit={handleSubmit}
                       className="space-y-6"
                     >
+                      {formError && (
+                        <div className="rounded-xl bg-red-900/30 border border-red-500/40 p-3 text-sm text-red-300">
+                          {formError}
+                        </div>
+                      )}
+
                       <div className="grid md:grid-cols-2 gap-6">
-                        <motion.div
-                          initial={{ opacity: 0, y: 15 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: 0.1 }}
-                        >
-                          <label htmlFor="name" className={labelClass}>
-                            Full name *
-                          </label>
-                          <input
-                            type="text"
-                            id="name"
-                            name="name"
-                            required
-                            value={formData.name}
-                            onChange={handleInputChange}
-                            className="input-nuclear"
-                            placeholder="Your name"
-                            autoComplete="name"
-                          />
-                        </motion.div>
-                        <motion.div
-                          initial={{ opacity: 0, y: 15 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: 0.15 }}
-                        >
-                          <label htmlFor="email" className={labelClass}>
-                            Email *
-                          </label>
-                          <input
-                            type="email"
-                            id="email"
-                            name="email"
-                            required
-                            value={formData.email}
-                            onChange={handleInputChange}
-                            className="input-nuclear"
-                            placeholder="you@email.com"
-                            autoComplete="email"
-                          />
-                        </motion.div>
+                        <div>
+                          <label htmlFor="name" className={labelClass}>Full name *</label>
+                          <input type="text" id="name" name="name" required value={formData.name} onChange={handleInputChange} className="input-nuclear" placeholder="Your name" autoComplete="name" />
+                        </div>
+                        <div>
+                          <label htmlFor="email" className={labelClass}>Email *</label>
+                          <input type="email" id="email" name="email" required value={formData.email} onChange={handleInputChange} className="input-nuclear" placeholder="you@email.com" autoComplete="email" />
+                        </div>
                       </div>
 
-                      <motion.div
-                        initial={{ opacity: 0, y: 15 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.2 }}
-                      >
-                        <label htmlFor="interest" className={labelClass}>
-                          Area of interest
-                        </label>
-                        <select
-                          id="interest"
-                          name="interest"
-                          value={formData.interest}
-                          onChange={handleInputChange}
-                          className="input-nuclear appearance-none bg-[#0a0a0a]"
-                        >
+                      <div>
+                        <label htmlFor="interest" className={labelClass}>Area of interest</label>
+                        <select id="interest" name="interest" value={formData.interest} onChange={handleInputChange} className="input-nuclear appearance-none bg-[#0a0a0a]">
                           <option value="">Select</option>
                           <option value="general">General information</option>
                           <option value="speaker">Speaker</option>
@@ -195,73 +176,31 @@ export default function Contact() {
                           <option value="media">Media</option>
                           <option value="other">Other</option>
                         </select>
-                      </motion.div>
+                      </div>
 
-                      <motion.div
-                        initial={{ opacity: 0, y: 15 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.25 }}
-                      >
-                        <label htmlFor="subject" className={labelClass}>
-                          Subject *
-                        </label>
-                        <input
-                          type="text"
-                          id="subject"
-                          name="subject"
-                          required
-                          value={formData.subject}
-                          onChange={handleInputChange}
-                          className="input-nuclear"
-                          placeholder="Subject"
-                        />
-                      </motion.div>
+                      <div>
+                        <label htmlFor="subject" className={labelClass}>Subject *</label>
+                        <input type="text" id="subject" name="subject" required value={formData.subject} onChange={handleInputChange} className="input-nuclear" placeholder="Subject" />
+                      </div>
 
-                      <motion.div
-                        initial={{ opacity: 0, y: 15 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.3 }}
-                      >
-                        <label htmlFor="message" className={labelClass}>
-                          Message *
-                        </label>
-                        <textarea
-                          id="message"
-                          name="message"
-                          required
-                          rows={6}
-                          value={formData.message}
-                          onChange={handleInputChange}
-                          className="input-nuclear resize-none"
-                          placeholder="Your message..."
-                        />
-                      </motion.div>
+                      <div>
+                        <label htmlFor="message" className={labelClass}>Message *</label>
+                        <textarea id="message" name="message" required rows={6} value={formData.message} onChange={handleInputChange} className="input-nuclear resize-none" placeholder="Your message..." />
+                      </div>
 
-                      <motion.div
-                        initial={{ opacity: 0, y: 15 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.35 }}
-                      >
-                        <MagneticWrapper className="w-full">
-                          <button
-                            type="submit"
-                            disabled={isSubmitting}
-                            className="btn-nuclear-primary w-full flex items-center justify-center gap-2 rounded-xl py-3.5 px-6 text-base disabled:cursor-not-allowed disabled:opacity-50"
-                          >
-                            {isSubmitting ? (
-                              <>
-                                <div className="h-5 w-5 animate-spin rounded-full border-2 border-white border-t-transparent" />
-                                Sending...
-                              </>
-                            ) : (
-                              <>
-                                <Send className="h-5 w-5" />
-                                Send message
-                              </>
-                            )}
-                          </button>
-                        </MagneticWrapper>
-                      </motion.div>
+                      <MagneticWrapper className="w-full">
+                        <button
+                          type="submit"
+                          disabled={isSubmitting}
+                          className="btn-nuclear-primary w-full flex items-center justify-center gap-2 rounded-xl py-3.5 px-6 text-base disabled:cursor-not-allowed disabled:opacity-50"
+                        >
+                          {isSubmitting ? (
+                            <><div className="h-5 w-5 animate-spin rounded-full border-2 border-white border-t-transparent" />Sending...</>
+                          ) : (
+                            <><Send className="h-5 w-5" />Send message</>
+                          )}
+                        </button>
+                      </MagneticWrapper>
                     </motion.form>
                   )}
                 </AnimatePresence>
@@ -284,9 +223,7 @@ export default function Contact() {
                           </div>
                           <div>
                             <h3 className="font-semibold text-white">{info.title}</h3>
-                            <a href={`mailto:${info.details}`} className="text-[#e62b1e] hover:text-white font-medium text-sm transition-colors duration-200">
-                              {info.details}
-                            </a>
+                            <a href={`mailto:${info.details}`} className="text-[#e62b1e] hover:text-white font-medium text-sm transition-colors duration-200">{info.details}</a>
                             <p className="mt-1 text-sm text-white/60">{info.description}</p>
                           </div>
                         </div>
@@ -306,12 +243,8 @@ export default function Contact() {
                       <MapPin className="h-6 w-6 text-[#e62b1e]" />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-white">Théâtre Folies Bergère</h3>
-                      <p className="text-white/75 text-sm mt-2 leading-relaxed">
-                        32 rue Richer
-                        <br />
-                        75009 Paris, France
-                      </p>
+                      <h3 className="font-semibold text-white">Théâtre de Paris</h3>
+                      <p className="text-white/75 text-sm mt-2 leading-relaxed">32 rue Richer<br />75009 Paris, France</p>
                     </div>
                   </div>
                 </div>
@@ -331,19 +264,52 @@ export default function Contact() {
           <div className="mt-16 nuclear-card rounded-3xl p-8 md:p-10 text-center">
             <h2 className="text-2xl font-bold text-white mb-4">Stay informed</h2>
             <p className="text-white/65 mb-8 max-w-2xl mx-auto leading-relaxed">
-              Join the TEDx IMT journey — newsletter coming soon.
+              Join the TEDx IMT journey — be the first to hear about speakers, tickets, and event updates.
             </p>
-            <div className="mx-auto flex max-w-md flex-col gap-4 sm:flex-row">
-              <input type="email" placeholder="Your email" className="input-nuclear flex-1" aria-label="Newsletter email" />
-              <MagneticWrapper>
-                <button
-                  type="button"
-                  className="btn-nuclear-primary whitespace-nowrap px-8 py-3 rounded-xl text-sm font-semibold"
+
+            <AnimatePresence mode="wait">
+              {newsletterState === 'done' ? (
+                <motion.p
+                  key="done"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="text-[#e62b1e] font-semibold"
                 >
-                  Subscribe
-                </button>
-              </MagneticWrapper>
-            </div>
+                  You&apos;re on the list. We&apos;ll be in touch!
+                </motion.p>
+              ) : (
+                <motion.form
+                  key="newsletter"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  onSubmit={handleNewsletter}
+                  className="mx-auto flex max-w-md flex-col gap-4 sm:flex-row"
+                >
+                  <input
+                    type="email"
+                    required
+                    value={newsletterEmail}
+                    onChange={e => setNewsletterEmail(e.target.value)}
+                    placeholder="Your email"
+                    className="input-nuclear flex-1"
+                    aria-label="Newsletter email"
+                  />
+                  <MagneticWrapper>
+                    <button
+                      type="submit"
+                      disabled={newsletterState === 'loading'}
+                      className="btn-nuclear-primary whitespace-nowrap px-8 py-3 rounded-xl text-sm font-semibold disabled:opacity-50"
+                    >
+                      {newsletterState === 'loading' ? 'Subscribing…' : 'Subscribe'}
+                    </button>
+                  </MagneticWrapper>
+                </motion.form>
+              )}
+            </AnimatePresence>
+
+            {newsletterState === 'error' && (
+              <p className="mt-3 text-sm text-red-400">{newsletterError}</p>
+            )}
           </div>
         </ScrollReveal>
       </main>

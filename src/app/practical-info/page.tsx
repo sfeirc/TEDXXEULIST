@@ -15,7 +15,7 @@ import {
 } from '@/components/MotionElements';
 
 const EULIST_BOOKLET_PDF_URL =
-  'https://drive.google.com/uc?id=1tTvaOdfvoImQAzlBbp_wT8bllQyv55rk';
+  'https://drive.google.com/uc?export=download&id=1KmQnf5iN6_BQ5vlBWrdML4OF_Me78cRK';
 
 function FaqItem({ question, answer }: { question: string; answer: string }) {
   const [open, setOpen] = useState(false);
@@ -221,13 +221,13 @@ export default function PracticalInfo() {
                 </h2>
                 <div className="grid md:grid-cols-2 gap-8">
                   <div>
-                    <h3 className="text-xl font-semibold text-white mb-4">Théâtre Folies Bergère</h3>
+                    <h3 className="text-xl font-semibold text-white mb-4">Théâtre de Paris</h3>
                     <p className="text-white/65 text-sm mb-4">
-                      Historic Parisian cabaret and theatre in the 9th arrondissement — main stage for TEDx IMT.
+                      The main campus of IMT in Paris — a vibrant hub for engineering and innovation.
                     </p>
                     <div className="space-y-3 text-white/75">
-                      <p>32 rue Richer</p>
-                      <p>75009 Paris, France</p>
+                      <p>Paris, France</p>
+                      <p>Exact address TBC</p>
                     </div>
                   </div>
                   <div className="rounded-2xl p-6 border border-[#e62b1e]/15 bg-black/35">

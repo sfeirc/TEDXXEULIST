@@ -6,160 +6,173 @@ import Image from 'next/image';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const links = [
+const navLinks = [
   { href: '/about', label: 'About' },
-  { href: '/team', label: 'Team' },
   { href: '/speakers', label: 'Speakers' },
-  { href: '/practical-info', label: 'Info' },
-  { href: '/eulist-mobility', label: 'EULiST mobility' },
+  { href: '/programme', label: 'Programme' },
+  { href: '/faq', label: 'FAQ' },
   { href: '/partners', label: 'Partners' },
+  { href: '/team', label: 'Team' },
   { href: '/contact', label: 'Contact' },
 ] as const;
 
 export default function Navigation() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handler = () => setScrolled(window.scrollY > 30);
-    window.addEventListener('scroll', handler, { passive: true });
-    handler();
-    return () => window.removeEventListener('scroll', handler);
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  // Lock body scroll when mobile menu open
+  useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [open]);
+
   return (
-    <motion.nav
-      initial={{ y: -100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-      className={`nav-chrome relative z-30 px-4 md:px-6 py-3 md:py-4 font-inter transition-all duration-500 ${scrolled ? 'nav-chrome--scrolled' : ''}`}
-    >
-      <div className="absolute bottom-0 left-0 h-[2px] w-full bg-gradient-to-r from-transparent via-[#e62b1e]/60 to-transparent pointer-events-none" aria-hidden />
-      <div className="max-w-7xl mx-auto flex items-center gap-4 md:gap-6 min-w-0">
-        <Link href="/" className="flex shrink-0 min-w-0 items-center gap-2 md:gap-4 group">
-          <div className="flex items-center gap-2 md:gap-3">
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-              className="transition-[filter,opacity] duration-300 group-hover:opacity-95 group-hover:drop-shadow-[0_0_18px_rgba(230,43,30,0.45)] flex items-center"
-            >
-              <Image
-                src="https://landing-pages.ted.com/tedx-logo-generator/assets/logo.png"
-                alt="TEDx"
-                width={80}
-                height={30}
-                className="w-auto h-6 md:h-7 ted-logo-red"
-              />
-            </motion.div>
-            <span className="text-white font-bold text-2xl md:text-3xl leading-none tracking-tight">×</span>
-            <span className="font-bold text-white tracking-tight leading-none text-[1.75rem] md:text-[2.35rem] bg-gradient-to-b from-white to-white/85 bg-clip-text">
-              IMT
-            </span>
-            <div className="hidden lg:flex items-center gap-2 ml-2 px-3 py-1.5 rounded-full border border-[#e62b1e]/25 bg-black/40 shadow-[0_0_24px_-8px_rgba(230,43,30,0.35)]">
-              <span className="text-white/55 text-[0.65rem] font-semibold uppercase tracking-[0.14em]">
-                in partnership with
-              </span>
-              <div className="transition-opacity hover:opacity-95">
-                <Image
-                  src="https://eulist.university/wp-content/themes/eulist/images/logo-new.png"
-                  alt="EULiST"
-                  width={80}
-                  height={40}
-                  className="w-auto h-5"
-                />
-              </div>
-            </div>
-          </div>
-          <span className="text-white/90 font-semibold text-sm md:text-lg hidden sm:block ml-2 tracking-wide">
-            Paris 2027
-          </span>
+    <>
+      <motion.nav
+        initial={{ y: -80, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+        className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-10 transition-all duration-500"
+        style={
+          scrolled
+            ? {
+                paddingTop: '0.875rem',
+                paddingBottom: '0.875rem',
+                background: 'rgba(7,7,6,0.96)',
+                backdropFilter: 'blur(24px)',
+                WebkitBackdropFilter: 'blur(24px)',
+                borderBottom: '1px solid var(--border-subtle)',
+              }
+            : { paddingTop: '1.375rem', paddingBottom: '1.375rem' }
+        }
+      >
+        {/* Logo */}
+        <Link href="/" className="flex items-center" aria-label="TEDx IMT Paris — home">
+          <Image
+            src="https://i.imgur.com/NSU2tVP.png"
+            alt="TEDx IMT Paris"
+            width={120}
+            height={28}
+            className="h-12 w-auto"
+          />
         </Link>
 
-        <div className="hidden md:flex min-w-0 flex-1 justify-end overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-          <div className="flex flex-nowrap items-center gap-x-5 lg:gap-x-6 pl-2">
-            {links.map(({ href, label }, i) => (
-              <motion.div
-                key={href}
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 + i * 0.06, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+        {/* Desktop links */}
+        <ul className="hidden lg:flex items-center gap-8">
+          {navLinks.map(({ href, label }) => (
+            <li key={href}>
+              <Link
+                href={href}
+                className="relative font-label text-[0.75rem] tracking-[0.15em] uppercase transition-colors duration-200 group"
+                style={{ color: 'var(--grey-400)' }}
               >
-                <Link
-                  href={href}
-                  className="shrink-0 whitespace-nowrap text-white/70 hover:text-white transition-colors duration-200 relative group text-[0.65rem] lg:text-[0.7rem] font-semibold uppercase tracking-[0.16em] lg:tracking-[0.2em] leading-none py-1"
-                >
-                  {label}
-                  <span className="absolute -bottom-0.5 left-0 w-0 h-[2px] bg-gradient-to-r from-[#e62b1e] to-[#ff6b5e] transition-[width] duration-300 group-hover:w-full shadow-[0_0_12px_rgba(230,43,30,0.6)]" />
-                </Link>
-              </motion.div>
-            ))}
-          </div>
-        </div>
+                {label}
+                <span
+                  className="absolute -bottom-px left-0 w-0 h-px group-hover:w-full transition-all duration-300 ease-out"
+                  style={{ background: 'var(--ted-red)' }}
+                />
+              </Link>
+            </li>
+          ))}
+        </ul>
 
-        <motion.button
-          type="button"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden text-white p-2.5 rounded-lg border border-white/10 bg-white/5 hover:bg-[#e62b1e]/15 hover:border-[#e62b1e]/40 transition-all"
-          aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
-          aria-expanded={mobileMenuOpen}
-          whileTap={{ scale: 0.9 }}
-        >
-          <AnimatePresence mode="wait">
-            {mobileMenuOpen ? (
-              <motion.div
-                key="close"
-                initial={{ rotate: -90, opacity: 0 }}
-                animate={{ rotate: 0, opacity: 1 }}
-                exit={{ rotate: 90, opacity: 0 }}
-                transition={{ duration: 0.2 }}
-              >
-                <X size={22} />
-              </motion.div>
-            ) : (
-              <motion.div
-                key="open"
-                initial={{ rotate: 90, opacity: 0 }}
-                animate={{ rotate: 0, opacity: 1 }}
-                exit={{ rotate: -90, opacity: 0 }}
-                transition={{ duration: 0.2 }}
-              >
-                <Menu size={22} />
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </motion.button>
-      </div>
-
-      <AnimatePresence>
-        {mobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-            className="md:hidden absolute top-full left-0 right-0 nuclear-card border-t-0 rounded-b-2xl mx-2 border border-[#e62b1e]/20 shadow-[0_32px_60px_-20px_rgba(0,0,0,0.8)] overflow-hidden"
+        {/* Right: CTA + burger */}
+        <div className="flex items-center gap-4">
+          <Link
+            href="/register"
+            className="btn-primary hidden md:inline-flex"
+            style={{ paddingTop: '0.5rem', paddingBottom: '0.5rem', paddingLeft: '1.25rem', paddingRight: '1.25rem', fontSize: '0.72rem' }}
           >
-            <div className="flex flex-col p-2">
-              {links.map(({ href, label }, i) => (
-                <motion.div
-                  key={href}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.05, duration: 0.3 }}
-                >
-                  <Link
-                    href={href}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="text-white/90 hover:text-white py-3.5 px-4 rounded-xl border border-transparent hover:border-[#e62b1e]/25 hover:bg-white/5 text-sm font-semibold uppercase tracking-wider block"
-                  >
-                    {label}
-                  </Link>
-                </motion.div>
-              ))}
+            Register
+          </Link>
+          <button
+            onClick={() => setOpen(true)}
+            aria-label="Open menu"
+            className="lg:hidden p-1 transition-colors"
+            style={{ color: 'var(--grey-400)' }}
+          >
+            <Menu className="w-5 h-5" />
+          </button>
+        </div>
+      </motion.nav>
+
+      {/* Mobile fullscreen overlay */}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="fixed inset-0 z-[200] flex flex-col px-6 py-8"
+            style={{ background: 'var(--black-deep)' }}
+          >
+            <div className="flex items-center justify-between mb-14">
+              <Link href="/" onClick={() => setOpen(false)} className="flex items-center">
+                <Image
+                  src="https://i.imgur.com/NSU2tVP.png"
+                  alt="TEDx IMT Paris"
+                  width={120}
+                  height={28}
+                  className="h-12 w-auto"
+                />
+              </Link>
+              <button
+                onClick={() => setOpen(false)}
+                aria-label="Close menu"
+                className="p-1 transition-colors"
+                style={{ color: 'var(--grey-400)' }}
+              >
+                <X className="w-5 h-5" />
+              </button>
             </div>
+
+            <nav className="flex-1">
+              <ul>
+                {navLinks.map(({ href, label }, i) => (
+                  <motion.li
+                    key={href}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.06, duration: 0.4 }}
+                    style={{ borderBottom: '1px solid var(--border-subtle)' }}
+                  >
+                    <Link
+                      href={href}
+                      onClick={() => setOpen(false)}
+                      className="block py-4 font-display font-light transition-colors"
+                      style={{ fontSize: 'clamp(1.75rem, 5vw, 2.25rem)', color: 'var(--off-white)' }}
+                    >
+                      {label}
+                    </Link>
+                  </motion.li>
+                ))}
+              </ul>
+            </nav>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.4 }}
+              className="mt-8"
+            >
+              <Link
+                href="/register"
+                onClick={() => setOpen(false)}
+                className="btn-primary w-full justify-center text-center block"
+              >
+                Reserve your seat
+              </Link>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.nav>
+    </>
   );
 }

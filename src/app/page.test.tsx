@@ -11,7 +11,7 @@ describe('Home', () => {
 
   it('renders date and venue', () => {
     render(<Home />);
-    expect(screen.getByText(/22 February 2027 · Théâtre Folies Bergère/)).toBeInTheDocument();
+    expect(screen.getByText(/22 February 2027 · Théâtre de Paris/)).toBeInTheDocument();
   });
 
   it('has CTA links to about and contact', () => {

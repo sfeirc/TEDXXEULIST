@@ -1,5 +1,3 @@
-'use client';
-
 import Link from 'next/link';
 import Image from 'next/image';
 import Navigation from '@/components/Navigation';
@@ -12,87 +10,107 @@ import {
   TiltCard,
   MagneticWrapper,
 } from '@/components/MotionElements';
+import type { Partner } from '@/types/database';
 
-export default function Partners() {
-  const institutionalPartners = [
-    {
-      name: 'IMT Foundation',
-      description: 'Institut Mines-Télécom',
-      logo: 'https://upload.wikimedia.org/wikipedia/commons/b/b0/IMT_logo_2017.png',
-      useText: true as boolean,
-    },
-    {
-      name: 'EULiST',
-      description: 'European Universities',
-      logo: 'https://eulist.university/wp-content/themes/eulist/images/logo-new.png',
-      useText: false,
-    },
-    {
-      name: 'IMT Atlantique',
-      description: 'Graduate engineering school',
-      logo: 'https://www.imt-atlantique.fr/sites/default/files/ecole/logos/imtatlantique/imtatlantique-rvb-reserve.png',
-      useText: false,
-    },
-    {
-      name: 'Union des Élèves de l’IMT',
-      description: 'IMT student union',
-      logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSq4jUMcAyO5Ttl_f0mlqs-0UuLgrEQ4PPjOA&s',
-      useText: false,
-    },
-    {
-      name: 'TEDx',
-      description: 'Ideas worth spreading',
-      logo: 'https://landing-pages.ted.com/tedx-logo-generator/assets/logo.png',
-      useText: false,
-    },
-  ];
+export const revalidate = 60;
 
-  const forumStandBeforeTedx =
-    'Forum stand presence at the theatre before TEDx';
+const institutionalPartners = [
+  {
+    name: 'IMT Foundation',
+    description: 'Institut Mines-Télécom',
+    logo: 'https://upload.wikimedia.org/wikipedia/commons/b/b0/IMT_logo_2017.png',
+    useText: true as boolean,
+  },
+  {
+    name: 'EULiST',
+    description: 'European Universities',
+    logo: 'https://eulist.university/wp-content/themes/eulist/images/logo-new.png',
+    useText: false,
+  },
+  {
+    name: 'IMT Atlantique',
+    description: 'Graduate engineering school',
+    logo: 'https://www.imt-atlantique.fr/sites/default/files/ecole/logos/imtatlantique/imtatlantique-rvb-reserve.png',
+    useText: false,
+  },
+  {
+    name: 'Union des Élèves de l’IMT',
+    description: 'IMT student union',
+    logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSq4jUMcAyO5Ttl_f0mlqs-0UuLgrEQ4PPjOA&s',
+    useText: false,
+  },
+  {
+    name: 'TEDx',
+    description: 'Ideas worth spreading',
+    logo: '',
+    useText: true as boolean,
+  },
+];
 
-  const partnershipTiers = [
-    {
-      name: 'Partner',
-      amount: '€5,000',
-      includesPrevious: false,
-      popular: false,
-      bullet: 'dot' as const,
-      benefits: [
-        'Logo on the website',
-        'Social media mention',
-        'Logo in the printed program',
-        '5 VIP seats',
-      ],
-    },
-    {
-      name: 'Major',
-      amount: '€10,000',
-      includesPrevious: true,
-      popular: true,
-      bullet: 'dot' as const,
-      benefits: [
-        'Buffet stand',
-        'Logo on hall screens',
-        'Job dating access',
-        '20 VIP seats',
-        forumStandBeforeTedx,
-      ],
-    },
-    {
-      name: 'Principal',
-      amount: '€20,000+',
-      includesPrevious: true,
-      popular: false,
-      bullet: 'star' as const,
-      benefits: [
-        'Stage opening',
-        'Sector exclusivity',
-        'Early access to CV database',
-        '50 VIP seats',
-        forumStandBeforeTedx,
-      ],
-    },
-  ];
+const forumStandBeforeTedx = 'Forum stand presence at the theatre before TEDx';
+
+const partnershipTiers = [
+  {
+    name: 'Partner',
+    amount: '€5,000',
+    includesPrevious: false,
+    popular: false,
+    bullet: 'dot' as const,
+    benefits: [
+      'Logo on the website',
+      'Social media mention',
+      'Logo in the printed program',
+      '5 VIP seats',
+    ],
+  },
+  {
+    name: 'Major',
+    amount: '€10,000',
+    includesPrevious: true,
+    popular: true,
+    bullet: 'dot' as const,
+    benefits: [
+      'Buffet stand',
+      'Logo on hall screens',
+      'Job dating access',
+      '20 VIP seats',
+      forumStandBeforeTedx,
+    ],
+  },
+  {
+    name: 'Principal',
+    amount: '€20,000+',
+    includesPrevious: true,
+    popular: false,
+    bullet: 'star' as const,
+    benefits: [
+      'Stage opening',
+      'Sector exclusivity',
+      'Early access to CV database',
+      '50 VIP seats',
+      forumStandBeforeTedx,
+    ],
+  },
+];
+
+async function getPartners(): Promise<Partner[]> {
+  try {
+    const { createClient } = await import('@/lib/supabase/server');
+    const supabase = await createClient();
+    const { data } = await supabase
+      .from('partners')
+      .select('*')
+      .eq('is_published', true)
+      .order('display_order');
+    return data ?? [];
+  } catch {
+    return [];
+  }
+}
+
+export default async function Partners() {
+  const partners = await getPartners();
+  const hasPartners = partners.length > 0;
 
   return (
     <div className="min-h-screen relative overflow-hidden font-inter">
@@ -118,25 +136,14 @@ export default function Partners() {
             <div className="max-w-5xl mx-auto mb-12">
               <TiltCard intensity={3}>
                 <div className="nuclear-card rounded-3xl p-8 md:p-10">
-                  <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12 mb-6">
-                    <div className="text-center">
-                      <Image
-                        src="https://landing-pages.ted.com/tedx-logo-generator/assets/logo.png"
-                        alt="TEDx"
-                        width={180}
-                        height={60}
-                        className="w-auto h-14 md:h-16 ted-logo-red"
-                      />
-                    </div>
-                    <div className="text-4xl md:text-6xl font-bold text-white tracking-tight">×</div>
-                    <div className="text-center flex items-center">
-                      <span
-                        className="font-bold text-white tracking-tight text-[3.5rem] md:text-[5.5rem] bg-gradient-to-b from-white to-white/80 bg-clip-text text-transparent"
-                        style={{ letterSpacing: '-0.04em' }}
-                      >
-                        IMT
-                      </span>
-                    </div>
+                  <div className="flex items-center justify-center mb-6">
+                    <Image
+                      src="https://i.imgur.com/NSU2tVP.png"
+                      alt="TEDx IMT Paris"
+                      width={280}
+                      height={70}
+                      className="w-auto h-16 md:h-20"
+                    />
                   </div>
                   <div className="flex items-center justify-center gap-3 pt-6 border-t border-white/10">
                     <span className="text-white/80 text-base font-medium">in partnership with</span>
@@ -157,6 +164,7 @@ export default function Partners() {
           </ScrollReveal>
         </div>
 
+        {/* Static institutional partners — always shown */}
         <section className="mb-16">
           <ScrollReveal>
             <div className="nuclear-card rounded-3xl p-8 md:p-10">
@@ -168,7 +176,12 @@ export default function Partners() {
                       <div className="rounded-2xl p-6 text-center border border-[#e62b1e]/15 bg-black/35 hover:border-[#e62b1e]/35 transition-all duration-300 w-80 flex-shrink-0 card-hover">
                         <div className="w-full h-32 rounded-lg flex items-center justify-center mx-auto mb-4 p-4 overflow-hidden">
                           {partner.useText ? (
-                            <span className="text-4xl font-bold text-white tracking-tight">IMT</span>
+                            <span
+                              className="text-4xl font-bold tracking-tight"
+                              style={{ color: partner.name === 'TEDx' ? '#e62b1e' : 'white' }}
+                            >
+                              {partner.name === 'TEDx' ? 'TEDx' : 'IMT'}
+                            </span>
                           ) : (
                             <Image
                               src={partner.logo}
@@ -190,20 +203,72 @@ export default function Partners() {
           </ScrollReveal>
         </section>
 
-        <section className="mb-16">
-          <ScrollReveal>
-            <div className="nuclear-card rounded-3xl p-8 md:p-10 text-center">
-              <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">Sponsor logos</h2>
-              <p className="text-xl text-white/80 mb-8">
-                Behind every idea, partners who make TEDx IMT shine — logos will appear here.
-              </p>
-              <div className="rounded-2xl p-8 border border-[#e62b1e]/15 bg-black/40 animate-border-glow">
-                <Building className="w-16 h-16 text-[#e62b1e]/50 mx-auto mb-4" />
-                <p className="text-white/70">Sponsor logos will appear here as they are confirmed.</p>
+        {/* Dynamic partners from Supabase — only shown when records exist */}
+        {hasPartners && (
+          <section className="mb-16">
+            <ScrollReveal>
+              <div className="nuclear-card rounded-3xl p-8 md:p-10">
+                <h2 className="text-2xl md:text-3xl font-bold text-white mb-10 text-center">Our Partners</h2>
+                <StaggerContainer className="flex flex-wrap justify-center gap-6" staggerDelay={0.08}>
+                  {partners.map((partner) => (
+                    <StaggerItem key={partner.id}>
+                      <TiltCard intensity={6}>
+                        <div className="rounded-2xl p-6 text-center border border-[#e62b1e]/15 bg-black/35 hover:border-[#e62b1e]/35 transition-all duration-300 w-80 flex-shrink-0 card-hover">
+                          <div className="w-full h-32 rounded-lg flex items-center justify-center mx-auto mb-4 p-4 overflow-hidden">
+                            {partner.logo_url ? (
+                              <Image
+                                src={partner.logo_url}
+                                alt={partner.name}
+                                width={200}
+                                height={100}
+                                className="w-full h-full object-contain"
+                              />
+                            ) : (
+                              <Building className="w-12 h-12 text-[#e62b1e]/50" />
+                            )}
+                          </div>
+                          <h3 className="font-semibold text-white mb-2">{partner.name}</h3>
+                          {partner.tier && (
+                            <p className="text-white/50 text-xs uppercase tracking-widest mb-2">{partner.tier}</p>
+                          )}
+                          {partner.website_url && (
+                            <a
+                              href={partner.website_url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1 text-[#e62b1e]/80 hover:text-[#e62b1e] text-xs transition-colors duration-200"
+                            >
+                              <ExternalLink className="w-3 h-3" />
+                              Visit website
+                            </a>
+                          )}
+                        </div>
+                      </TiltCard>
+                    </StaggerItem>
+                  ))}
+                </StaggerContainer>
               </div>
-            </div>
-          </ScrollReveal>
-        </section>
+            </ScrollReveal>
+          </section>
+        )}
+
+        {/* Sponsor placeholder — shown only when no dynamic partners yet */}
+        {!hasPartners && (
+          <section className="mb-16">
+            <ScrollReveal>
+              <div className="nuclear-card rounded-3xl p-8 md:p-10 text-center">
+                <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">Sponsor logos</h2>
+                <p className="text-xl text-white/80 mb-8">
+                  Behind every idea, partners who make TEDx IMT shine — logos will appear here.
+                </p>
+                <div className="rounded-2xl p-8 border border-[#e62b1e]/15 bg-black/40 animate-border-glow">
+                  <Building className="w-16 h-16 text-[#e62b1e]/50 mx-auto mb-4" />
+                  <p className="text-white/70">Sponsor logos will appear here as they are confirmed.</p>
+                </div>
+              </div>
+            </ScrollReveal>
+          </section>
+        )}
 
         <section className="mb-16">
           <ScrollReveal>

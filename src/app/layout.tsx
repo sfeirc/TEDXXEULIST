@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { Inter, Syne } from "next/font/google";
+import { Inter, Syne, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import NuclearAtmosphere from "@/components/NuclearAtmosphere";
-import { ScrollProgress, GlowCursor } from "@/components/MotionElements";
+import { ScrollProgress } from "@/components/MotionElements";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -18,12 +18,27 @@ const syne = Syne({
   weight: ["500", "600", "700", "800"],
 });
 
+const playfair = Playfair_Display({
+  variable: "--font-cormorant",
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
+});
+
 export const metadata: Metadata = {
   title: "TEDxEULiSTParis 2027 — What Connects Us",
   description:
-    "TEDx IMT Paris — exploring human connection. February 2027 at Théâtre Folies Bergère. Ideas worth spreading.",
-  keywords:
-    "TEDx, EULiST, Paris, IMT, technology, innovation, Europe, universities",
+    "TEDx IMT Paris — 22 February 2027 at Théâtre de Paris. An independently organized TEDx event bringing together innovators, researchers, and changemakers.",
+  keywords: [
+    "TEDx",
+    "TEDx Paris",
+    "TEDx IMT",
+    "IMT Atlantique",
+    "conference",
+    "innovation",
+    "ideas",
+  ],
   authors: [{ name: "TEDxEULiSTParis Team" }],
   creator: "TEDxEULiSTParis",
   publisher: "TEDxEULiSTParis",
@@ -32,16 +47,16 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL("https://tedxeulistparis.com"),
+  metadataBase: new URL("https://tedximtparis.com"),
   alternates: {
     canonical: "/",
   },
   openGraph: {
     title: "TEDxEULiSTParis 2027 — What Connects Us",
     description:
-      "TEDx IMT Paris — exploring human connection. February 2027 at Théâtre Folies Bergère.",
-    url: "https://tedxeulistparis.com",
-    siteName: "TEDxEULiSTParis",
+      "TEDx IMT Paris — 22 February 2027 at Théâtre de Paris. An independently organized TEDx event bringing together innovators, researchers, and changemakers.",
+    url: "https://tedximtparis.com",
+    siteName: "TEDx IMT Paris",
     images: [
       {
         url: "/og-image.jpg",
@@ -57,7 +72,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "TEDxEULiSTParis 2027 — What Connects Us",
     description:
-      "TEDx IMT Paris — exploring human connection. February 2027 at Théâtre Folies Bergère.",
+      "TEDx IMT Paris — 22 February 2027 at Théâtre de Paris. An independently organized TEDx event bringing together innovators, researchers, and changemakers.",
     images: ["/og-image.jpg"],
   },
   robots: {
@@ -73,21 +88,50 @@ export const metadata: Metadata = {
   },
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Event",
+  name: "TEDx IMT Paris",
+  startDate: "2027-02-22T09:00:00+01:00",
+  endDate: "2027-02-22T18:00:00+01:00",
+  location: {
+    "@type": "Place",
+    name: "Théâtre de Paris",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "32 Rue Richer",
+      addressLocality: "Paris",
+      postalCode: "75009",
+      addressCountry: "FR",
+    },
+  },
+  organizer: {
+    "@type": "Organization",
+    name: "TEDx IMT Paris",
+    url: "https://tedximtparis.com",
+  },
+  eventStatus: "https://schema.org/EventScheduled",
+  eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${syne.variable}`}>
+    <html lang="en" className={`${inter.variable} ${syne.variable} ${playfair.variable}`}>
       <head>
         <link rel="icon" href="/favicon.png" type="image/png" sizes="any" />
         <link rel="apple-touch-icon" href="/favicon.png" />
       </head>
       <body className="font-sans antialiased text-white min-h-screen">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <NuclearAtmosphere />
         <ScrollProgress />
-        <GlowCursor />
         <div className="relative z-10 min-h-screen">{children}</div>
       </body>
     </html>
