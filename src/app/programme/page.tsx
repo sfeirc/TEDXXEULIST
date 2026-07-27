@@ -62,12 +62,11 @@ function SlotIcon({ type }: { type: ProgrammeSession['type'] }) {
 
 function SpeakerSlot({ index }: { index: number }) {
   return (
-    <div className="flex items-center gap-3 mt-3 rounded-xl border border-white/6 bg-black/30 px-4 py-3">
-      <span className="relative flex h-2 w-2 shrink-0">
-        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#e62b1e]/60 opacity-75" />
-        <span className="relative inline-flex rounded-full h-2 w-2 bg-[#e62b1e]/50" />
-      </span>
-      <p className="text-white/45 text-sm italic">Speaker {index + 1} — to be announced</p>
+    <div className="flex items-center gap-3 mt-3 px-4 py-3" style={{ borderTop: '1px solid var(--border-subtle)' }}>
+      <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: 'var(--ted-red)', opacity: 0.5 }} />
+      <p className="text-sm italic" style={{ color: 'var(--grey-600)' }}>
+        Conférencier {index + 1} — annonce à venir
+      </p>
     </div>
   );
 }
@@ -96,7 +95,7 @@ export default async function ProgrammePage() {
       <Navigation />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 py-6">
-        <Link href="/" className="back-link"><ArrowLeft className="w-4 h-4" />Back to home</Link>
+        <Link href="/" className="back-link"><ArrowLeft className="w-4 h-4" />Retour</Link>
       </div>
 
       <main className="relative z-10 max-w-4xl mx-auto px-6 pb-24">
@@ -108,7 +107,7 @@ export default async function ProgrammePage() {
             </p>
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
-            <h1 className="font-bold text-4xl md:text-6xl lg:text-7xl text-white mb-6 tracking-tight">Programme</h1>
+            <h1 className="font-display font-light mb-6" style={{ fontSize: 'clamp(3rem, 8vw, 6rem)', lineHeight: 0.93, letterSpacing: '-0.025em', color: 'var(--off-white)' }}>Programme</h1>
           </ScrollReveal>
           <ScrollReveal delay={0.2}>
             <p className="text-lg md:text-xl text-white/65 max-w-2xl mx-auto leading-relaxed">
@@ -118,14 +117,10 @@ export default async function ProgrammePage() {
         </div>
 
         <ScrollReveal delay={0.25}>
-          <div className="mb-14 rounded-2xl border border-[#e62b1e]/30 bg-[#e62b1e]/[0.06] px-6 py-4 flex items-center gap-3">
-            <span className="relative flex h-2.5 w-2.5 shrink-0">
-              <span className="animate-ping absolute inline-flex h-2.5 w-2.5 rounded-full bg-[#e62b1e]/60 opacity-75" />
-              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#e62b1e]" />
-            </span>
-            <p className="text-white/80 text-sm font-medium">
-              <span className="text-[#e62b1e] font-semibold">Programme complet révélé en janvier 2027.</span>
-              {' '}Les noms des speakers et les titres des talks apparaîtront ici au fur et à mesure des confirmations.
+          <div className="mb-14 px-5 py-4 flex items-start gap-4" style={{ borderLeft: '2px solid var(--ted-red)', background: 'var(--ted-red-muted)' }}>
+            <p className="text-sm leading-relaxed" style={{ color: 'var(--grey-300)' }}>
+              <span style={{ color: 'var(--off-white)', fontWeight: 500 }}>Programme complet révélé en janvier 2027.</span>
+              {' '}Les noms des intervenants et titres des talks apparaîtront ici au fil des confirmations.
             </p>
           </div>
         </ScrollReveal>

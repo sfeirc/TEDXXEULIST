@@ -5,27 +5,36 @@ import Link from 'next/link';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { ArrowLeft, Mail, MapPin, Send } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ScrollReveal, TiltCard, MagneticWrapper } from '@/components/MotionElements';
 import { submitContact } from '@/app/actions/contact';
 import { subscribeNewsletter } from '@/app/actions/newsletter';
 
 const contactInfo = [
   {
     icon: Mail,
-    title: 'Speakers & talk proposals',
+    title: 'Conférenciers & propositions',
     details: 'tedx.imt2026@gmail.com',
-    description: 'Apply to speak, suggest a talk, or ask about the speaker line-up.',
+    description: 'Candidature speaker, suggestion de talk, questions sur le line-up.',
   },
   {
     icon: Mail,
-    title: 'Sponsorship & partnerships',
+    title: 'Sponsoring & partenariats',
     details: 'tedximtpartenaire@gmail.com',
-    description: 'Sponsor packages, partner tiers, and institutional visibility.',
+    description: 'Packages partenaires, niveaux de visibilité, partenariats institutionnels.',
   },
 ];
 
-const labelClass = 'block text-xs font-semibold uppercase tracking-wider text-white/50 mb-2';
+const labelClass = 'block text-xs font-medium uppercase tracking-widest mb-2' as const;
+const inputStyle = {
+  width: '100%',
+  padding: '0.75rem 0',
+  background: 'transparent',
+  border: 'none',
+  borderBottom: '1px solid rgba(200,190,175,0.2)',
+  color: 'var(--off-white)',
+  fontSize: '0.9375rem',
+  outline: 'none',
+  transition: 'border-color 0.2s ease',
+} as const;
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -34,10 +43,8 @@ export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [formError, setFormError] = useState('');
-
   const [newsletterEmail, setNewsletterEmail] = useState('');
   const [newsletterState, setNewsletterState] = useState<'idle' | 'loading' | 'done' | 'error'>('idle');
-  const [newsletterError, setNewsletterError] = useState('');
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -66,252 +73,205 @@ export default function Contact() {
   const handleNewsletter = async (e: React.FormEvent) => {
     e.preventDefault();
     setNewsletterState('loading');
-    setNewsletterError('');
     const result = await subscribeNewsletter(newsletterEmail);
-    if (result.success) {
-      setNewsletterState('done');
-    } else {
-      setNewsletterState('error');
-      setNewsletterError(result.error);
-    }
+    setNewsletterState(result.success ? 'done' : 'error');
   };
 
   return (
-    <div className="min-h-screen relative overflow-hidden font-inter">
+    <div className="min-h-screen" style={{ background: 'var(--black-deep)', color: 'var(--off-white)' }}>
       <Navigation />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 py-6">
+      <div className="max-w-5xl mx-auto px-6 md:px-12 pt-28 pb-6">
         <Link href="/" className="back-link">
           <ArrowLeft className="w-4 h-4" />
-          Back to home
+          Retour
         </Link>
       </div>
 
-      <main className="relative z-10 max-w-6xl mx-auto px-6 pb-20">
-        <div className="text-center mb-16">
-          <ScrollReveal>
-            <p className="page-eyebrow mb-4">Direct</p>
-          </ScrollReveal>
-          <ScrollReveal delay={0.1}>
-            <h1 className="font-bold text-4xl md:text-6xl lg:text-7xl text-white mb-6 tracking-tight">Contact</h1>
-          </ScrollReveal>
-          <ScrollReveal delay={0.2}>
-            <p className="text-lg md:text-xl text-white/70 max-w-3xl mx-auto leading-relaxed">
-              Partnerships, volunteering, media — get in touch.
-            </p>
-          </ScrollReveal>
+      <main className="max-w-5xl mx-auto px-6 md:px-12 pb-24">
+
+        {/* Header */}
+        <div className="mb-16 pt-2">
+          <div className="flex items-center gap-3 mb-6">
+            <div style={{ width: '1.5rem', height: '1px', background: 'var(--amber)' }} />
+            <span className="eyebrow" style={{ color: 'var(--amber)' }}>Contact</span>
+          </div>
+          <h1
+            className="font-display font-light mb-5"
+            style={{ fontSize: 'clamp(3rem, 7vw, 6rem)', lineHeight: 0.93, letterSpacing: '-0.025em' }}
+          >
+            Nous écrire
+          </h1>
+          <p className="text-base leading-relaxed" style={{ color: 'var(--grey-400)', maxWidth: '38rem' }}>
+            Partenariats, bénévolat, candidature speaker, presse — nous répondons sous 24 h.
+          </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
-          <ScrollReveal direction="left">
-            <TiltCard intensity={3}>
-              <div className="nuclear-card rounded-3xl p-8 md:p-10">
-                <h2 className="text-2xl font-bold text-white mb-8">Send a message</h2>
+        <div
+          className="mb-1 h-px"
+          style={{ background: 'linear-gradient(90deg, var(--amber-dim), transparent)' }}
+        />
 
-                <AnimatePresence mode="wait">
-                  {isSubmitted ? (
-                    <motion.div
-                      key="success"
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.9 }}
-                      transition={{ duration: 0.4 }}
-                      className="text-center py-10"
-                    >
-                      <motion.div
-                        initial={{ scale: 0 }}
-                        animate={{ scale: 1 }}
-                        transition={{ type: 'spring', stiffness: 200, damping: 15, delay: 0.1 }}
-                        className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full border border-[#e62b1e]/40 bg-[#e62b1e]/10 shadow-[0_0_50px_-14px_rgba(230,43,30,0.55)]"
-                      >
-                        <Send className="h-9 w-9 text-[#e62b1e]" />
-                      </motion.div>
-                      <h3 className="text-xl font-bold text-white mb-2">Message sent</h3>
-                      <p className="text-white/65 mb-8 text-sm leading-relaxed">Thank you — we&apos;ll get back to you shortly.</p>
-                      <button
-                        type="button"
-                        onClick={() => {
-                          setIsSubmitted(false);
-                          setFormData({ name: '', email: '', subject: '', message: '', interest: '' });
-                        }}
-                        className="text-[#e62b1e] hover:text-white text-sm font-semibold underline-offset-4 hover:underline"
-                      >
-                        Send another message
-                      </button>
-                    </motion.div>
-                  ) : (
-                    <motion.form
-                      key="form"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      onSubmit={handleSubmit}
-                      className="space-y-6"
-                    >
-                      {formError && (
-                        <div className="rounded-xl bg-red-900/30 border border-red-500/40 p-3 text-sm text-red-300">
-                          {formError}
-                        </div>
-                      )}
+        {/* Two-column layout */}
+        <div className="grid lg:grid-cols-[1.4fr_1fr] gap-12 md:gap-20 pt-12">
 
-                      <div className="grid md:grid-cols-2 gap-6">
-                        <div>
-                          <label htmlFor="name" className={labelClass}>Full name *</label>
-                          <input type="text" id="name" name="name" required value={formData.name} onChange={handleInputChange} className="input-nuclear" placeholder="Your name" autoComplete="name" />
-                        </div>
-                        <div>
-                          <label htmlFor="email" className={labelClass}>Email *</label>
-                          <input type="email" id="email" name="email" required value={formData.email} onChange={handleInputChange} className="input-nuclear" placeholder="you@email.com" autoComplete="email" />
-                        </div>
-                      </div>
-
-                      <div>
-                        <label htmlFor="interest" className={labelClass}>Area of interest</label>
-                        <select id="interest" name="interest" value={formData.interest} onChange={handleInputChange} className="input-nuclear appearance-none bg-[#0a0a0a]">
-                          <option value="">Select</option>
-                          <option value="general">General information</option>
-                          <option value="speaker">Speaker</option>
-                          <option value="partnership">Partnership</option>
-                          <option value="team">Join the team</option>
-                          <option value="media">Media</option>
-                          <option value="other">Other</option>
-                        </select>
-                      </div>
-
-                      <div>
-                        <label htmlFor="subject" className={labelClass}>Subject *</label>
-                        <input type="text" id="subject" name="subject" required value={formData.subject} onChange={handleInputChange} className="input-nuclear" placeholder="Subject" />
-                      </div>
-
-                      <div>
-                        <label htmlFor="message" className={labelClass}>Message *</label>
-                        <textarea id="message" name="message" required rows={6} value={formData.message} onChange={handleInputChange} className="input-nuclear resize-none" placeholder="Your message..." />
-                      </div>
-
-                      <MagneticWrapper className="w-full">
-                        <button
-                          type="submit"
-                          disabled={isSubmitting}
-                          className="btn-nuclear-primary w-full flex items-center justify-center gap-2 rounded-xl py-3.5 px-6 text-base disabled:cursor-not-allowed disabled:opacity-50"
-                        >
-                          {isSubmitting ? (
-                            <><div className="h-5 w-5 animate-spin rounded-full border-2 border-white border-t-transparent" />Sending...</>
-                          ) : (
-                            <><Send className="h-5 w-5" />Send message</>
-                          )}
-                        </button>
-                      </MagneticWrapper>
-                    </motion.form>
-                  )}
-                </AnimatePresence>
+          {/* Left — form */}
+          <div>
+            {isSubmitted ? (
+              <div style={{ borderTop: '1px solid var(--border-warm)', paddingTop: '2rem' }}>
+                <p className="font-display font-light mb-2" style={{ fontSize: '1.75rem', color: 'var(--off-white)' }}>
+                  Message envoyé
+                </p>
+                <p className="text-sm mb-8" style={{ color: 'var(--grey-400)' }}>
+                  Merci — nous revenons vers vous sous 24 h.
+                </p>
+                <button
+                  type="button"
+                  onClick={() => { setIsSubmitted(false); setFormData({ name: '', email: '', subject: '', message: '', interest: '' }); }}
+                  className="font-label text-xs tracking-widest uppercase"
+                  style={{ color: 'var(--ted-red)' }}
+                >
+                  Envoyer un autre message
+                </button>
               </div>
-            </TiltCard>
-          </ScrollReveal>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-7">
+                {formError && (
+                  <p className="text-sm" style={{ color: 'var(--ted-red)' }}>{formError}</p>
+                )}
 
-          <div className="space-y-8">
-            <ScrollReveal direction="right">
-              <TiltCard intensity={4}>
-                <div className="nuclear-card rounded-3xl p-8 md:p-10">
-                  <h2 className="text-2xl font-bold text-white mb-6">Details</h2>
-                  <div className="space-y-6">
-                    {contactInfo.map((info, index) => {
-                      const IconComponent = info.icon;
-                      return (
-                        <div key={index} className="flex items-start gap-4 group">
-                          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-[#e62b1e]/35 bg-[#e62b1e]/10 shadow-[0_0_24px_-8px_rgba(230,43,30,0.35)] group-hover:shadow-[0_0_36px_-8px_rgba(230,43,30,0.55)] transition-shadow duration-300">
-                            <IconComponent className="h-6 w-6 text-[#e62b1e]" />
-                          </div>
-                          <div>
-                            <h3 className="font-semibold text-white">{info.title}</h3>
-                            <a href={`mailto:${info.details}`} className="text-[#e62b1e] hover:text-white font-medium text-sm transition-colors duration-200">{info.details}</a>
-                            <p className="mt-1 text-sm text-white/60">{info.description}</p>
-                          </div>
-                        </div>
-                      );
-                    })}
+                <div className="grid md:grid-cols-2 gap-7">
+                  <div>
+                    <label htmlFor="name" className={labelClass} style={{ color: 'var(--grey-600)' }}>Nom complet *</label>
+                    <input type="text" id="name" name="name" required value={formData.name} onChange={handleInputChange} style={inputStyle} placeholder="Votre nom" autoComplete="name" />
+                  </div>
+                  <div>
+                    <label htmlFor="email" className={labelClass} style={{ color: 'var(--grey-600)' }}>Email *</label>
+                    <input type="email" id="email" name="email" required value={formData.email} onChange={handleInputChange} style={inputStyle} placeholder="vous@email.com" autoComplete="email" />
                   </div>
                 </div>
-              </TiltCard>
-            </ScrollReveal>
 
-            <ScrollReveal direction="right" delay={0.1}>
-              <TiltCard intensity={4}>
-                <div className="nuclear-card rounded-3xl p-8 md:p-10">
-                  <h2 className="text-2xl font-bold text-white mb-6">Location</h2>
-                  <div className="flex items-start gap-4">
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-[#e62b1e]/35 bg-[#e62b1e]/10">
-                      <MapPin className="h-6 w-6 text-[#e62b1e]" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-white">Théâtre de Paris</h3>
-                      <p className="text-white/75 text-sm mt-2 leading-relaxed">32 rue Richer<br />75009 Paris, France</p>
-                    </div>
-                  </div>
+                <div>
+                  <label htmlFor="interest" className={labelClass} style={{ color: 'var(--grey-600)' }}>Sujet</label>
+                  <select id="interest" name="interest" value={formData.interest} onChange={handleInputChange} style={{ ...inputStyle, cursor: 'pointer' }}>
+                    <option value="" style={{ background: 'var(--grey-900)' }}>Sélectionner</option>
+                    <option value="general" style={{ background: 'var(--grey-900)' }}>Information générale</option>
+                    <option value="speaker" style={{ background: 'var(--grey-900)' }}>Conférencier</option>
+                    <option value="partnership" style={{ background: 'var(--grey-900)' }}>Partenariat</option>
+                    <option value="team" style={{ background: 'var(--grey-900)' }}>Rejoindre l&apos;équipe</option>
+                    <option value="media" style={{ background: 'var(--grey-900)' }}>Presse / Médias</option>
+                    <option value="other" style={{ background: 'var(--grey-900)' }}>Autre</option>
+                  </select>
                 </div>
-              </TiltCard>
-            </ScrollReveal>
 
-            <ScrollReveal direction="right" delay={0.2}>
-              <div className="nuclear-card rounded-3xl p-6 md:p-8">
-                <h3 className="text-lg font-semibold text-white mb-2">Response time</h3>
-                <p className="text-white/65 text-sm leading-relaxed">We aim to reply within 24 hours.</p>
+                <div>
+                  <label htmlFor="subject" className={labelClass} style={{ color: 'var(--grey-600)' }}>Objet *</label>
+                  <input type="text" id="subject" name="subject" required value={formData.subject} onChange={handleInputChange} style={inputStyle} placeholder="Objet de votre message" />
+                </div>
+
+                <div>
+                  <label htmlFor="message" className={labelClass} style={{ color: 'var(--grey-600)' }}>Message *</label>
+                  <textarea
+                    id="message" name="message" required rows={5}
+                    value={formData.message} onChange={handleInputChange}
+                    style={{ ...inputStyle, resize: 'none' }}
+                    placeholder="Votre message…"
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="btn-primary"
+                  style={{ opacity: isSubmitting ? 0.6 : 1 }}
+                >
+                  <Send className="w-3.5 h-3.5" />
+                  {isSubmitting ? 'Envoi…' : 'Envoyer'}
+                </button>
+              </form>
+            )}
+          </div>
+
+          {/* Right — contact info */}
+          <div className="space-y-10">
+            {contactInfo.map((info) => {
+              const Icon = info.icon;
+              return (
+                <div key={info.title} style={{ borderTop: '1px solid var(--border-subtle)', paddingTop: '1.5rem' }}>
+                  <div className="flex items-center gap-2 mb-3">
+                    <Icon className="w-3.5 h-3.5" style={{ color: 'var(--grey-600)' }} />
+                    <span className="eyebrow" style={{ color: 'var(--grey-600)' }}>{info.title}</span>
+                  </div>
+                  <a
+                    href={`mailto:${info.details}`}
+                    className="font-display font-light text-lg block mb-2"
+                    style={{ color: 'var(--off-white)', letterSpacing: '-0.01em' }}
+                  >
+                    {info.details}
+                  </a>
+                  <p className="text-sm leading-relaxed" style={{ color: 'var(--grey-500)' }}>{info.description}</p>
+                </div>
+              );
+            })}
+
+            <div style={{ borderTop: '1px solid var(--border-subtle)', paddingTop: '1.5rem' }}>
+              <div className="flex items-center gap-2 mb-3">
+                <MapPin className="w-3.5 h-3.5" style={{ color: 'var(--grey-600)' }} />
+                <span className="eyebrow" style={{ color: 'var(--grey-600)' }}>Lieu</span>
               </div>
-            </ScrollReveal>
+              <p className="font-display font-light text-lg mb-1" style={{ color: 'var(--off-white)', letterSpacing: '-0.01em' }}>
+                Théâtre de Paris
+              </p>
+              <p className="text-sm" style={{ color: 'var(--grey-500)' }}>32 rue Richer, 75009 Paris</p>
+            </div>
+
+            <div style={{ borderTop: '1px solid var(--border-subtle)', paddingTop: '1.5rem' }}>
+              <p className="text-sm leading-relaxed" style={{ color: 'var(--grey-500)' }}>
+                Nous répondons sous 24 heures, du lundi au vendredi.
+              </p>
+            </div>
           </div>
         </div>
 
-        <ScrollReveal>
-          <div className="mt-16 nuclear-card rounded-3xl p-8 md:p-10 text-center">
-            <h2 className="text-2xl font-bold text-white mb-4">Stay informed</h2>
-            <p className="text-white/65 mb-8 max-w-2xl mx-auto leading-relaxed">
-              Join the TEDx IMT journey — be the first to hear about speakers, tickets, and event updates.
-            </p>
-
-            <AnimatePresence mode="wait">
+        {/* Newsletter strip */}
+        <div
+          className="mt-20 pt-12"
+          style={{ borderTop: '1px solid var(--border-subtle)' }}
+        >
+          <div className="grid md:grid-cols-2 gap-8 items-end">
+            <div>
+              <div className="eyebrow mb-3" style={{ color: 'var(--grey-600)' }}>Newsletter</div>
+              <h2
+                className="font-display font-light"
+                style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', letterSpacing: '-0.02em', color: 'var(--off-white)', lineHeight: 1.1 }}
+              >
+                Rester dans la boucle
+              </h2>
+            </div>
+            <div>
               {newsletterState === 'done' ? (
-                <motion.p
-                  key="done"
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="text-[#e62b1e] font-semibold"
-                >
-                  You&apos;re on the list. We&apos;ll be in touch!
-                </motion.p>
+                <p className="font-label text-xs tracking-widest uppercase" style={{ color: 'var(--grey-400)' }}>
+                  ✓ Vous êtes sur la liste
+                </p>
               ) : (
-                <motion.form
-                  key="newsletter"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  onSubmit={handleNewsletter}
-                  className="mx-auto flex max-w-md flex-col gap-4 sm:flex-row"
-                >
+                <form onSubmit={handleNewsletter} className="flex gap-3">
                   <input
                     type="email"
                     required
                     value={newsletterEmail}
                     onChange={e => setNewsletterEmail(e.target.value)}
-                    placeholder="Your email"
-                    className="input-nuclear flex-1"
+                    placeholder="votre@email.com"
+                    style={{ ...inputStyle, flex: 1 }}
                     aria-label="Newsletter email"
                   />
-                  <MagneticWrapper>
-                    <button
-                      type="submit"
-                      disabled={newsletterState === 'loading'}
-                      className="btn-nuclear-primary whitespace-nowrap px-8 py-3 rounded-xl text-sm font-semibold disabled:opacity-50"
-                    >
-                      {newsletterState === 'loading' ? 'Subscribing…' : 'Subscribe'}
-                    </button>
-                  </MagneticWrapper>
-                </motion.form>
+                  <button type="submit" disabled={newsletterState === 'loading'} className="btn-primary whitespace-nowrap">
+                    {newsletterState === 'loading' ? '…' : "S'inscrire"}
+                  </button>
+                </form>
               )}
-            </AnimatePresence>
-
-            {newsletterState === 'error' && (
-              <p className="mt-3 text-sm text-red-400">{newsletterError}</p>
-            )}
+            </div>
           </div>
-        </ScrollReveal>
+        </div>
       </main>
 
       <Footer />

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ArrowLeft, HelpCircle, ArrowRight } from 'lucide-react';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { ScrollReveal } from '@/components/MotionElements';
@@ -10,14 +10,14 @@ import FaqAccordion from './FaqAccordion';
 export const revalidate = 60;
 
 const FALLBACK_FAQS: Omit<FaqItem, 'id' | 'created_at' | 'updated_at'>[] = [
-  { question: 'What is TEDx?', answer: 'TEDx is an independently organized event run under an official license from TED. It follows the same format as TED talks — short, carefully prepared talks by speakers who share ideas worth spreading — while being tailored to the local community.', category: null, display_order: 0, is_published: true },
-  { question: 'When and where?', answer: 'TEDx IMT Paris takes place on 22 February 2027 at Théâtre de Paris. Doors open at 9 am and the programme runs throughout the day.', category: null, display_order: 1, is_published: true },
-  { question: 'How to get tickets?', answer: 'Register on this site. Seats are limited — we encourage you to register early. Admission is free for students enrolled at IMT engineering schools.', category: null, display_order: 2, is_published: true },
-  { question: 'Will talks be in French or English?', answer: 'The event features a mix of French and English talks. Subtitles will be displayed during every talk so all attendees can follow comfortably.', category: null, display_order: 3, is_published: true },
-  { question: 'How long is the event?', answer: 'TEDx IMT Paris is a full-day event running from 9 am to 6 pm, with breaks and a closing networking cocktail.', category: null, display_order: 4, is_published: true },
-  { question: 'Can I apply as a speaker?', answer: 'Yes — submit your proposal via the contact form. We look for original, well-prepared talks relevant to audiences curious about innovation, science, society, and the future. Speaker selection takes place in autumn 2026.', category: null, display_order: 5, is_published: true },
-  { question: 'Are there food options?', answer: 'Lunch and coffee breaks are provided for all attendees. Dietary requirements can be noted at registration.', category: null, display_order: 6, is_published: true },
-  { question: 'Will talks be recorded?', answer: 'Yes. All talks will be professionally recorded and published on YouTube and the TED website after the event.', category: null, display_order: 7, is_published: true },
+  { question: 'Qu\'est-ce que TEDx ?', answer: 'TEDx est un événement organisé de manière indépendante sous une licence officielle de TED. Il suit le même format que les conférences TED — des présentations courtes, soigneusement préparées, par des intervenants qui partagent des idées qui valent la peine d\'être diffusées — tout en étant adapté à la communauté locale.', category: null, display_order: 0, is_published: true },
+  { question: 'Quand et où a lieu l\'événement ?', answer: 'TEDx IMT Paris se tient le 22 février 2027 au Théâtre de Paris. Les portes ouvrent à 9h et le programme se déroule toute la journée.', category: null, display_order: 1, is_published: true },
+  { question: 'Comment obtenir des billets ?', answer: 'Inscrivez-vous sur ce site. Les places sont limitées — nous vous encourageons à vous inscrire rapidement. L\'entrée est gratuite pour les étudiants des écoles d\'ingénieurs IMT.', category: null, display_order: 2, is_published: true },
+  { question: 'Les conférences seront-elles en français ou en anglais ?', answer: 'L\'événement propose un mélange de conférences en français et en anglais. Des sous-titres seront affichés pendant chaque conférence afin que tous les participants puissent suivre confortablement.', category: null, display_order: 3, is_published: true },
+  { question: 'Quelle est la durée de l\'événement ?', answer: 'TEDx IMT Paris est un événement d\'une journée complète, de 9h à 18h, avec des pauses et un cocktail de clôture en réseau.', category: null, display_order: 4, is_published: true },
+  { question: 'Puis-je postuler comme orateur ?', answer: 'Oui — soumettez votre proposition via le formulaire de contact. Nous recherchons des présentations originales et bien préparées, pertinentes pour un public curieux de l\'innovation, des sciences, de la société et de l\'avenir. La sélection des intervenants aura lieu à l\'automne 2026.', category: null, display_order: 5, is_published: true },
+  { question: 'Y a-t-il des options de restauration ?', answer: 'Le déjeuner et les pauses café sont fournis pour tous les participants. Les régimes alimentaires spéciaux peuvent être signalés lors de l\'inscription.', category: null, display_order: 6, is_published: true },
+  { question: 'Les conférences seront-elles enregistrées ?', answer: 'Oui. Toutes les conférences seront enregistrées de manière professionnelle et publiées sur YouTube et le site TED après l\'événement.', category: null, display_order: 7, is_published: true },
 ];
 
 async function getFaqs(): Promise<FaqItem[]> {
@@ -46,26 +46,25 @@ export default async function FaqPage() {
   const hasCategories = Object.keys(grouped).some(k => k !== '');
 
   return (
-    <div className="min-h-screen relative overflow-hidden font-inter">
+    <div className="min-h-screen relative overflow-hidden">
       <Navigation />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 py-6">
-        <Link href="/" className="back-link"><ArrowLeft className="w-4 h-4" />Back to home</Link>
+      <div className="relative z-10 max-w-3xl mx-auto px-6 py-6">
+        <Link href="/" className="back-link"><ArrowLeft className="w-4 h-4" />Retour</Link>
       </div>
 
       <main className="relative z-10 max-w-3xl mx-auto px-6 pb-24">
-        <div className="text-center mb-14">
+        <div className="mb-16 pt-4">
           <ScrollReveal>
-            <p className="page-eyebrow mb-4">
-              <HelpCircle className="inline-block w-3.5 h-3.5 mr-1.5 -mt-0.5" />
-              Questions
-            </p>
+            <p className="page-eyebrow mb-5">Questions fréquentes</p>
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
-            <h1 className="font-bold text-4xl md:text-6xl lg:text-7xl text-white mb-4 tracking-tight">FAQ</h1>
+            <h1 className="font-display font-bold text-white mb-6" style={{ fontSize: 'clamp(2.8rem, 7vw, 5.5rem)', lineHeight: 1.05, letterSpacing: '-0.02em' }}>
+              FAQ
+            </h1>
           </ScrollReveal>
           <ScrollReveal delay={0.2}>
-            <p className="text-lg text-white/60 max-w-xl mx-auto">Everything you need to know about TEDx IMT Paris 2027.</p>
+            <p className="text-lg text-white/60 max-w-xl leading-relaxed">Tout ce que vous devez savoir sur TEDx IMT Paris 2027.</p>
           </ScrollReveal>
         </div>
 
@@ -74,7 +73,7 @@ export default async function FaqPage() {
             <section key={category} className="mb-10">
               {category && (
                 <ScrollReveal>
-                  <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-[#e62b1e]/70 mb-4 px-1">{category}</h2>
+                  <h2 className="page-eyebrow mb-4">{category}</h2>
                 </ScrollReveal>
               )}
               <FaqAccordion items={items} />
@@ -85,10 +84,10 @@ export default async function FaqPage() {
         )}
 
         <ScrollReveal>
-          <div className="mt-14 nuclear-card rounded-2xl border border-[#e62b1e]/15 p-8 text-center">
-            <p className="text-white/70 mb-4">Still have a question?</p>
-            <Link href="/contact" className="btn-nuclear-primary inline-flex items-center gap-2 px-8 py-3 rounded-full">
-              Contact us <ArrowRight className="w-4 h-4" />
+          <div className="mt-16 border-t border-white/10 pt-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+            <p className="text-white/55">Une autre question ? Notre équipe vous répond.</p>
+            <Link href="/contact" className="btn-primary inline-flex items-center gap-2 shrink-0">
+              Nous contacter <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
         </ScrollReveal>

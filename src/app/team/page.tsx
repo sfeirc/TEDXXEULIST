@@ -80,64 +80,63 @@ function mapRowsToOrgChart(rows: TeamMemberRow[]): {
   return { leader, poles: Array.from(polesMap.values()), activeMembers };
 }
 
-function PersonCard({ person, variant = 'member' }: { person: Person; variant?: 'leader' | 'director' | 'member' }) {
-  const config = {
-    leader: {
-      img: 'w-28 h-28 md:w-36 md:h-36',
-      border: 'border-[#e62b1e]/60 shadow-[0_0_50px_-12px_rgba(230,43,30,0.5)]',
-      name: 'text-xl md:text-2xl',
-      role: 'text-sm md:text-base',
-      card: 'px-8 py-6 md:px-10 md:py-8',
-      radius: 'rounded-2xl',
-    },
-    director: {
-      img: 'w-20 h-20 md:w-24 md:h-24',
-      border: 'border-[#e62b1e]/40 shadow-[0_0_30px_-10px_rgba(230,43,30,0.35)]',
-      name: 'text-base md:text-lg',
-      role: 'text-xs md:text-sm',
-      card: 'px-5 py-4 md:px-6 md:py-5',
-      radius: 'rounded-xl',
-    },
-    member: {
-      img: 'w-14 h-14 md:w-16 md:h-16',
-      border: 'border-white/15',
-      name: 'text-sm',
-      role: 'text-xs',
-      card: 'px-3 py-3',
-      radius: 'rounded-lg',
-    },
-  };
-  const c = config[variant];
-
+function Avatar({ photo, name, size }: { photo: string; name: string; size: string }) {
   return (
-    <div className={`nuclear-card ${c.radius} ${c.card} text-center group hover:border-[#e62b1e]/30 transition-all duration-300`}>
-      <div className={`${c.img} mx-auto mb-2 relative overflow-hidden rounded-full border-2 ${c.border} group-hover:scale-105 transition-all duration-500`}>
-        {person.photo ? (
-          <Image src={person.photo} alt={person.name} width={160} height={160} className="w-full h-full object-cover" />
-        ) : (
-          <div className="w-full h-full bg-white/10 flex items-center justify-center text-white/30 text-xl font-bold">
-            {person.name.charAt(0)}
-          </div>
-        )}
-      </div>
-      <h3 className={`${c.name} font-bold text-white mb-0.5`}>{person.name}</h3>
-      <p className={`${c.role} text-[#e62b1e] font-semibold tracking-wide`}>{person.role}</p>
-      {person.school && (
-        <p className="mt-2 inline-block bg-white/5 text-white/70 text-[0.7rem] font-semibold px-2.5 py-0.5 rounded-full border border-white/10 tracking-wide">
-          {person.school}
-        </p>
+    <div className={`${size} mx-auto mb-3 relative overflow-hidden border border-white/10`}>
+      {photo ? (
+        <Image src={photo} alt={name} width={160} height={160} className="w-full h-full object-cover" />
+      ) : (
+        <div className="w-full h-full bg-white/8 flex items-center justify-center text-white/40 font-display font-semibold text-xl">
+          {name.charAt(0)}
+        </div>
       )}
     </div>
   );
 }
 
+function PersonCard({ person, variant = 'member' }: { person: Person; variant?: 'leader' | 'director' | 'member' }) {
+  if (variant === 'leader') {
+    return (
+      <div className="text-center px-10 py-8 border border-white/10 rounded-sm max-w-xs bg-white/[0.02]">
+        <Avatar photo={person.photo} name={person.name} size="w-28 h-28 md:w-32 md:h-32" />
+        <h3 className="font-display font-light text-xl mb-1 leading-tight">{person.name}</h3>
+        <p className="text-[#e62b1e] text-sm font-medium tracking-wide">{person.role}</p>
+        {person.school && (
+          <p className="mt-2 text-white/35 text-xs uppercase tracking-widest">{person.school}</p>
+        )}
+      </div>
+    );
+  }
+
+  if (variant === 'director') {
+    return (
+      <div className="text-center px-6 py-5 border border-white/8 rounded-sm bg-white/[0.02] w-44">
+        <Avatar photo={person.photo} name={person.name} size="w-16 h-16 md:w-20 md:h-20" />
+        <h3 className="font-display font-light text-sm mb-0.5 leading-tight">{person.name}</h3>
+        <p className="text-[#e62b1e] text-xs tracking-wide">{person.role}</p>
+        {person.school && (
+          <p className="mt-1.5 text-white/30 text-[0.65rem] uppercase tracking-widest">{person.school}</p>
+        )}
+      </div>
+    );
+  }
+
+  return (
+    <div className="text-center px-3 py-3 border border-white/6 rounded-sm bg-white/[0.015] w-36">
+      <Avatar photo={person.photo} name={person.name} size="w-12 h-12 md:w-14 md:h-14" />
+      <h3 className="font-medium text-white/85 text-xs mb-0.5 leading-tight">{person.name}</h3>
+      <p className="text-white/40 text-[0.65rem] leading-tight">{person.role}</p>
+    </div>
+  );
+}
+
 function VerticalLine({ height = 'h-8', className = '' }: { height?: string; className?: string }) {
-  return <div className={`w-px ${height} bg-gradient-to-b from-[#e62b1e]/50 to-[#e62b1e]/15 mx-auto ${className}`} />;
+  return <div className={`w-px ${height} bg-white/10 mx-auto ${className}`} />;
 }
 
 function PoleBadge({ name }: { name: string }) {
   return (
-    <span className="inline-block bg-[#e62b1e]/10 text-[#e62b1e] text-[0.65rem] font-bold px-3 py-1 rounded-full border border-[#e62b1e]/20 tracking-widest uppercase whitespace-nowrap">
+    <span className="inline-block text-white/50 text-[0.65rem] font-label uppercase tracking-[0.2em] px-3 py-1 border border-white/8 rounded-sm whitespace-nowrap">
       {name}
     </span>
   );
@@ -179,10 +178,10 @@ export default async function Team() {
 
   if (!leader && poles.length === 0) {
     return (
-      <div className="min-h-screen relative overflow-hidden font-inter">
+      <div className="min-h-screen relative overflow-hidden">
         <Navigation />
         <main className="relative z-10 max-w-7xl mx-auto px-6 py-32 text-center">
-          <p className="text-white/40">Team coming soon.</p>
+          <p className="text-white/40">Équipe bientôt disponible.</p>
         </main>
         <Footer />
       </div>
@@ -190,40 +189,38 @@ export default async function Team() {
   }
 
   return (
-    <div className="min-h-screen relative overflow-hidden font-inter">
+    <div className="min-h-screen relative overflow-hidden">
       <Navigation />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 py-6">
         <Link href="/" className="back-link">
           <ArrowLeft className="w-4 h-4" />
-          Back to home
+          Retour
         </Link>
       </div>
 
-      <main className="relative z-10 max-w-7xl mx-auto px-6 pb-20">
+      <main className="relative z-10 max-w-7xl mx-auto px-6 pb-24">
         {/* Header */}
-        <div className="text-center mb-14 md:mb-16">
+        <div className="mb-16 pt-4">
           <ScrollReveal>
-            <p className="page-eyebrow mb-4">Organization</p>
+            <p className="page-eyebrow mb-5">Organisation</p>
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
-            <h1 className="font-bold text-4xl md:text-6xl lg:text-7xl text-white mb-6 tracking-tight">
-              Organizing team
+            <h1 className="font-display font-bold text-white mb-6" style={{ fontSize: 'clamp(2.8rem, 7vw, 5.5rem)', lineHeight: 1.05, letterSpacing: '-0.02em' }}>
+              Équipe organisatrice
             </h1>
           </ScrollReveal>
           <ScrollReveal delay={0.2}>
-            <p className="text-lg md:text-xl text-white/70 max-w-3xl mx-auto leading-relaxed">
-              TEDx IMT is run by students from across IMT, organized by role across comms, partnerships, logistics, and
-              more.
+            <p className="text-lg text-white/55 max-w-2xl leading-relaxed">
+              TEDx IMT Paris est organisé par des étudiants venant de toute l&apos;IMT, répartis par pôle — communication, partenariats, logistique, et plus encore.
             </p>
           </ScrollReveal>
         </div>
 
-        {/* === Org Chart === */}
+        {/* Org Chart */}
         <section className="overflow-x-auto">
           <div className="min-w-[1000px] lg:min-w-0">
 
-            {/* General Manager */}
             {leader && (
               <ScrollReveal>
                 <div className="flex justify-center">
@@ -232,15 +229,13 @@ export default async function Team() {
               </ScrollReveal>
             )}
 
-            {/* Connector from GM to directors */}
             {leader && poles.length > 0 && <VerticalLine height="h-10" />}
 
-            {/* Director poles */}
             {poles.length > 0 && (
               <ScrollReveal delay={0.15}>
                 <div className="relative">
-                  <div className="absolute top-0 left-[10%] right-[10%] h-px bg-gradient-to-r from-transparent via-[#e62b1e]/40 to-transparent" />
-                  <div className={`grid gap-3 lg:gap-5`} style={{ gridTemplateColumns: `repeat(${poles.length}, 1fr)` }}>
+                  <div className="absolute top-0 left-[10%] right-[10%] h-px bg-white/8" />
+                  <div className="grid gap-3 lg:gap-5" style={{ gridTemplateColumns: `repeat(${poles.length}, 1fr)` }}>
                     {poles.map((pole) => (
                       <PoleColumn key={pole.name} pole={pole} />
                     ))}
@@ -249,14 +244,11 @@ export default async function Team() {
               </ScrollReveal>
             )}
 
-            {/* Active Members */}
             {activeMembers.length > 0 && (
               <div className="mt-16">
                 <ScrollReveal delay={0.25}>
                   <div className="text-center mb-6">
-                    <span className="text-white/30 text-xs font-semibold tracking-widest uppercase">
-                      Active Members
-                    </span>
+                    <span className="page-eyebrow">Membres actifs</span>
                   </div>
                   <div className="flex justify-center gap-4 flex-wrap">
                     {activeMembers.map((member) => (
