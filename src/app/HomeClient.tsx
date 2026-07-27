@@ -151,7 +151,10 @@ export default function HomeClient({ settings, speakers }: Props) {
 
       {/* ── 2. MANIFESTO ── */}
       <section className="section-editorial px-6 md:px-12" style={{ maxWidth: '68rem', margin: '0 auto' }}>
-        <div className="eyebrow mb-6">Le thème · 2027</div>
+        <div className="flex items-center gap-3 mb-8">
+          <div style={{ width: '1.5rem', height: '1px', background: 'var(--amber)' }} />
+          <span className="eyebrow" style={{ color: 'var(--amber)' }}>Le thème · 2027</span>
+        </div>
         <h2
           className="font-display font-light mb-10 md:mb-14"
           style={{ fontSize: 'clamp(3rem, 7vw, 6.5rem)', lineHeight: 0.93, letterSpacing: '-0.025em', color: 'var(--off-white)' }}
@@ -168,10 +171,7 @@ export default function HomeClient({ settings, speakers }: Props) {
             TEDx IMT Paris 2027 réunit penseurs, ingénieurs, artistes et entrepreneurs pour explorer les forces qui connectent — et parfois divisent — notre monde.
           </p>
         </div>
-        <div
-          className="mt-14 h-px"
-          style={{ background: 'linear-gradient(90deg, var(--ted-red), rgba(230,43,30,0.15), transparent)' }}
-        />
+        <div className="mt-14 h-px" style={{ background: 'linear-gradient(90deg, var(--amber-dim), transparent)' }} />
       </section>
 
       {/* ── 3. SPEAKERS ── */}
@@ -295,7 +295,7 @@ export default function HomeClient({ settings, speakers }: Props) {
                   borderRight: i < 2 ? '1px solid var(--border-subtle)' : 'none',
                 }}
               >
-                <div style={{ width: '2rem', height: '1px', background: 'var(--ted-red)', marginBottom: '2rem' }} />
+                <div style={{ width: '2rem', height: '1px', background: 'var(--amber)', marginBottom: '2rem' }} />
                 <h3
                   className="font-display font-normal mb-5"
                   style={{ fontSize: 'clamp(1.5rem, 2.2vw, 2rem)', lineHeight: 1.1, color: 'var(--off-white)', whiteSpace: 'pre-line', letterSpacing: '-0.01em' }}

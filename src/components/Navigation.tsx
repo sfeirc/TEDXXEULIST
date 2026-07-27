@@ -4,15 +4,15 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Menu, X } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 
 const navLinks = [
-  { href: '/about', label: 'About' },
-  { href: '/speakers', label: 'Speakers' },
+  { href: '/about', label: 'À propos' },
+  { href: '/speakers', label: 'Conférenciers' },
   { href: '/programme', label: 'Programme' },
   { href: '/faq', label: 'FAQ' },
-  { href: '/partners', label: 'Partners' },
-  { href: '/team', label: 'Team' },
+  { href: '/partners', label: 'Partenaires' },
+  { href: '/team', label: 'Équipe' },
   { href: '/contact', label: 'Contact' },
 ] as const;
 
@@ -26,7 +26,6 @@ export default function Navigation() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  // Lock body scroll when mobile menu open
   useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : '';
     return () => { document.body.style.overflow = ''; };
@@ -34,11 +33,8 @@ export default function Navigation() {
 
   return (
     <>
-      <motion.nav
-        initial={{ y: -80, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-        className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-10 transition-all duration-500"
+      <nav
+        className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-10 transition-all duration-300"
         style={
           scrolled
             ? {
@@ -52,8 +48,7 @@ export default function Navigation() {
             : { paddingTop: '1.375rem', paddingBottom: '1.375rem' }
         }
       >
-        {/* Logo */}
-        <Link href="/" className="flex items-center" aria-label="TEDx IMT Paris — home">
+        <Link href="/" className="flex items-center" aria-label="TEDx IMT Paris — accueil">
           <Image
             src="https://i.imgur.com/NSU2tVP.png"
             alt="TEDx IMT Paris"
@@ -63,7 +58,6 @@ export default function Navigation() {
           />
         </Link>
 
-        {/* Desktop links */}
         <ul className="hidden lg:flex items-center gap-8">
           {navLinks.map(({ href, label }) => (
             <li key={href}>
@@ -82,34 +76,33 @@ export default function Navigation() {
           ))}
         </ul>
 
-        {/* Right: CTA + burger */}
         <div className="flex items-center gap-4">
           <Link
             href="/register"
             className="btn-primary hidden md:inline-flex"
             style={{ paddingTop: '0.5rem', paddingBottom: '0.5rem', paddingLeft: '1.25rem', paddingRight: '1.25rem', fontSize: '0.72rem' }}
           >
-            Register
+            Réserver
           </Link>
           <button
             onClick={() => setOpen(true)}
-            aria-label="Open menu"
+            aria-label="Ouvrir le menu"
             className="lg:hidden p-1 transition-colors"
             style={{ color: 'var(--grey-400)' }}
           >
             <Menu className="w-5 h-5" />
           </button>
         </div>
-      </motion.nav>
+      </nav>
 
-      {/* Mobile fullscreen overlay */}
+      {/* Mobile overlay — AnimatePresence only for show/hide, no stagger */}
       <AnimatePresence>
         {open && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.25 }}
+            transition={{ duration: 0.2 }}
             className="fixed inset-0 z-[200] flex flex-col px-6 py-8"
             style={{ background: 'var(--black-deep)' }}
           >
@@ -125,8 +118,8 @@ export default function Navigation() {
               </Link>
               <button
                 onClick={() => setOpen(false)}
-                aria-label="Close menu"
-                className="p-1 transition-colors"
+                aria-label="Fermer le menu"
+                className="p-1"
                 style={{ color: 'var(--grey-400)' }}
               >
                 <X className="w-5 h-5" />
@@ -135,12 +128,9 @@ export default function Navigation() {
 
             <nav className="flex-1">
               <ul>
-                {navLinks.map(({ href, label }, i) => (
-                  <motion.li
+                {navLinks.map(({ href, label }) => (
+                  <li
                     key={href}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.06, duration: 0.4 }}
                     style={{ borderBottom: '1px solid var(--border-subtle)' }}
                   >
                     <Link
@@ -151,25 +141,20 @@ export default function Navigation() {
                     >
                       {label}
                     </Link>
-                  </motion.li>
+                  </li>
                 ))}
               </ul>
             </nav>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.4 }}
-              className="mt-8"
-            >
+            <div className="mt-8">
               <Link
                 href="/register"
                 onClick={() => setOpen(false)}
                 className="btn-primary w-full justify-center text-center block"
               >
-                Reserve your seat
+                Réserver ma place
               </Link>
-            </motion.div>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
