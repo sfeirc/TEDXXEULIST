@@ -179,7 +179,7 @@ export default function HomeClient({ settings, speakers }: Props) {
         <div style={{ maxWidth: '80rem', margin: '0 auto' }}>
           <div className="flex items-end justify-between mb-12 md:mb-16">
             <div>
-              <div className="eyebrow mb-4">Line-up</div>
+              <div className="eyebrow mb-4">Intervenants</div>
               <h2
                 className="font-display font-light"
                 style={{ fontSize: 'clamp(2.5rem, 5vw, 4.5rem)', lineHeight: 0.95, letterSpacing: '-0.02em', color: 'var(--off-white)' }}

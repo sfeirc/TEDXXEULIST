@@ -90,7 +90,7 @@ export default function Register() {
           {[
             { icon: Calendar, label: 'Date', value: '22 février 2027' },
             { icon: MapPin, label: 'Lieu', value: 'Théâtre de Paris, 75009' },
-            { icon: Ticket, label: 'Format', value: 'Soirée complète — talks & networking' },
+            { icon: Ticket, label: 'Format', value: 'Soirée complète — conférences & rencontres' },
           ].map(({ icon: Icon, label, value }, i) => (
             <div
               key={label}
