@@ -196,23 +196,21 @@ export default function HomeClient({ settings, speakers }: Props) {
             </Link>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5">
-            {speakers.length > 0
-              ? speakers.slice(0, 4).map((speaker) => (
+          {speakers.length > 0 ? (
+            <>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5">
+                {speakers.slice(0, 4).map((speaker) => (
                   <div key={speaker.id} className="card-editorial">
                     <div
                       className="aspect-[3/4] relative overflow-hidden"
-                      style={{ background: 'linear-gradient(160deg, var(--grey-900), var(--grey-800))' }}
+                      style={{ background: 'var(--grey-900)' }}
                     >
                       {speaker.image_url ? (
                         <Image src={speaker.image_url} alt={speaker.name} fill className="object-cover" />
                       ) : (
-                        <>
-                          <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 50%)' }} />
-                          <div className="absolute inset-x-0 bottom-0 flex justify-center">
-                            <div className="w-16 h-20 rounded-t-full opacity-20" style={{ background: 'var(--grey-500)', marginBottom: '-2px' }} />
-                          </div>
-                        </>
+                        <div className="absolute inset-0 flex items-end p-4">
+                          <div style={{ width: '1.5rem', height: '1px', background: 'var(--amber)', marginBottom: '0.75rem' }} />
+                        </div>
                       )}
                       {speaker.theme && (
                         <div className="absolute top-4 left-4">
@@ -225,35 +223,54 @@ export default function HomeClient({ settings, speakers }: Props) {
                       <p className="text-xs" style={{ color: 'var(--grey-500)' }}>{speaker.title}</p>
                     </div>
                   </div>
-                ))
-              : [0, 1, 2, 3].map((i) => (
-                  <div key={i} className="card-editorial">
-                    <div
-                      className="aspect-[3/4] relative overflow-hidden"
-                      style={{ background: 'linear-gradient(160deg, var(--grey-900), var(--grey-800))' }}
-                    >
-                      <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 50%)' }} />
-                      <div className="absolute top-4 left-4"><span className="tag-red">À venir</span></div>
-                      <div className="absolute inset-x-0 bottom-0 flex justify-center">
-                        <div className="w-16 h-20 rounded-t-full opacity-20" style={{ background: 'var(--grey-500)', marginBottom: '-2px' }} />
-                      </div>
-                    </div>
-                    <div className="p-4 space-y-2">
-                      <div className="h-2.5 rounded-sm opacity-30" style={{ background: 'var(--grey-600)', width: '70%' }} />
-                      <div className="h-2 rounded-sm opacity-20" style={{ background: 'var(--grey-600)', width: '50%' }} />
-                    </div>
-                  </div>
                 ))}
-          </div>
-
-          <p
-            className="text-center mt-10 font-label text-xs tracking-widest uppercase"
-            style={{ color: 'var(--grey-600)' }}
-          >
-            {speakers.length === 0
-              ? "Annonces de conférenciers à l'automne 2026"
-              : `${speakers.length} conférencier${speakers.length > 1 ? 's' : ''} confirmé${speakers.length > 1 ? 's' : ''} — d'autres à venir`}
-          </p>
+              </div>
+              <p className="text-center mt-10 font-label text-xs tracking-widest uppercase" style={{ color: 'var(--grey-600)' }}>
+                {speakers.length} conférencier{speakers.length > 1 ? 's' : ''} confirmé{speakers.length > 1 ? 's' : ''} — d&apos;autres à venir
+              </p>
+            </>
+          ) : (
+            /* Pas encore de conférenciers — bloc éditorial intentionnel */
+            <div
+              className="py-12 md:py-16"
+              style={{ borderTop: '1px solid var(--border-subtle)', borderBottom: '1px solid var(--border-subtle)' }}
+            >
+              <div className="grid md:grid-cols-[1fr_2fr] gap-8 md:gap-16 items-start">
+                <div>
+                  <div style={{ width: '2rem', height: '1px', background: 'var(--amber)', marginBottom: '1.5rem' }} />
+                  <h3
+                    className="font-display font-light"
+                    style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', lineHeight: 1.05, letterSpacing: '-0.02em', color: 'var(--off-white)' }}
+                  >
+                    Annonces à l&apos;automne 2026
+                  </h3>
+                </div>
+                <div className="space-y-5">
+                  <p className="text-sm leading-relaxed" style={{ color: 'var(--grey-400)' }}>
+                    Les conférenciers de TEDx IMT Paris 2027 seront révélés progressivement à partir de l&apos;automne 2026. Cinq axes thématiques guident notre sélection : métiers du social, réseaux et technologie, environnement, sciences et interdisciplinarité, culture et communication.
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {['Social', 'Technologie', 'Environnement', 'Sciences', 'Culture'].map((theme) => (
+                      <span
+                        key={theme}
+                        className="font-label text-[0.6rem] tracking-widest uppercase px-3 py-1"
+                        style={{ border: '1px solid var(--border-warm)', color: 'var(--grey-500)' }}
+                      >
+                        {theme}
+                      </span>
+                    ))}
+                  </div>
+                  <Link
+                    href="/speakers"
+                    className="inline-flex items-center gap-1.5 font-label text-xs tracking-widest uppercase transition-colors"
+                    style={{ color: 'var(--grey-400)' }}
+                  >
+                    En savoir plus <ChevronRight className="w-3 h-3" />
+                  </Link>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </section>
 
