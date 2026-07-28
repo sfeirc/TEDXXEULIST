@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Syne, Playfair_Display } from "next/font/google";
+import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import NuclearAtmosphere from "@/components/NuclearAtmosphere";
 import { ScrollProgress } from "@/components/MotionElements";
@@ -9,13 +9,6 @@ const inter = Inter({
   subsets: ["latin"],
   display: "swap",
   weight: ["400", "500", "600", "700"],
-});
-
-const syne = Syne({
-  variable: "--font-syne",
-  subsets: ["latin"],
-  display: "swap",
-  weight: ["500", "600", "700", "800"],
 });
 
 const playfair = Playfair_Display({
@@ -120,7 +113,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr" className={`${inter.variable} ${syne.variable} ${playfair.variable}`}>
+    <html lang="fr" className={`${inter.variable} ${playfair.variable}`}>
       <head>
         <link rel="icon" href="/favicon.png" type="image/png" sizes="any" />
         <link rel="apple-touch-icon" href="/favicon.png" />
