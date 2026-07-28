@@ -337,7 +337,7 @@ export default function HomeClient({ settings, speakers }: Props) {
               { src: 'https://www.imt-atlantique.fr/sites/default/files/ecole/logos/imtatlantique/imtatlantique-rvb-reserve.png', alt: 'IMT Atlantique', w: 130 },
             ].map((logo) => (
               <div key={logo.alt} className="grayscale hover:grayscale-0 opacity-50 hover:opacity-80 transition-all duration-300">
-                <Image src={logo.src} alt={logo.alt} width={logo.w} height={40} className="object-contain h-8 md:h-10 w-auto" />
+                <Image src={logo.src} alt={logo.alt} width={logo.w} height={40} className="object-contain h-8 md:h-10 w-auto" unoptimized />
               </div>
             ))}
           </div>

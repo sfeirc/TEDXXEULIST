@@ -95,6 +95,7 @@ export default function Footer() {
                 width={70}
                 height={30}
                 className="w-auto h-4 opacity-60"
+                unoptimized
               />
             </div>
           </div>

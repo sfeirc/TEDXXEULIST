@@ -145,6 +145,7 @@ export default async function Partners() {
                             width={140}
                             height={60}
                             className="w-full h-full object-contain"
+                            unoptimized
                           />
                         )}
                       </div>
