@@ -68,7 +68,7 @@ export default function Footer() {
               alt="TEDx IMT Paris"
               width={200}
               height={60}
-              className="h-10 w-auto object-contain"
+              className="h-16 w-auto object-contain"
               unoptimized
             />
             <p className="text-sm leading-relaxed" style={{ color: 'var(--grey-500)', maxWidth: '22rem' }}>
