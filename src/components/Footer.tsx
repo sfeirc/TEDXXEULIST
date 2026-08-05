@@ -66,9 +66,10 @@ export default function Footer() {
             <Image
               src="https://i.imgur.com/NSU2tVP.png"
               alt="TEDx IMT Paris"
-              width={130}
-              height={30}
-              className="w-auto h-10"
+              width={200}
+              height={60}
+              className="h-10 w-auto object-contain"
+              unoptimized
             />
             <p className="text-sm leading-relaxed" style={{ color: 'var(--grey-500)', maxWidth: '22rem' }}>
               Un événement TEDx porté par des étudiants des écoles IMT, réunissant penseurs, ingénieurs et artistes à Paris.
