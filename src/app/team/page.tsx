@@ -126,6 +126,9 @@ function PersonCard({ person, variant = 'member' }: { person: Person; variant?: 
       <Avatar photo={person.photo} name={person.name} size="w-12 h-12 md:w-14 md:h-14" />
       <h3 className="font-medium text-white/85 text-xs mb-0.5 leading-tight">{person.name}</h3>
       <p className="text-white/40 text-[0.65rem] leading-tight">{person.role}</p>
+      {person.school && (
+        <p className="mt-1 text-white/25 text-[0.6rem] uppercase tracking-widest leading-tight">{person.school}</p>
+      )}
     </div>
   );
 }
