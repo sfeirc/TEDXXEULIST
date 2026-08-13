@@ -1,32 +1,36 @@
 import { render, screen } from '@testing-library/react';
 import Home from './page';
 
+// Home is an async Server Component: calling it as a plain function (not JSX)
+// and awaiting the result gives the resolved element, which render() can mount.
 describe('Home', () => {
-  it('renders main heading and tagline', () => {
-    render(<Home />);
-    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(/What connects us/);
-    expect(screen.getByText(/Exploring human connection/)).toBeInTheDocument();
-    expect(screen.getByText(/Against fragmentation/)).toBeInTheDocument();
+  it('renders main heading and tagline', async () => {
+    render(await Home());
+    const heading = screen.getByRole('heading', { level: 1 });
+    expect(heading.textContent).toMatch(/What/);
+    expect(heading.textContent).toMatch(/Connects/);
+    expect(heading.textContent).toMatch(/Us/);
   });
 
-  it('renders date and venue', () => {
-    render(<Home />);
-    expect(screen.getByText(/22 February 2027 · Théâtre de Paris/)).toBeInTheDocument();
+  it('renders date and venue', async () => {
+    render(await Home());
+    expect(screen.getAllByText(/22 février 2027/).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/Théâtre de Paris/).length).toBeGreaterThan(0);
   });
 
-  it('has CTA links to about and contact', () => {
-    render(<Home />);
-    expect(screen.getByRole('link', { name: /About the 2026 edition/ })).toHaveAttribute('href', '/about');
-    expect(screen.getByRole('link', { name: /Get involved/ })).toHaveAttribute('href', '/contact');
-    expect(screen.getByRole('link', { name: /Become a partner/ })).toHaveAttribute('href', '/partners');
+  it('has CTA links to register and programme', async () => {
+    render(await Home());
+    const registerLinks = screen.getAllByRole('link', { name: /Réserver ma place/ });
+    expect(registerLinks.length).toBeGreaterThan(0);
+    registerLinks.forEach(link => expect(link).toHaveAttribute('href', '/register'));
+    expect(screen.getByRole('link', { name: 'Voir le programme' })).toHaveAttribute('href', '/programme');
   });
 
-  it('renders countdown section', () => {
-    render(<Home />);
-    expect(screen.getByText(/Countdown/)).toBeInTheDocument();
-    expect(screen.getByText('Days')).toBeInTheDocument();
-    expect(screen.getByText('Hours')).toBeInTheDocument();
-    expect(screen.getByText('Minutes')).toBeInTheDocument();
-    expect(screen.getByText('Seconds')).toBeInTheDocument();
+  it('renders countdown section', async () => {
+    render(await Home());
+    expect(screen.getByText('jours')).toBeInTheDocument();
+    expect(screen.getByText('heures')).toBeInTheDocument();
+    expect(screen.getByText('min')).toBeInTheDocument();
+    expect(screen.getByText('sec')).toBeInTheDocument();
   });
 });

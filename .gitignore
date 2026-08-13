@@ -29,6 +29,9 @@ yarn-error.log*
 # local env files
 .env*.local
 
+# accidentally committed local tooling artifact, unrelated to this project
+ruvector.db
+
 # vercel
 .vercel
 

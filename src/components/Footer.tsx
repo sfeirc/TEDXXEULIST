@@ -44,8 +44,11 @@ export default function Footer() {
             setSocial(map);
             sessionStorage.setItem(key, JSON.stringify(map));
           }
+        })
+        .catch(() => {
+          // Supabase unreachable/misconfigured: footer just renders without social links.
         });
-    });
+    }).catch(() => {});
   }, []);
 
   const activeSocial = socialDefs.filter(s => social[s.key]);

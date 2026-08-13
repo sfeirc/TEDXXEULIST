@@ -126,11 +126,15 @@ npm i -g netlify-cli
 netlify deploy --prod
 ```
 
-### GitHub Pages
+### GitHub Pages — not supported
 
-1. Configure `next.config.ts` with `output: 'export'` (already set) and `basePath` for GitHub Pages if needed
-2. Run `npm run build`
-3. Deploy the `out` directory
+This app is **not** deployable to GitHub Pages: `middleware.ts` handles the
+`admin.tedximtparis.com` subdomain rewrite and the Supabase-backed auth check
+for `/admin`, and [Next.js middleware requires a Node.js/edge server — it is
+not supported with static export](https://nextjs.org/docs/app/building-your-application/deploying/static-exports#unsupported-features).
+`next.config.ts` does not set `output: 'export'`, and it shouldn't: doing so
+would silently disable the admin auth check instead of protecting it.
+Use Vercel or Netlify (above) instead.
 
 ## 🔒 Environment Variables
 
