@@ -38,16 +38,20 @@ export default function Footer() {
         .from('site_settings')
         .select('key, value')
         .in('key', ['social_instagram', 'social_linkedin', 'social_twitter', 'social_youtube', 'contact_email'])
-        .then(({ data }) => {
-          if (data) {
-            const map = Object.fromEntries(data.map(s => [s.key, s.value ?? '']));
-            setSocial(map);
-            sessionStorage.setItem(key, JSON.stringify(map));
+        .then(
+          ({ data }) => {
+            if (data) {
+              const map = Object.fromEntries(data.map(s => [s.key, s.value ?? '']));
+              setSocial(map);
+              sessionStorage.setItem(key, JSON.stringify(map));
+            }
+          },
+          () => {
+            // Supabase unreachable/misconfigured: footer just renders without social links.
+            // (Supabase's query builder is a PromiseLike, not a full Promise, so it has no
+            // .catch() -- the two-argument .then() form is the portable equivalent.)
           }
-        })
-        .catch(() => {
-          // Supabase unreachable/misconfigured: footer just renders without social links.
-        });
+        );
     }).catch(() => {});
   }, []);
 
